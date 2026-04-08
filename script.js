@@ -84,12 +84,8 @@ function closeLightbox() {
 
 // --- Form submission ---
 const form = document.getElementById('inquiryForm');
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
+form.addEventListener('submit', () => {
   const btn = form.querySelector('button[type="submit"]');
-  btn.textContent = 'Thank You \u2014 We\u2019ll Be in Touch';
+  btn.textContent = 'Sending\u2026';
   btn.disabled = true;
-  btn.style.borderColor = '#c9a96e';
-  btn.style.color = '#c9a96e';
-  btn.style.background = 'rgba(201,169,110,0.08)';
 });
