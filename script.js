@@ -1,5 +1,5 @@
 // ============================================
-//   Otoro Supper Club — script.js
+//   Otoro Club — script.js (otoroclub.com)
 //   Editorial DNA shared with the Otoro Club proposal sites.
 // ============================================
 

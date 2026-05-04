@@ -1,5 +1,5 @@
 /* =====================================================================
-   Otoro Supper Club — Marketing Site
+   Otoro Club — Marketing Site (otoroclub.com)
    Editorial single-page site. Vanilla CSS, system tokens, print sheet.
    Shares the Otoro Club editorial DNA with the Dorsia / Gozzer
    proposal sites (see ~/.claude/skills/otoro-club-style).
@@ -448,6 +448,16 @@ em {
   align-items: center;
 }
 .about-text .lede + p { margin-top: 1.1em; color: var(--ink-soft); }
+.about-parent {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--gold-deep);
+  border-top: 1px solid var(--rule-gold);
+  padding-top: 1.4em;
+  margin-top: 2em;
+  max-width: 36ch;
+}
+.section--navy .about-parent { color: var(--gold); border-top-color: var(--rule-gold); }
 .about-badge {
   margin-top: 2.4rem;
   width: 110px;
