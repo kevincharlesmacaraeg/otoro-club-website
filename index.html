@@ -3,35 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Otoro Supper Club — San Diego, Calif.</title>
+  <title>Otoro Supper Club &mdash; San Diego, Calif.</title>
+  <meta name="description" content="Otoro Supper Club &mdash; live bluefin theater, chef-grade hospitality, and unforgettable private events out of San Diego, California." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav id="navbar">
+  <!-- ===================== NAV ===================== -->
+  <header class="site-nav" id="siteNav" aria-label="Primary">
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo">
+      <a href="#top" class="nav-mark" aria-label="Otoro Supper Club &mdash; top of page">
         <img src="assets/logos/wordmark_white.png" alt="Otoro Supper Club" />
       </a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#inquire" class="nav-cta">Inquire</a></li>
-      </ul>
-      <button class="nav-hamburger" aria-label="Menu">
+      <nav class="nav-links" aria-label="Section navigation">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#services">Services</a>
+        <a href="#inquire" class="nav-cta">Inquire</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
     </div>
-  </nav>
+  </header>
 
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
+  <!-- ===================== MOBILE MENU ===================== -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <ul>
       <li><a href="#about" class="mobile-link">About</a></li>
       <li><a href="#experience" class="mobile-link">Experience</a></li>
@@ -41,236 +42,301 @@
     </ul>
   </div>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-bg" style="background-image: url('assets/photos/hero.jpg')"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">San Diego, California</p>
-      <h1 class="hero-title">Where the fish<br /><em>becomes the moment.</em></h1>
-      <p class="hero-sub">Premium seafood. Live culinary theater. Unforgettable private events.</p>
-      <a href="#inquire" class="btn-primary">Request an Event</a>
-    </div>
-    <div class="hero-scroll">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+  <main id="top">
 
-  <!-- INTRO STRIP -->
-  <div class="intro-strip">
-    <span>Craftsmanship</span>
-    <span class="dot">·</span>
-    <span>Ceremony</span>
-    <span class="dot">·</span>
-    <span>Community</span>
-    <span class="dot">·</span>
-    <span>San Diego Calif.</span>
-  </div>
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="hero" aria-labelledby="heroHeadline">
+      <div class="hero-bg" style="background-image: url('assets/photos/hero.jpg')"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-inner">
+        <p class="eyebrow gold">San Diego, California</p>
+        <h1 id="heroHeadline">Where the fish<br /><em>becomes the moment.</em></h1>
+        <p class="hero-sub">
+          Premium seafood. Live culinary theater. Unforgettable private events.
+        </p>
+        <div class="cta-row">
+          <a href="#inquire" class="btn btn-primary">Request an Event</a>
+        </div>
+      </div>
+      <div class="hero-scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="about-grid">
-      <div class="about-text">
-        <p class="section-label">About</p>
-        <h2>Not just a meal.<br /><em>A moment.</em></h2>
-        <p class="body-text">Otoro Supper Club is a premium seafood hospitality brand built around the theater of exceptional fish — most notably, the live bluefin tuna cutting experience. We turn high-quality seafood into a social event that feels educational, luxurious, and unforgettable.</p>
-        <p class="body-text">Where most event catering is functional, Otoro is a focal point. Guests don't just eat — they witness the craft, engage with the chef, and walk away with a story worth telling.</p>
-        <div class="about-badge">
-          <img src="assets/logos/badge.jpg" alt="Otoro Supper Club — Est. 2025" />
-        </div>
-      </div>
-      <div class="about-images">
-        <div class="about-img-main">
-          <img src="assets/photos/chef_crowd.jpg" alt="Chef presenting to guests" />
-        </div>
-        <div class="about-img-secondary">
-          <img src="assets/photos/cutting2.jpg" alt="Live tuna cutting" />
-        </div>
-      </div>
+    <!-- ===================== INTRO STRIP ===================== -->
+    <div class="intro-strip">
+      <span>Craftsmanship</span>
+      <span class="dot">&middot;</span>
+      <span>Ceremony</span>
+      <span class="dot">&middot;</span>
+      <span>Community</span>
+      <span class="dot">&middot;</span>
+      <span>San Diego Calif.</span>
     </div>
-  </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="section-header">
-      <p class="section-label">The Experience</p>
-      <h2>Every detail is<br /><em>deliberate.</em></h2>
-    </div>
-    <div class="experience-grid">
-      <div class="exp-card">
-        <div class="exp-img">
-          <img src="assets/photos/hero.jpg" alt="Live tuna cutting" />
-        </div>
-        <div class="exp-text">
-          <h3>Live Bluefin Cutting</h3>
-          <p>Watch as our chef breaks down a whole bluefin tuna tableside — a dramatic, precise ceremony that captivates every guest in the room and signals that what follows is something truly different.</p>
-        </div>
-      </div>
-      <div class="exp-card">
-        <div class="exp-img">
-          <img src="assets/photos/food1.jpg" alt="Chef grade seafood presentation" />
-        </div>
-        <div class="exp-text">
-          <h3>Chef-Grade Presentation</h3>
-          <p>From hand rolls assembled to order to meticulously arranged charcuterie and sashimi spreads, every plate is designed to look as exceptional as it tastes. The table becomes part of the décor.</p>
-        </div>
-      </div>
-      <div class="exp-card">
-        <div class="exp-img">
-          <img src="assets/photos/guests1.jpg" alt="Premium hospitality" />
-        </div>
-        <div class="exp-text">
-          <h3>Premium Hospitality</h3>
-          <p>We handle sourcing, cold chain, staffing, setup, and service so hosts can be fully present with their guests. Luxury buyers need confidence — our team delivers it from first inquiry through final cleanup.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FULL BLEED IMAGE BREAK -->
-  <div class="full-bleed-break">
-    <div class="fbb-bg" style="background-image: url('assets/photos/food2.jpg')"></div>
-    <div class="fbb-overlay"></div>
-    <blockquote>
-      <p>"When premium seafood is paired with craftsmanship and visual theater, guests perceive the experience as far more valuable than the ingredient cost alone."</p>
-    </blockquote>
-  </div>
-
-  <!-- GALLERY -->
-  <section id="gallery">
-    <div class="section-header">
-      <p class="section-label">Gallery</p>
-      <h2>Built to be<br /><em>photographed.</em></h2>
-    </div>
-    <div class="gallery-grid">
-      <div class="g-item g-tall"><img src="assets/photos/cutting2.jpg" alt="" /></div>
-      <div class="g-item"><img src="assets/photos/oceanview.jpg" alt="" /></div>
-      <div class="g-item"><img src="assets/photos/drinks.jpg" alt="" /></div>
-      <div class="g-item g-wide"><img src="assets/photos/venue.jpg" alt="" /></div>
-      <div class="g-item"><img src="assets/photos/party.jpg" alt="" /></div>
-      <div class="g-item g-tall"><img src="assets/photos/sparklers.jpg" alt="" /></div>
-      <div class="g-item"><img src="assets/photos/social.jpg" alt="" /></div>
-      <div class="g-item"><img src="assets/photos/fire.jpg" alt="" /></div>
-      <div class="g-item g-wide"><img src="assets/photos/group.jpg" alt="" /></div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="section-header">
-      <p class="section-label">Services</p>
-      <h2>Every occasion,<br /><em>elevated.</em></h2>
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <h3>Private Events</h3>
-        <p>Intimate gatherings, donor dinners, birthday celebrations, and curated home events. We bring the full Otoro experience to your venue — from whole fish to final bite.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <h3>Weddings</h3>
-        <p>A live tuna cutting station as your cocktail hour centerpiece. Sashimi, hand rolls, and a chef who becomes part of the story your guests tell for years after.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <h3>Corporate Activations</h3>
-        <p>Elevate brand moments, client dinners, and team events with a sensory experience that creates real engagement. Higher-touch hospitality for higher-stakes occasions.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-num">04</div>
-        <h3>Venue & Chef Partnerships</h3>
-        <p>Preferred vendor relationships with event spaces, luxury real estate gatherings, and chef collaborations that generate recurring exposure and credibility.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- LOGOS STRIP -->
-  <div class="logostrip">
-    <img src="assets/logos/logoset.jpg" alt="Otoro Supper Club — San Diego Calif." />
-  </div>
-
-  <!-- INQUIRE -->
-  <section id="inquire">
-    <div class="inquire-inner">
-      <div class="inquire-text">
-        <p class="section-label">Get in Touch</p>
-        <h2>Ready to create<br /><em>something memorable?</em></h2>
-        <p class="body-text">Tell us about your event. We'll follow up within 24 hours to discuss scope, venue, guest count, and what an Otoro experience can look like for you.</p>
-        <div class="inquire-details">
-          <div>
-            <span class="detail-label">Location</span>
-            <span>San Diego, California</span>
+    <!-- ===================== 01 / ABOUT ===================== -->
+    <section class="section section--light" id="about" aria-labelledby="aboutH">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p class="eyebrow">01 / About</p>
+            <h2 id="aboutH" class="display">Not just a meal.<br /><em>A moment.</em></h2>
+            <p class="tagline-italic">The theater of exceptional fish, set on your table.</p>
+            <p class="lede">
+              Otoro Supper Club is a premium seafood hospitality brand built around the
+              theater of exceptional fish &mdash; most notably, the live bluefin tuna
+              cutting experience. We turn high-quality seafood into a social event that
+              feels educational, luxurious, and unforgettable.
+            </p>
+            <p>
+              Where most event catering is functional, Otoro is a focal point. Guests
+              don&rsquo;t just eat &mdash; they witness the craft, engage with the chef,
+              and walk away with a story worth telling.
+            </p>
+            <div class="about-badge">
+              <img src="assets/logos/badge.jpg" alt="Otoro Supper Club &mdash; Est. 2025" />
+            </div>
           </div>
-          <div>
-            <span class="detail-label">Events</span>
-            <span>Private · Corporate · Weddings</span>
+          <div class="about-images reveal">
+            <div class="about-img-main">
+              <img src="assets/photos/chef_crowd.jpg" alt="Chef presenting bluefin tableside to a private group" />
+            </div>
+            <div class="about-img-secondary">
+              <img src="assets/photos/cutting2.jpg" alt="A close-up of a master cutter breaking down a whole bluefin tuna" />
+            </div>
           </div>
         </div>
       </div>
-      <form class="inquire-form" id="inquireForm">
-        <div class="form-row">
-          <div class="form-field">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required />
-          </div>
-          <div class="form-field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required />
-          </div>
-        </div>
-        <div class="form-field">
-          <label for="event_type">Event Type</label>
-          <select id="event_type" name="event_type">
-            <option value="" disabled selected>Select event type</option>
-            <option>Private Dinner</option>
-            <option>Birthday / Celebration</option>
-            <option>Wedding</option>
-            <option>Corporate Activation</option>
-            <option>Venue Partnership</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <div class="form-field">
-            <label for="guests">Guest Count</label>
-            <input type="text" id="guests" name="guests" placeholder="Approx. guest count" />
-          </div>
-          <div class="form-field">
-            <label for="date">Preferred Date</label>
-            <input type="text" id="date" name="date" placeholder="MM / DD / YYYY" />
-          </div>
-        </div>
-        <div class="form-field">
-          <label for="message">Tell us more</label>
-          <textarea id="message" name="message" rows="4" placeholder="Venue, vision, questions…"></textarea>
-        </div>
-        <button type="submit" class="btn-primary btn-full">Send Inquiry</button>
-      </form>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer>
+    <!-- ===================== 02 / EXPERIENCE ===================== -->
+    <section class="section section--cream" id="experience" aria-labelledby="experienceH">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">02 / The Experience</p>
+          <h2 id="experienceH" class="display">Every detail is <em>deliberate.</em></h2>
+          <p class="tagline-italic">Three movements. One unforgettable evening.</p>
+        </div>
+        <div class="experience-grid">
+          <article class="exp-card reveal">
+            <div class="exp-img">
+              <img src="assets/photos/hero.jpg" alt="A master cutter mid-breakdown on a whole bluefin tuna" />
+            </div>
+            <div class="exp-text">
+              <h3>Live Bluefin Cutting</h3>
+              <p>
+                Watch as our chef breaks down a whole bluefin tuna tableside &mdash; a
+                dramatic, precise ceremony that captivates every guest in the room and
+                signals that what follows is something truly different.
+              </p>
+            </div>
+          </article>
+          <article class="exp-card reveal">
+            <div class="exp-img">
+              <img src="assets/photos/food1.jpg" alt="A meticulously plated chef-grade sashimi presentation" />
+            </div>
+            <div class="exp-text">
+              <h3>Chef-Grade Presentation</h3>
+              <p>
+                From hand rolls assembled to order to meticulously arranged charcuterie
+                and sashimi spreads, every plate is designed to look as exceptional as it
+                tastes. The table becomes part of the d&eacute;cor.
+              </p>
+            </div>
+          </article>
+          <article class="exp-card reveal">
+            <div class="exp-img">
+              <img src="assets/photos/guests1.jpg" alt="Guests gathered around the chef during a private Otoro event" />
+            </div>
+            <div class="exp-text">
+              <h3>Premium Hospitality</h3>
+              <p>
+                We handle sourcing, cold chain, staffing, setup, and service so hosts can
+                be fully present with their guests. Luxury buyers need confidence &mdash;
+                our team delivers it from first inquiry through final cleanup.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FULL BLEED QUOTE ===================== -->
+    <div class="full-bleed-break" aria-hidden="false">
+      <div class="fbb-bg" style="background-image: url('assets/photos/food2.jpg')"></div>
+      <div class="fbb-overlay"></div>
+      <blockquote>
+        <p>
+          &ldquo;When premium seafood is paired with craftsmanship and visual theater,
+          guests perceive the experience as far more valuable than the ingredient cost
+          alone.&rdquo;
+        </p>
+      </blockquote>
+    </div>
+
+    <!-- ===================== 03 / GALLERY ===================== -->
+    <section class="section section--light" id="gallery" aria-labelledby="galleryH">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">03 / Gallery</p>
+          <h2 id="galleryH" class="display">Built to be <em>photographed.</em></h2>
+        </div>
+        <div class="gallery-grid">
+          <div class="g-item g-tall"><img src="assets/photos/cutting2.jpg" alt="Live tuna cutting" /></div>
+          <div class="g-item"><img src="assets/photos/oceanview.jpg" alt="Oceanview venue" /></div>
+          <div class="g-item"><img src="assets/photos/drinks.jpg" alt="Pours and drinks service" /></div>
+          <div class="g-item g-wide"><img src="assets/photos/venue.jpg" alt="Private venue setup" /></div>
+          <div class="g-item"><img src="assets/photos/party.jpg" alt="Guests at a private Otoro event" /></div>
+          <div class="g-item g-tall"><img src="assets/photos/sparklers.jpg" alt="Sparklers at a celebration" /></div>
+          <div class="g-item"><img src="assets/photos/social.jpg" alt="Guests dining and gathered" /></div>
+          <div class="g-item"><img src="assets/photos/fire.jpg" alt="Open-fire culinary moment" /></div>
+          <div class="g-item g-wide"><img src="assets/photos/group.jpg" alt="Group portrait at a private Otoro event" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 04 / SERVICES ===================== -->
+    <section class="section section--cream" id="services" aria-labelledby="servicesH">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">04 / Services</p>
+          <h2 id="servicesH" class="display">Every occasion, <em>elevated.</em></h2>
+        </div>
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <p class="service-num">01</p>
+            <h3>Private Events</h3>
+            <p>
+              Intimate gatherings, donor dinners, birthday celebrations, and curated home
+              events. We bring the full Otoro experience to your venue &mdash; from whole
+              fish to final bite.
+            </p>
+          </article>
+          <article class="service-card reveal">
+            <p class="service-num">02</p>
+            <h3>Weddings</h3>
+            <p>
+              A live tuna cutting station as your cocktail hour centerpiece. Sashimi, hand
+              rolls, and a chef who becomes part of the story your guests tell for years
+              after.
+            </p>
+          </article>
+          <article class="service-card reveal">
+            <p class="service-num">03</p>
+            <h3>Corporate Activations</h3>
+            <p>
+              Elevate brand moments, client dinners, and team events with a sensory
+              experience that creates real engagement. Higher-touch hospitality for
+              higher-stakes occasions.
+            </p>
+          </article>
+          <article class="service-card reveal">
+            <p class="service-num">04</p>
+            <h3>Venue &amp; Chef Partnerships</h3>
+            <p>
+              Preferred vendor relationships with event spaces, luxury real estate
+              gatherings, and chef collaborations that generate recurring exposure and
+              credibility.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== LOGO STRIP ===================== -->
+    <div class="logostrip" aria-label="Selected partners and venues">
+      <img src="assets/logos/logoset.jpg" alt="Otoro Supper Club &mdash; partner and venue marks" />
+    </div>
+
+    <!-- ===================== 05 / INQUIRE ===================== -->
+    <section class="section section--navy" id="inquire" aria-labelledby="inquireH">
+      <div class="container">
+        <div class="inquire-inner">
+          <div class="inquire-text reveal">
+            <p class="eyebrow">05 / Get in Touch</p>
+            <h2 id="inquireH" class="display gold">Ready to create<br /><em>something memorable?</em></h2>
+            <p class="lede lede--inverse">
+              Tell us about your event. We&rsquo;ll follow up within 24 hours to discuss
+              scope, venue, guest count, and what an Otoro experience can look like for
+              you.
+            </p>
+            <div class="inquire-details">
+              <div>
+                <span class="detail-label">Location</span>
+                <span>San Diego, California</span>
+              </div>
+              <div>
+                <span class="detail-label">Events</span>
+                <span>Private &middot; Corporate &middot; Weddings</span>
+              </div>
+            </div>
+          </div>
+          <form class="inquire-form reveal" id="inquireForm">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required />
+              </div>
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required />
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="event_type">Event Type</label>
+              <select id="event_type" name="event_type">
+                <option value="" disabled selected>Select event type</option>
+                <option>Private Dinner</option>
+                <option>Birthday / Celebration</option>
+                <option>Wedding</option>
+                <option>Corporate Activation</option>
+                <option>Venue Partnership</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="guests">Guest Count</label>
+                <input type="text" id="guests" name="guests" placeholder="Approx. guest count" />
+              </div>
+              <div class="form-field">
+                <label for="date">Preferred Date</label>
+                <input type="text" id="date" name="date" placeholder="MM / DD / YYYY" />
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="message">Tell us more</label>
+              <textarea id="message" name="message" rows="4" placeholder="Venue, vision, questions&hellip;"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer" aria-label="Footer">
     <div class="footer-inner">
       <div class="footer-logo">
         <img src="assets/logos/wordmark_white.png" alt="Otoro Supper Club" />
-        <p>San Diego, California · Est. 2025</p>
+        <p>San Diego, California &middot; Est. 2025</p>
       </div>
-      <div class="footer-links">
+      <nav class="footer-links" aria-label="Footer navigation">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#gallery">Gallery</a>
         <a href="#services">Services</a>
         <a href="#inquire">Inquire</a>
-      </div>
+      </nav>
       <div class="footer-copy">
-        <p>© 2025 Otoro Supper Club. All rights reserved.</p>
+        <p>&copy; 2025 Otoro Supper Club. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
