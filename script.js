@@ -1,6 +1,6 @@
 // ============================================
 //   Otoro Club — script.js (otoroclub.com)
-//   Editorial DNA shared with the Otoro Club proposal sites.
+//   Shares editorial DNA with the Otoro Club proposal sites.
 // ============================================
 
 // --- Navbar scroll behavior ---
@@ -13,26 +13,25 @@ const onScroll = () => {
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-// --- Mobile menu ---
+// --- Mobile menu (slide-in drawer) ---
 const navToggle = document.getElementById('navToggle');
-const mobileMenu = document.getElementById('mobileMenu');
-const mobileLinks = document.querySelectorAll('.mobile-link');
+const navLinks = document.querySelector('.nav-links');
 
-if (navToggle && mobileMenu) {
+if (navToggle && navLinks) {
+  const closeMenu = () => {
+    navLinks.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  };
+
   navToggle.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('is-open');
+    const isOpen = navLinks.classList.toggle('is-open');
     navToggle.setAttribute('aria-expanded', String(isOpen));
-    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
-  mobileLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('is-open');
-      navToggle.setAttribute('aria-expanded', 'false');
-      mobileMenu.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    });
+  navLinks.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
   });
 }
 
@@ -53,9 +52,8 @@ if ('IntersectionObserver' in window) {
     { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
   );
 
-  // Stagger sibling cards
-  document.querySelectorAll('.exp-card, .service-card').forEach((el, i) => {
-    el.dataset.delay = String(i * 80);
+  document.querySelectorAll('.fact-strip li, .step, .timeline li').forEach((el, i) => {
+    el.dataset.delay = String((i % 4) * 80);
   });
 
   revealEls.forEach((el) => revealObserver.observe(el));

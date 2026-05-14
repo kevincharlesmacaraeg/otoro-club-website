@@ -1,361 +1,344 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Otoro Club &mdash; San Diego, Calif.</title>
-  <meta name="description" content="Otoro Club &mdash; live bluefin theater, chef-grade hospitality, and unforgettable private events out of San Diego, California. An events series by Riviera Seafood Club." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Otoro Club &mdash; San Diego, California</title>
+<meta name="description" content="Otoro Club &mdash; live bluefin theater, chef-grade hospitality, and unforgettable private events out of San Diego, California. An events series by Riviera Seafood Club." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400&display=swap" />
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- ===================== NAV ===================== -->
-  <header class="site-nav" id="siteNav" aria-label="Primary">
-    <div class="nav-inner">
-      <a href="#top" class="nav-mark" aria-label="Otoro Club &mdash; top of page">
-        <img src="assets/logos/wordmark_white.png" alt="Otoro Club" />
-      </a>
-      <nav class="nav-links" aria-label="Section navigation">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#services">Services</a>
-        <a href="#inquire" class="nav-cta">Inquire</a>
-      </nav>
-      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- ===================== MOBILE MENU ===================== -->
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <ul>
-      <li><a href="#about" class="mobile-link">About</a></li>
-      <li><a href="#experience" class="mobile-link">Experience</a></li>
-      <li><a href="#gallery" class="mobile-link">Gallery</a></li>
-      <li><a href="#services" class="mobile-link">Services</a></li>
-      <li><a href="#inquire" class="mobile-link">Inquire</a></li>
-    </ul>
+<header class="site-nav" id="siteNav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="#top" class="nav-mark" aria-label="Otoro Club &mdash; top of page">
+      <span class="mark-line">Otoro Club</span>
+      <span class="mark-sub">San Diego Calif.</span>
+    </a>
+    <nav class="nav-links" aria-label="Section navigation">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#services">Services</a>
+      <a href="#lineage">Lineage</a>
+      <a href="#inquire">Inquire</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+</header>
 
-  <main id="top">
+<main id="top">
 
-    <!-- ===================== HERO ===================== -->
-    <section class="hero" id="hero" aria-labelledby="heroHeadline">
-      <div class="hero-bg" style="background-image: url('assets/photos/hero.jpg')"></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-inner">
-        <p class="eyebrow gold">San Diego, California</p>
-        <h1 id="heroHeadline">Where the fish<br /><em>becomes the moment.</em></h1>
-        <p class="hero-sub">
-          Premium seafood. Live culinary theater. Unforgettable private events.
-        </p>
-        <div class="cta-row">
-          <a href="#inquire" class="btn btn-primary">Request an Event</a>
-        </div>
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" aria-labelledby="heroHeadline">
+    <div class="hero-inner">
+      <p class="eyebrow gold">San Diego, California</p>
+      <h1 id="heroHeadline" class="display">
+        Where the fish<br />becomes <em>the moment.</em>
+      </h1>
+      <p class="hero-sub">
+        A premium seafood hospitality series built around the theater of
+        exceptional fish &mdash; most notably, the live bluefin tuna cutting
+        experience. Private rooms, weddings, and corporate evenings out of
+        San Diego.
+      </p>
+      <p class="hero-meta gold">
+        Private &middot; Corporate &middot; Weddings &middot; Est. 2025
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-ghost" href="#inquire">Request an Event</a>
       </div>
-      <div class="hero-scroll" aria-hidden="true">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
-      </div>
-    </section>
+    </div>
+    <figure class="hero-image">
+      <img src="assets/photos/hero.jpg" alt="A master cutter mid-breakdown on a whole bluefin tuna at an Otoro Club event." loading="eager" />
+    </figure>
+  </section>
 
-    <!-- ===================== INTRO STRIP ===================== -->
-    <div class="intro-strip">
-      <span>Craftsmanship</span>
-      <span class="dot">&middot;</span>
-      <span>Ceremony</span>
-      <span class="dot">&middot;</span>
-      <span>Community</span>
-      <span class="dot">&middot;</span>
-      <span>San Diego Calif.</span>
+  <!-- ===================== 01 / ABOUT ===================== -->
+  <section class="section section--light" id="about" aria-labelledby="aboutH">
+    <div class="container narrow reveal">
+      <p class="eyebrow">01 / About</p>
+      <h2 id="aboutH" class="display">Not just a meal. <em>A moment.</em></h2>
+      <p class="tagline-italic">The theater of exceptional fish, set on your table.</p>
+      <p class="lede">
+        Otoro Club turns high-quality seafood into a social event that feels
+        educational, luxurious, and unforgettable. Where most event catering is
+        functional, Otoro is a focal point. Guests don&rsquo;t just eat
+        &mdash; they witness the craft, engage with the chef, and walk away
+        with a story worth telling.
+      </p>
+      <p>
+        <em>An events series by Riviera Seafood Club</em> &mdash; the
+        direct-to-consumer brand of a family operation that has been moving
+        fresh bluefin tuna in the United States since 1989 under Prime Time
+        Seafood.
+      </p>
     </div>
 
-    <!-- ===================== 01 / ABOUT ===================== -->
-    <section class="section section--light" id="about" aria-labelledby="aboutH">
-      <div class="container">
-        <div class="about-grid">
-          <div class="about-text reveal">
-            <p class="eyebrow">01 / About</p>
-            <h2 id="aboutH" class="display">Not just a meal.<br /><em>A moment.</em></h2>
-            <p class="tagline-italic">The theater of exceptional fish, set on your table.</p>
-            <p class="lede">
-              Otoro Club is a premium seafood hospitality brand built around the theater
-              of exceptional fish &mdash; most notably, the live bluefin tuna cutting
-              experience. We turn high-quality seafood into a social event that feels
-              educational, luxurious, and unforgettable.
-            </p>
-            <p>
-              Where most event catering is functional, Otoro is a focal point. Guests
-              don&rsquo;t just eat &mdash; they witness the craft, engage with the chef,
-              and walk away with a story worth telling.
-            </p>
-            <p class="about-parent">
-              <em>An events series by Riviera Seafood Club.</em>
-            </p>
-            <!--
-              TODO: re-enable the badge once an "Otoro Club" version is rendered
-              (the existing assets/logos/badge.jpg bakes in "Otoro Supper Club / 2025"
-              as raster art and cannot be swapped via CSS).
-              <div class="about-badge">
-                <img src="assets/logos/badge.jpg" alt="Otoro Club &mdash; Est. 2025" />
-              </div>
-            -->
+    <div class="container reveal">
+      <ul class="fact-strip" role="list">
+        <li>
+          <span class="numeral gold">I</span>
+          <h3>Live Bluefin Theater.</h3>
+          <p>A whole bluefin tuna broken down tableside by our master cutter &mdash; a precise, dramatic ceremony that signals what follows is something different.</p>
+        </li>
+        <li>
+          <span class="numeral gold">II</span>
+          <h3>Chef-Grade Plating.</h3>
+          <p>From hand rolls assembled to order to meticulously arranged sashimi spreads, every plate is designed to look as exceptional as it tastes.</p>
+        </li>
+        <li>
+          <span class="numeral gold">III</span>
+          <h3>Premium Hospitality.</h3>
+          <p>Sourcing, cold chain, staffing, setup, service. Hosts are fully present with their guests; our team handles every detail in the background.</p>
+        </li>
+      </ul>
+    </div>
+
+    <figure class="full-image reveal">
+      <img src="assets/photos/chef_crowd.jpg" alt="A chef presents a bluefin tuna head to a crowd of guests at an Otoro Club event." loading="lazy" />
+    </figure>
+  </section>
+
+  <!-- ===================== 02 / EXPERIENCE ===================== -->
+  <section class="section section--cream" id="experience" aria-labelledby="expH">
+    <div class="container narrow reveal">
+      <p class="eyebrow">02 / The Experience</p>
+      <h2 id="expH" class="display">Every detail is <em>deliberate.</em></h2>
+      <p class="tagline-italic">Three movements. One unforgettable evening.</p>
+      <p class="lede">
+        Each event runs roughly three hours. The cadence is the same regardless
+        of size; the room and the headcount change.
+      </p>
+    </div>
+
+    <div class="container reveal">
+      <ol class="timeline" role="list">
+        <li>
+          <span class="t-time gold">Arrival &middot; 0:00 &ndash; 0:30</span>
+          <h3>Seated. Welcome pours.</h3>
+          <p>The whole bluefin sits on ice on a presentation table &mdash; the
+            centerpiece of the room before a single piece is served.</p>
+        </li>
+        <li>
+          <span class="t-time gold">The Breakdown &middot; 0:30 &ndash; 1:00</span>
+          <h3>The Fish, in the Room.</h3>
+          <p>Our master cutter walks the room through the fish: where it was
+            raised, how it was harvested via the Ike Jime method, why this
+            particular fish was selected. Each major cut is named in Japanese
+            and English.</p>
+        </li>
+        <li>
+          <span class="t-time gold">The Tasting &middot; 1:00 &ndash; 2:15</span>
+          <h3>Plated as it comes off the spine.</h3>
+          <p>Courses are plated and served as the fish is broken down &mdash;
+            akami, chu-toro, otoro, kama-toro, with seasonal accompaniments.
+            Wine and sake pairings optional.</p>
+        </li>
+        <li>
+          <span class="t-time gold">The Close &middot; 2:15 &ndash; 3:00</span>
+          <h3>Family-style. Photography to follow.</h3>
+          <p>A final family-style course, dessert, and photography from the
+            evening delivered within 72 hours &mdash; color-graded and ready
+            for the room to share.</p>
+        </li>
+      </ol>
+    </div>
+
+    <figure class="full-image reveal">
+      <img src="assets/photos/platter_sunset.jpg" alt="A sashimi platter held against a California sunset at an Otoro Club evening." loading="lazy" />
+    </figure>
+  </section>
+
+  <!-- ===================== 03 / GALLERY ===================== -->
+  <section class="section section--light" id="gallery" aria-labelledby="galleryH">
+    <div class="container narrow reveal">
+      <p class="eyebrow">03 / Gallery</p>
+      <h2 id="galleryH" class="display">Built to be <em>photographed.</em></h2>
+      <p class="tagline-italic">A room before service. A platter at sunset. The trophy head, presented.</p>
+    </div>
+    <div class="container reveal">
+      <div class="gallery-grid">
+        <div class="g-item"><img src="assets/photos/cutting2.jpg" alt="A master cutter mid-breakdown on a golden bluefin head" /></div>
+        <div class="g-item"><img src="assets/photos/tuna_head_eye.jpg" alt="A close study of the bluefin&rsquo;s eye and silver scale" /></div>
+        <div class="g-item"><img src="assets/photos/oceanview.jpg" alt="A sashimi platter passed through a sunset crowd" /></div>
+        <div class="g-item"><img src="assets/photos/group.jpg" alt="The full house gathered after an Otoro evening" /></div>
+        <div class="g-item"><img src="assets/photos/sparklers.jpg" alt="A chef presenting a prized cut of bluefin" /></div>
+        <div class="g-item"><img src="assets/photos/trophy_head.jpg" alt="The trophy head presented after the breakdown" /></div>
+        <div class="g-item"><img src="assets/photos/chefs_trio.jpg" alt="The Otoro cutters with knife and bluefin head" /></div>
+        <div class="g-item"><img src="assets/photos/sashimi_herbs.jpg" alt="A sashimi roll dressed with fresh herbs" /></div>
+        <div class="g-item"><img src="assets/photos/chef_portrait.jpg" alt="A chef holding a sashimi platter for the room" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 04 / SERVICES ===================== -->
+  <section class="section section--cream" id="services" aria-labelledby="servicesH">
+    <div class="container narrow reveal">
+      <p class="eyebrow">04 / Services</p>
+      <h2 id="servicesH" class="display">Every occasion, <em>elevated.</em></h2>
+      <p class="lede">
+        Otoro travels. Wherever the room is, we bring the fish, the chef, the
+        plating, and the production. Four formats we&rsquo;re built for &mdash;
+        anything beyond is a conversation.
+      </p>
+    </div>
+
+    <div class="container reveal">
+      <div class="step-cards step-cards--quad">
+        <article class="step">
+          <p class="step-num gold">01</p>
+          <h3>Private Events</h3>
+          <p class="step-meta">Intimate &middot; 10&ndash;30 guests</p>
+          <p>Donor dinners, birthday celebrations, curated home events. The full Otoro experience, brought to your venue &mdash; from whole fish to final bite.</p>
+        </article>
+        <article class="step">
+          <p class="step-num gold">02</p>
+          <h3>Weddings</h3>
+          <p class="step-meta">Cocktail &middot; Reception</p>
+          <p>A live tuna cutting station as your cocktail-hour centerpiece. Sashimi, hand rolls, and a chef who becomes part of the story for years.</p>
+        </article>
+        <article class="step">
+          <p class="step-num gold">03</p>
+          <h3>Corporate Activations</h3>
+          <p class="step-meta">Brand &middot; Client &middot; Team</p>
+          <p>Elevate brand moments, client dinners, and team events with a sensory experience that creates real engagement. Higher-touch hospitality for higher-stakes occasions.</p>
+        </article>
+        <article class="step">
+          <p class="step-num gold">04</p>
+          <h3>Venue &amp; Chef Partnerships</h3>
+          <p class="step-meta">Preferred &middot; Recurring</p>
+          <p>Preferred-vendor relationships with event spaces, luxury real-estate gatherings, and chef collaborations that generate recurring exposure and credibility.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 05 / LINEAGE ===================== -->
+  <section class="section section--light" id="lineage" aria-labelledby="lineageH">
+    <div class="container narrow reveal">
+      <p class="eyebrow">05 / Lineage</p>
+      <h2 id="lineageH" class="display">Built on a three-decade <em>bluefin lineage.</em></h2>
+      <p class="tagline-italic">Three decades of bluefin, distilled into one evening.</p>
+      <p class="lede">
+        Otoro Club is the events arm of <strong>Riviera Seafood Club</strong>,
+        the direct-to-consumer brand of a family operation that has been moving
+        fresh bluefin tuna in the United States since 1989 under Prime Time
+        Seafood &mdash; today the largest distributor of fresh bluefin tuna in
+        the country.
+      </p>
+      <p>
+        Bluefin is sourced from sustainably ranched stock in Baja and harvested
+        to order via Ike Jime, the Japanese technique that preserves flavor and
+        texture. The same supply chain that fills sushi counters across the
+        country lands, intact, on your table.
+      </p>
+    </div>
+
+    <figure class="full-image reveal">
+      <img src="assets/photos/group.jpg" alt="A full-room group portrait of Otoro Club guests and staff after service." loading="lazy" />
+    </figure>
+  </section>
+
+  <!-- ===================== 06 / THE ASK ===================== -->
+  <section class="section section--navy" id="ask" aria-labelledby="askH">
+    <div class="container narrow reveal">
+      <p class="eyebrow gold">06 / Begin</p>
+      <h2 id="askH" class="display gold">Ready to create<br /><em>something memorable?</em></h2>
+      <p class="lede lede--inverse">
+        Tell us about your event. We&rsquo;ll follow up within 24 hours to
+        discuss scope, venue, guest count, and what an Otoro evening can look
+        like for your room.
+      </p>
+      <p class="ask-close">
+        Private rooms, donor dinners, weddings, corporate evenings &mdash;
+        wherever the room is, we bring the rest.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== 07 / INQUIRE ===================== -->
+  <section class="section section--light" id="inquire" aria-labelledby="inquireH">
+    <div class="container narrow reveal contact-block">
+      <p class="eyebrow">07 / Inquire</p>
+      <h2 id="inquireH" class="display">Let&rsquo;s set <em>the table.</em></h2>
+      <p class="lede">
+        Share a few details and we&rsquo;ll be in touch. For pressing timelines,
+        email us directly at
+        <a class="inline-gold" href="mailto:hello@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Event%20Inquiry">hello@otoroclub.com</a>.
+      </p>
+
+      <form class="inquire-form" id="inquireForm">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
           </div>
-          <div class="about-images reveal">
-            <div class="about-img-main">
-              <img src="assets/photos/chef_crowd.jpg" alt="Chef holding a bluefin tuna head as guests look on" />
-            </div>
-            <div class="about-img-secondary">
-              <img src="assets/photos/cutting2.jpg" alt="A close-up of a master cutter breaking down a whole bluefin tuna" />
-            </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ===================== 02 / EXPERIENCE ===================== -->
-    <section class="section section--cream" id="experience" aria-labelledby="experienceH">
-      <div class="container">
-        <div class="section-header reveal">
-          <p class="eyebrow">02 / The Experience</p>
-          <h2 id="experienceH" class="display">Every detail is <em>deliberate.</em></h2>
-          <p class="tagline-italic">Three movements. One unforgettable evening.</p>
+        <div class="form-field">
+          <label for="event_type">Event Type</label>
+          <select id="event_type" name="event_type">
+            <option value="" disabled selected>Select event type</option>
+            <option>Private Dinner</option>
+            <option>Birthday / Celebration</option>
+            <option>Wedding</option>
+            <option>Corporate Activation</option>
+            <option>Venue Partnership</option>
+            <option>Other</option>
+          </select>
         </div>
-        <div class="experience-grid">
-          <article class="exp-card reveal">
-            <div class="exp-img">
-              <img src="assets/photos/hero.jpg" alt="A master cutter mid-breakdown on a whole bluefin tuna" />
-            </div>
-            <div class="exp-text">
-              <h3>Live Bluefin Cutting</h3>
-              <p>
-                Watch as our chef breaks down a whole bluefin tuna tableside &mdash; a
-                dramatic, precise ceremony that captivates every guest in the room and
-                signals that what follows is something truly different.
-              </p>
-            </div>
-          </article>
-          <article class="exp-card reveal">
-            <div class="exp-img">
-              <img src="assets/photos/food1.jpg" alt="A meticulously plated chef-grade sashimi presentation" />
-            </div>
-            <div class="exp-text">
-              <h3>Chef-Grade Presentation</h3>
-              <p>
-                From hand rolls assembled to order to meticulously arranged charcuterie
-                and sashimi spreads, every plate is designed to look as exceptional as it
-                tastes. The table becomes part of the d&eacute;cor.
-              </p>
-            </div>
-          </article>
-          <article class="exp-card reveal">
-            <div class="exp-img">
-              <img src="assets/photos/guests1.jpg" alt="Guests filming the chef as a whole bluefin is broken down" />
-            </div>
-            <div class="exp-text">
-              <h3>Premium Hospitality</h3>
-              <p>
-                We handle sourcing, cold chain, staffing, setup, and service so hosts can
-                be fully present with their guests. Luxury buyers need confidence &mdash;
-                our team delivers it from first inquiry through final cleanup.
-              </p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== FULL BLEED QUOTE ===================== -->
-    <div class="full-bleed-break" aria-hidden="false">
-      <div class="fbb-bg" style="background-image: url('assets/photos/food2.jpg')"></div>
-      <div class="fbb-overlay"></div>
-      <blockquote>
-        <p>
-          &ldquo;When premium seafood is paired with craftsmanship and visual theater,
-          guests perceive the experience as far more valuable than the ingredient cost
-          alone.&rdquo;
-        </p>
-      </blockquote>
-    </div>
-
-    <!-- ===================== 03 / GALLERY ===================== -->
-    <section class="section section--light" id="gallery" aria-labelledby="galleryH">
-      <div class="container">
-        <div class="section-header reveal">
-          <p class="eyebrow">03 / Gallery</p>
-          <h2 id="galleryH" class="display">Built to be <em>photographed.</em></h2>
-        </div>
-        <div class="gallery-grid">
-          <div class="g-item g-tall"><img src="assets/photos/cutting2.jpg" alt="A master cutter mid-breakdown on a golden bluefin head" /></div>
-          <div class="g-item"><img src="assets/photos/tuna_head_eye.jpg" alt="A close study of the bluefin&rsquo;s eye and silver scale" /></div>
-          <div class="g-item"><img src="assets/photos/oceanview.jpg" alt="A sashimi platter passed through a sunset crowd" /></div>
-          <div class="g-item g-wide"><img src="assets/photos/group.jpg" alt="The full house gathered after an Otoro evening" /></div>
-          <div class="g-item"><img src="assets/photos/sparklers.jpg" alt="A chef presenting a prized cut of bluefin" /></div>
-          <div class="g-item g-tall"><img src="assets/photos/trophy_head.jpg" alt="The trophy head presented after the breakdown" /></div>
-          <div class="g-item"><img src="assets/photos/social.jpg" alt="A guest at the sushi bar mid-service" /></div>
-          <div class="g-item"><img src="assets/photos/drinks.jpg" alt="Sashimi and chopsticks in golden light" /></div>
-          <div class="g-item g-wide"><img src="assets/photos/chefs_trio.jpg" alt="The Otoro cutters with knife and bluefin head" /></div>
-          <div class="g-item"><img src="assets/photos/sashimi_herbs.jpg" alt="A sashimi roll dressed with fresh herbs" /></div>
-          <div class="g-item"><img src="assets/photos/venue.jpg" alt="A guest at an Otoro reception" /></div>
-          <div class="g-item g-tall"><img src="assets/photos/chef_portrait.jpg" alt="A chef holding a sashimi platter for the room" /></div>
-          <div class="g-item"><img src="assets/photos/party.jpg" alt="Guests at a lounge after-party" /></div>
-          <div class="g-item"><img src="assets/photos/fire.jpg" alt="Friends gathered after an Otoro evening" /></div>
-          <div class="g-item g-wide"><img src="assets/photos/platter_sunset.jpg" alt="A sashimi platter held against a California sunset" /></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== 04 / SERVICES ===================== -->
-    <section class="section section--cream" id="services" aria-labelledby="servicesH">
-      <div class="container">
-        <div class="section-header reveal">
-          <p class="eyebrow">04 / Services</p>
-          <h2 id="servicesH" class="display">Every occasion, <em>elevated.</em></h2>
-        </div>
-        <div class="services-grid">
-          <article class="service-card reveal">
-            <p class="service-num">01</p>
-            <h3>Private Events</h3>
-            <p>
-              Intimate gatherings, donor dinners, birthday celebrations, and curated home
-              events. We bring the full Otoro experience to your venue &mdash; from whole
-              fish to final bite.
-            </p>
-          </article>
-          <article class="service-card reveal">
-            <p class="service-num">02</p>
-            <h3>Weddings</h3>
-            <p>
-              A live tuna cutting station as your cocktail hour centerpiece. Sashimi, hand
-              rolls, and a chef who becomes part of the story your guests tell for years
-              after.
-            </p>
-          </article>
-          <article class="service-card reveal">
-            <p class="service-num">03</p>
-            <h3>Corporate Activations</h3>
-            <p>
-              Elevate brand moments, client dinners, and team events with a sensory
-              experience that creates real engagement. Higher-touch hospitality for
-              higher-stakes occasions.
-            </p>
-          </article>
-          <article class="service-card reveal">
-            <p class="service-num">04</p>
-            <h3>Venue &amp; Chef Partnerships</h3>
-            <p>
-              Preferred vendor relationships with event spaces, luxury real estate
-              gatherings, and chef collaborations that generate recurring exposure and
-              credibility.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== LOGO STRIP =====================
-         TODO: re-enable once an "Otoro Club" logoset is rendered.
-         The existing assets/logos/logoset.jpg bakes in "Otoro Supper Club /
-         San Diego Calif." as raster art and cannot be swapped via CSS.
-    <div class="logostrip" aria-label="Selected partners and venues">
-      <img src="assets/logos/logoset.jpg" alt="Otoro Club &mdash; partner and venue marks" />
-    </div>
-    -->
-
-
-    <!-- ===================== 05 / INQUIRE ===================== -->
-    <section class="section section--navy" id="inquire" aria-labelledby="inquireH">
-      <div class="container">
-        <div class="inquire-inner">
-          <div class="inquire-text reveal">
-            <p class="eyebrow">05 / Get in Touch</p>
-            <h2 id="inquireH" class="display gold">Ready to create<br /><em>something memorable?</em></h2>
-            <p class="lede lede--inverse">
-              Tell us about your event. We&rsquo;ll follow up within 24 hours to discuss
-              scope, venue, guest count, and what an Otoro experience can look like for
-              you.
-            </p>
-            <div class="inquire-details">
-              <div>
-                <span class="detail-label">Location</span>
-                <span>San Diego, California</span>
-              </div>
-              <div>
-                <span class="detail-label">Events</span>
-                <span>Private &middot; Corporate &middot; Weddings</span>
-              </div>
-            </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="guests">Guest Count</label>
+            <input type="text" id="guests" name="guests" placeholder="Approx. guest count" />
           </div>
-          <form class="inquire-form reveal" id="inquireForm">
-            <div class="form-row">
-              <div class="form-field">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your name" required />
-              </div>
-              <div class="form-field">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="your@email.com" required />
-              </div>
-            </div>
-            <div class="form-field">
-              <label for="event_type">Event Type</label>
-              <select id="event_type" name="event_type">
-                <option value="" disabled selected>Select event type</option>
-                <option>Private Dinner</option>
-                <option>Birthday / Celebration</option>
-                <option>Wedding</option>
-                <option>Corporate Activation</option>
-                <option>Venue Partnership</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="form-row">
-              <div class="form-field">
-                <label for="guests">Guest Count</label>
-                <input type="text" id="guests" name="guests" placeholder="Approx. guest count" />
-              </div>
-              <div class="form-field">
-                <label for="date">Preferred Date</label>
-                <input type="text" id="date" name="date" placeholder="MM / DD / YYYY" />
-              </div>
-            </div>
-            <div class="form-field">
-              <label for="message">Tell us more</label>
-              <textarea id="message" name="message" rows="4" placeholder="Venue, vision, questions&hellip;"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-full">Send Inquiry</button>
-          </form>
+          <div class="form-field">
+            <label for="date">Preferred Date</label>
+            <input type="text" id="date" name="date" placeholder="MM / DD / YYYY" />
+          </div>
         </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="site-footer" aria-label="Footer">
-    <div class="footer-inner">
-      <div class="footer-logo">
-        <img src="assets/logos/wordmark_white.png" alt="Otoro Club" />
-        <p>San Diego, California &middot; Est. 2025 &middot; An events series by Riviera Seafood Club</p>
-      </div>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#services">Services</a>
-        <a href="#inquire">Inquire</a>
-      </nav>
-      <div class="footer-copy">
-        <p>&copy; 2026 Otoro Club. All rights reserved.</p>
-      </div>
+        <div class="form-field">
+          <label for="message">Tell us more</label>
+          <textarea id="message" name="message" rows="4" placeholder="Venue, vision, questions&hellip;"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Send Inquiry</button>
+      </form>
     </div>
-  </footer>
+  </section>
 
-  <script src="script.js" defer></script>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer" aria-label="Footer">
+  <div class="footer-inner">
+    <div class="foot-col">
+      <p class="foot-mark gold">Otoro Club</p>
+      <p class="foot-tag"><em>An events series by Riviera Seafood Club.</em></p>
+    </div>
+    <nav class="foot-col foot-links" aria-label="Footer navigation">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#services">Services</a>
+      <a href="#lineage">Lineage</a>
+      <a href="#inquire">Inquire</a>
+    </nav>
+    <div class="foot-col foot-meta">
+      <p>San Diego, California &middot; 2026</p>
+      <p class="foot-credit">Photography &amp; film: <a href="https://instagram.com/sam.g.beatty" target="_blank" rel="noopener">@sam.g.beatty</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
 </body>
 </html>
