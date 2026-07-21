@@ -488,65 +488,12 @@ em {
   margin-top: 1.6em;
 }
 
-/* ---------- Inquire form (narrow, in light section) ---------- */
-.contact-block .inquire-form {
-  margin-top: clamp(36px, 5vw, 56px);
-  padding-top: clamp(36px, 5vw, 56px);
+/* ---------- Inquire CTA (narrow, in light section) ---------- */
+.contact-cta {
+  margin-top: clamp(32px, 4.5vw, 48px);
+  padding-top: clamp(32px, 4.5vw, 48px);
   border-top: 1px solid var(--rule);
 }
-.inquire-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-}
-.form-field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.form-status {
-  margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: var(--gold-deep);
-}
-.form-status a { color: var(--gold-deep); }
-.form-field label {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-.form-field input,
-.form-field select,
-.form-field textarea {
-  background: transparent;
-  border: 1px solid var(--rule);
-  color: var(--ink);
-  font-family: var(--sans);
-  font-size: 0.98rem;
-  padding: 14px 16px;
-  outline: none;
-  transition: border-color 200ms var(--ease);
-  width: 100%;
-  appearance: none;
-  border-radius: 0;
-}
-.form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus {
-  border-color: var(--gold);
-}
-.form-field input::placeholder,
-.form-field textarea::placeholder { color: rgba(26, 26, 26, 0.35); }
-.form-field select option { background: var(--cream); color: var(--ink); }
-.form-field textarea { resize: vertical; min-height: 120px; }
 
 /* ---------- Footer (Dorsia editorial 3-col) ---------- */
 .site-footer {
@@ -690,7 +637,6 @@ em {
   .nav-links.is-open { transform: translateX(0); }
   .nav-toggle { display: block; }
   .site-nav { background: rgba(11, 27, 43, 0.94); }
-  .form-row { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: 1fr; }
 }
 
