@@ -104,17 +104,53 @@ if (galleryItems.length) {
   });
 }
 
-// --- Form submission (lightweight feedback) ---
+// --- Form submission (FormSubmit AJAX → reservations@otoroclub.com) ---
 const form = document.getElementById('inquireForm');
 if (form) {
-  form.addEventListener('submit', (e) => {
+  const status = document.getElementById('formStatus');
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
     const btn = form.querySelector('button[type="submit"]');
-    if (!btn) return;
-    btn.textContent = "Inquiry Sent — We'll be in touch.";
-    btn.disabled = true;
-    btn.style.background = 'transparent';
-    btn.style.color = 'var(--gold)';
-    btn.style.borderColor = 'var(--gold)';
+    const original = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+    if (status) { status.hidden = true; status.textContent = ''; }
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && (data.success === 'true' || data.success === true)) {
+        form.reset();
+        if (btn) {
+          btn.textContent = "Inquiry Sent — We'll be in touch.";
+          btn.style.background = 'transparent';
+          btn.style.color = 'var(--gold)';
+          btn.style.borderColor = 'var(--gold)';
+        }
+        if (status) {
+          status.hidden = false;
+          status.textContent = "Thanks — your inquiry is on its way. We'll reply soon.";
+        }
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch (err) {
+      if (btn) { btn.disabled = false; btn.textContent = original; }
+      if (status) {
+        status.hidden = false;
+        status.innerHTML = 'Something went wrong. Please email us directly at ' +
+          '<a class="inline-gold" href="mailto:reservations@otoroclub.com">reservations@otoroclub.com</a>.';
+      }
+    }
   });
 }

@@ -273,7 +273,10 @@
         <a class="inline-gold" href="mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Event%20Inquiry">reservations@otoroclub.com</a>.
       </p>
 
-      <form class="inquire-form" id="inquireForm">
+      <form class="inquire-form" id="inquireForm" action="https://formsubmit.co/ajax/reservations@otoroclub.com" method="POST">
+        <input type="hidden" name="_subject" value="Otoro Club — New Event Inquiry" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
         <div class="form-row">
           <div class="form-field">
             <label for="name">Name</label>
@@ -311,6 +314,7 @@
           <textarea id="message" name="message" rows="4" placeholder="Venue, vision, questions&hellip;"></textarea>
         </div>
         <button type="submit" class="btn btn-primary btn-full">Send Inquiry</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
       </form>
     </div>
   </section>
