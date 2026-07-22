@@ -383,10 +383,13 @@ h3 {
   width: min(420px, 68vw);
   margin: 0 auto calc(var(--gap) * 1.6);
 }
-.hero .display { max-width: 20ch; margin-inline: auto; }
-.hero-sub { margin-bottom: calc(var(--gap) * 1.6); }
-/* Keep the fragment off the hyphen when the 34ch cap forces a wrap */
-.hero-sub .frag { white-space: nowrap; }
+/* 26ch keeps the headline on one line at desktop sizes; it wraps
+   naturally once the viewport gets tight. */
+.hero .display {
+  max-width: 26ch;
+  margin-inline: auto;
+  margin-bottom: calc(var(--gap) * 1.6);
+}
 .hero-scroll {
   position: absolute;
   bottom: clamp(28px, 4vh, 48px);
