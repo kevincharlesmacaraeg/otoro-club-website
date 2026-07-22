@@ -1,21 +1,22 @@
 // ============================================
-//   Otoro Club — script.js (otoroclub.com)
-//   Shares editorial DNA with the Otoro Club proposal sites.
+//   Otoro Club — otoroclub.com
+//   Nav scroll · mobile drawer · reveal · gallery lightbox
 // ============================================
 
-// --- Navbar scroll behavior ---
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// --- Nav scroll state ---
 const navbar = document.getElementById('siteNav');
 const onScroll = () => {
   if (!navbar) return;
-  if (window.scrollY > 60) navbar.classList.add('is-scrolled');
-  else navbar.classList.remove('is-scrolled');
+  navbar.classList.toggle('is-scrolled', window.scrollY > 60);
 };
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-// --- Mobile menu (slide-in drawer) ---
+// --- Mobile drawer ---
 const navToggle = document.getElementById('navToggle');
-const navLinks = document.querySelector('.nav-links');
+const navLinks = document.getElementById('navLinks');
 
 if (navToggle && navLinks) {
   const closeMenu = () => {
@@ -30,71 +31,66 @@ if (navToggle && navLinks) {
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
-  navLinks.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', closeMenu);
+  navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('is-open')) closeMenu();
   });
 }
 
-// --- Reveal on scroll ---
+// --- Reveal on scroll (fade only, no bounce) ---
 const revealEls = document.querySelectorAll('.reveal');
 
-if ('IntersectionObserver' in window) {
+if (reduceMotion || !('IntersectionObserver' in window)) {
+  revealEls.forEach((el) => el.classList.add('is-visible'));
+} else {
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const delay = Number(entry.target.dataset.delay || 0);
-          window.setTimeout(() => entry.target.classList.add('is-visible'), delay);
-          revealObserver.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
       });
     },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
   );
-
-  document.querySelectorAll('.fact-strip li, .step, .timeline li').forEach((el, i) => {
-    el.dataset.delay = String((i % 4) * 80);
-  });
-
   revealEls.forEach((el) => revealObserver.observe(el));
-} else {
-  revealEls.forEach((el) => el.classList.add('is-visible'));
 }
 
 // --- Gallery lightbox ---
-const galleryItems = document.querySelectorAll('.g-item');
+const galleryButtons = document.querySelectorAll('.g-item button');
 
-if (galleryItems.length) {
+if (galleryButtons.length) {
   const lightbox = document.createElement('div');
   lightbox.className = 'lightbox';
   lightbox.setAttribute('role', 'dialog');
   lightbox.setAttribute('aria-modal', 'true');
+  lightbox.setAttribute('aria-label', 'Gallery image');
   lightbox.innerHTML =
-    '<button class="lightbox-close" aria-label="Close">&times;</button><img src="" alt="" />';
+    '<button class="lightbox-close" type="button" aria-label="Close">&times;</button><img src="" alt="" />';
   document.body.appendChild(lightbox);
 
   const lbImg = lightbox.querySelector('img');
   const lbClose = lightbox.querySelector('.lightbox-close');
+  let lastFocused = null;
 
-  const openLightbox = (src, alt) => {
-    lbImg.src = src;
-    lbImg.alt = alt || '';
+  const openLightbox = (trigger) => {
+    const img = trigger.querySelector('img');
+    if (!img) return;
+    lastFocused = trigger;
+    lbImg.src = img.currentSrc || img.src;
+    lbImg.alt = img.alt || '';
     lightbox.classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    lbClose.focus();
   };
 
   const closeLightbox = () => {
     lightbox.classList.remove('is-open');
     document.body.style.overflow = '';
+    if (lastFocused) lastFocused.focus();
   };
 
-  galleryItems.forEach((item) => {
-    item.addEventListener('click', () => {
-      const img = item.querySelector('img');
-      if (img) openLightbox(img.src, img.alt);
-    });
-  });
-
+  galleryButtons.forEach((btn) => btn.addEventListener('click', () => openLightbox(btn)));
   lbClose.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) closeLightbox();
