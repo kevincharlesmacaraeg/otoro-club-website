@@ -645,18 +645,18 @@ h3 {
 .btn .ig-icon { width: auto; height: auto; margin-right: 0.8em; color: inherit; }
 .btn .ig-icon svg { width: 14px; height: 14px; }
 
-/* ---------- Enquire ---------- */
-.enquire-panel {
+/* ---------- Inquire ---------- */
+.inquire-panel {
   max-width: var(--narrow);
   margin-inline: auto;
-  /* Panel sits on the navy-deep Enquire ground, so it lifts to navy. */
+  /* Panel sits on the navy-deep Inquire ground, so it lifts to navy. */
   background: var(--navy);
   border: 1px solid var(--rule-gold);
   padding: clamp(40px, 6vw, 72px);
   text-align: center;
 }
-.enquire-panel .lede { margin-inline: auto; max-width: 46ch; }
-.enquire-address {
+.inquire-panel .lede { margin-inline: auto; max-width: 46ch; }
+.inquire-address {
   display: inline-block;
   margin: calc(var(--gap) * 1.2) 0 calc(var(--gap) * 1.4);
   font-size: clamp(1rem, 1.6vw, 1.2rem);
@@ -665,7 +665,7 @@ h3 {
   padding-bottom: 3px;
   transition: color 200ms var(--ease), border-color 200ms var(--ease);
 }
-.enquire-address:hover { color: var(--cream); border-bottom-color: var(--cream); }
+.inquire-address:hover { color: var(--cream); border-bottom-color: var(--cream); }
 
 /* ---------- Footer ---------- */
 .site-footer {
