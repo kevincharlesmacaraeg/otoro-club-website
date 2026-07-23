@@ -744,6 +744,75 @@ h3 {
 }
 .lightbox-close:hover { opacity: 1; }
 
+/* ---------- FAQ (native <details> disclosure, cream ground) ---------- */
+.faq-list {
+  margin-top: calc(var(--gap) * 2);
+  border-top: 1px solid var(--rule-ink);
+}
+.faq-item {
+  border-bottom: 1px solid var(--rule-ink);
+}
+.faq-item > summary {
+  list-style: none;                 /* strip the default disclosure triangle */
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--gap);
+  padding: calc(var(--gap) * 0.95) 0;
+}
+.faq-item > summary::-webkit-details-marker { display: none; }
+.faq-item > summary:focus-visible {
+  outline: 1px solid var(--gold-deep);
+  outline-offset: 6px;
+}
+.faq-item > summary h3 {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: clamp(1rem, 1.7vw, 1.18rem);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: var(--ls-item);
+  color: var(--ink);
+}
+/* Plus / minus mark, drawn in CSS so it stays crisp and needs no glyph font. */
+.faq-mark {
+  position: relative;
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  margin-top: 0.35em;
+}
+.faq-mark::before,
+.faq-mark::after {
+  content: "";
+  position: absolute;
+  background: var(--gold-deep);
+  transition: opacity 200ms var(--ease), transform 200ms var(--ease);
+}
+.faq-mark::before { top: 6px; left: 0; width: 14px; height: 1.5px; }          /* horizontal */
+.faq-mark::after  { top: 0; left: 6px; width: 1.5px; height: 14px; }          /* vertical   */
+.faq-item[open] > summary .faq-mark::after { opacity: 0; transform: scaleY(0); }
+.faq-a {
+  padding: 0 0 calc(var(--gap) * 1.1);
+  max-width: 62ch;
+}
+.faq-a p {
+  font-size: 0.96rem;
+  line-height: 1.75;
+  letter-spacing: var(--ls-item);
+  color: var(--ink);
+}
+.faq-a a { color: var(--ink); border-bottom: 1px solid var(--gold-deep); }
+.faq-cta {
+  margin-top: calc(var(--gap) * 1.8);
+  font-size: 0.96rem;
+  letter-spacing: var(--ls-item);
+  color: var(--ink-soft);
+}
+.faq-cta a { color: var(--ink); border-bottom: 1px solid var(--gold-deep); }
+.faq-cta a:hover { color: var(--gold-deep); }
+
 /* ---------- Reveal (subtle, fade only) ---------- */
 .reveal {
   opacity: 0;
