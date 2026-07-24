@@ -56,8 +56,12 @@
   --rule-cream: rgba(245, 241, 230, 0.14);
   --rule-ink: rgba(20, 24, 31, 0.14);
 
-  --serif: "Hamilton Serif", "Cormorant Garamond", Georgia, serif;
-  --sans: "Hamilton Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  /* July 2026 rework, per Kevin: DISPLAY stays the editorial serif (Hamilton
+     Archive); BODY + all UI move to Arial for readability on paragraphs, nav,
+     buttons, forms and the FAQ. This intentionally departs from the locked
+     "Hamilton Sans for ~85%" brand rule — a per-site call, not a brand change. */
+  --serif: "Hamilton Serif", "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --sans: Arial, Helvetica, "Helvetica Neue", sans-serif;   /* body + UI */
   --script: "Hamilton Script", "Snell Roundhand", cursive;
   --system: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 
@@ -105,15 +109,15 @@ a:focus-visible, button:focus-visible {
 
 /* ---------- Type roles ---------- */
 .display {
-  font-family: var(--sans);
+  font-family: var(--serif);          /* editorial serif — headlines only */
   font-weight: 400;
   letter-spacing: var(--ls-display);
-  line-height: 1.14;
+  line-height: 1.12;
   text-transform: none;
   margin: 0 0 0.7em;
 }
-h1.display { font-size: clamp(2rem, 4.6vw, 3.5rem); }
-h2.display { font-size: clamp(1.65rem, 3.2vw, 2.6rem); }
+h1.display { font-size: clamp(2.15rem, 4.9vw, 3.7rem); }
+h2.display { font-size: clamp(1.75rem, 3.4vw, 2.75rem); }
 
 .honored {                      /* Serif — honored proper nouns only */
   font-family: var(--serif);
@@ -271,16 +275,96 @@ h3 {
 .nav-right { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 32px); }
 .nav-links {
   display: flex;
-  gap: clamp(14px, 2vw, 28px);
+  gap: clamp(14px, 2vw, 30px);
   font-size: 0.68rem;
   letter-spacing: var(--ls-eyebrow);
   text-transform: uppercase;
 }
-.nav-links a {
+
+/* ---- Dropdown groups (Experience / Formats / About) ----
+   Eight flat tabs collapse into three. Desktop opens on hover/focus-within;
+   touch + keyboard open via the JS .is-open class on the group. */
+.nav-group { position: relative; }
+.nav-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
   color: rgba(245, 241, 230, 0.72);
   transition: color 200ms var(--ease);
 }
-.nav-links a:hover { color: var(--gold); }
+.nav-trigger::after {          /* caret */
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: translateY(-1px) rotate(45deg);
+  transition: transform 200ms var(--ease);
+}
+.nav-trigger:hover,
+.nav-group:hover .nav-trigger,
+.nav-group.is-open .nav-trigger { color: var(--gold); }
+.nav-group.is-open .nav-trigger::after { transform: translateY(1px) rotate(-135deg); }
+
+.nav-menu {
+  position: absolute;
+  top: calc(100% + 16px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  min-width: 190px;
+  display: grid;
+  padding: 10px 0;
+  background: rgba(30, 37, 48, 0.97);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--rule-gold);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 200ms var(--ease), transform 200ms var(--ease), visibility 0ms linear 200ms;
+}
+/* A bridge over the 16px gap so the menu doesn't close mid-reach. */
+.nav-menu::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
+}
+.nav-group.is-open .nav-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+  transition-delay: 0ms;
+}
+@media (hover: hover) {
+  .nav-group:hover .nav-menu,
+  .nav-group:focus-within .nav-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+    transition-delay: 0ms;
+  }
+}
+.nav-menu a {
+  padding: 9px 22px;
+  color: rgba(245, 241, 230, 0.72);
+  white-space: nowrap;
+  transition: color 180ms var(--ease);
+}
+.nav-menu a:hover { color: var(--gold); }
+
 .nav-cta { display: inline-flex; }
 .nav-toggle {
   display: none;
@@ -383,12 +467,16 @@ h3 {
   width: min(420px, 68vw);
   margin: 0 auto calc(var(--gap) * 1.6);
 }
-/* 26ch keeps the headline on one line at desktop sizes; it wraps
-   naturally once the viewport gets tight. */
+/* Two sentences, breaking to two lines at desktop sizes. */
 .hero .display {
-  max-width: 26ch;
+  max-width: 22ch;
   margin-inline: auto;
-  margin-bottom: calc(var(--gap) * 1.6);
+  margin-bottom: calc(var(--gap) * 0.9);
+}
+.hero-sub {
+  max-width: 48ch;
+  margin: 0 auto calc(var(--gap) * 1.6);
+  color: rgba(245, 241, 230, 0.86);
 }
 .hero-scroll {
   position: absolute;
@@ -423,8 +511,9 @@ h3 {
   color: rgba(245, 241, 230, 0.5);
 }
 
-/* ---------- About (the one cream reading passage) ---------- */
-.about-body p { color: var(--ink); }
+/* ---------- About (cream reading passage) + Reserve (dark) ---------- */
+.about-body p { color: rgba(245, 241, 230, 0.82); }   /* default: on dark grounds */
+.s--cream .about-body p { color: var(--ink); }        /* the cream About passage */
 .about-body p + p { margin-top: 1.2em; }
 .about-terms {
   margin-top: calc(var(--gap) * 2);
@@ -585,6 +674,8 @@ h3 {
   font-size: 0.94rem;
   color: rgba(245, 241, 230, 0.72);
 }
+/* Peak-intent CTA — repeated here, right after the tiers. */
+.format-cta { margin-top: calc(var(--gap) * 1.6); }
 
 /* ---------- Instagram ---------- */
 .ig-head {
@@ -645,8 +736,9 @@ h3 {
 .btn .ig-icon { width: auto; height: auto; margin-right: 0.8em; color: inherit; }
 .btn .ig-icon svg { width: 14px; height: 14px; }
 
-/* ---------- Inquire ---------- */
-.inquire-panel {
+/* ---------- Inquire (the one conversion) ---------- */
+.inquire-panel,
+.inquire-success {
   max-width: var(--narrow);
   margin-inline: auto;
   /* Panel sits on the navy-deep Inquire ground, so it lifts to navy. */
@@ -656,16 +748,78 @@ h3 {
   text-align: center;
 }
 .inquire-panel .lede { margin-inline: auto; max-width: 46ch; }
-.inquire-address {
-  display: inline-block;
-  margin: calc(var(--gap) * 1.2) 0 calc(var(--gap) * 1.4);
-  font-size: clamp(1rem, 1.6vw, 1.2rem);
+
+/* Inline form → FormSubmit AJAX → reservations@otoroclub.com */
+.inquire-form {
+  margin-top: calc(var(--gap) * 1.8);
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(var(--gap) * 0.9) var(--gap);
+}
+.field { display: grid; gap: 0.5em; }
+.field--full { grid-column: 1 / -1; }
+.field label {
+  font-size: 0.62rem;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.field label .opt {
+  letter-spacing: var(--ls-eyebrow);
+  color: rgba(245, 241, 230, 0.42);
+}
+.inquire-form input {
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 0.98rem;
+  color: var(--cream);
+  background: var(--navy-deep);
+  border: 1px solid var(--rule-cream);
+  border-radius: 0;
+  padding: 13px 14px;
+  transition: border-color 200ms var(--ease);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.inquire-form input::placeholder { color: rgba(245, 241, 230, 0.4); }
+.inquire-form input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.inquire-form input:invalid:not(:placeholder-shown) { border-color: rgba(196, 100, 100, 0.6); }
+/* date/number stepper + calendar glyphs to the cream side */
+.inquire-form input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.7) sepia(1) saturate(2) hue-rotate(5deg); cursor: pointer; }
+/* honeypot — visually + programmatically hidden, still fillable by bots */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.inquire-submit { margin-top: 0.4em; text-align: center; }
+.inquire-submit .btn { min-width: 220px; }
+
+.form-status {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 0.86rem;
+  letter-spacing: var(--ls-item);
+  color: rgba(230, 160, 150, 0.92);
+  text-align: center;
+}
+.form-status a { color: var(--gold); border-bottom: 1px solid var(--rule-gold); }
+
+.inquire-or {
+  margin: calc(var(--gap) * 1.3) 0 0;
+  font-size: 0.88rem;
+  letter-spacing: var(--ls-item);
+  color: rgba(245, 241, 230, 0.6);
+}
+.inquire-or a {
   color: var(--gold);
   border-bottom: 1px solid var(--rule-gold);
-  padding-bottom: 3px;
+  padding-bottom: 2px;
   transition: color 200ms var(--ease), border-color 200ms var(--ease);
 }
-.inquire-address:hover { color: var(--cream); border-bottom-color: var(--cream); }
+.inquire-or a:hover { color: var(--cream); border-bottom-color: var(--cream); }
+
+.inquire-success .lede { margin-inline: auto; max-width: 44ch; }
 
 /* ---------- Footer ---------- */
 .site-footer {
@@ -837,22 +991,52 @@ h3 {
   .nav-links {
     position: fixed;
     inset: 0 0 0 auto;
-    width: min(80vw, 340px);
+    width: min(84vw, 360px);
     background: var(--navy-deep);
     border-left: 1px solid var(--rule-gold);
     flex-direction: column;
-    align-items: flex-start;
-    gap: 22px;
-    padding: 104px 30px 40px;
-    font-size: 0.74rem;
+    align-items: stretch;
+    gap: 4px;
+    padding: 100px 26px 40px;
+    font-size: 0.78rem;
+    overflow-y: auto;
     transform: translateX(100%);
     transition: transform 320ms var(--ease);
   }
-  .nav-links a { min-height: 44px; display: flex; align-items: center; }
   .nav-links.is-open { transform: none; }
   .nav-toggle { display: block; }
-  .nav-cta { display: none; }
   .site-nav { background: rgba(30, 37, 48, 0.92); }
+
+  /* Dropdowns become accordions inside the drawer. */
+  .nav-group { width: 100%; }
+  .nav-trigger {
+    width: 100%;
+    justify-content: space-between;
+    min-height: 46px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rule-cream);
+  }
+  .nav-menu {
+    position: static;
+    transform: none;
+    min-width: 0;
+    background: none;
+    border: 0;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    padding: 2px 0 10px 14px;
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: none;
+  }
+  .nav-menu::before { display: none; }
+  .nav-group.is-open .nav-menu { display: grid; }
+  .nav-menu a { min-height: 42px; display: flex; align-items: center; padding: 6px 0; }
+
+  /* Persistent Inquire stays pinned outside the drawer, on mobile too. */
+  .nav-cta { display: inline-flex; }
 
   /* The IG strip stays a grid — two-up reads as an Instagram profile. */
   .ig-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
@@ -872,10 +1056,19 @@ h3 {
   .g-item { flex: 0 0 78%; scroll-snap-align: center; }
 }
 
+@media (max-width: 600px) {
+  /* Inquiry form stacks to a single column. */
+  .inquire-form { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 480px) {
   body { font-size: 16px; }
   .btn { width: 100%; }
   .hero-lock { width: min(300px, 74vw); }
+  /* The pinned header Inquire never goes full-width — only content buttons do. */
+  .btn.nav-cta { width: auto; }
+  .nav-inner { gap: 12px; }
+  .nav-right { gap: 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
