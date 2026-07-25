@@ -120,72 +120,28 @@ META-->
 
       <p class="summary-close">Every journey is confirmed with your itamae based on your guest count and the fish size.</p>
 
-      <!-- Fused inquiry — the terminal action. Pre-filled from the composition. -->
+      <!-- Terminal action — an email that carries the composed journey in its body. -->
       <div class="inquire-panel" style="max-width:780px;margin-top:calc(var(--gap) * 2);background:var(--navy);">
         <p class="label">Begin your inquiry</p>
         <hr class="rule is-centered" />
         <h2 class="display">Send it as the start of a conversation.</h2>
 
-        <p class="intent-line" id="intentLine" hidden>You&rsquo;re planning: <span id="intentValue"></span> <button type="button" class="intent-change" id="intentChange">change</button></p>
+        <p class="intent-line" id="intentLine" hidden>You&rsquo;re planning: <span id="intentValue"></span></p>
 
-        <form id="inquireForm" class="inquire-form" action="https://formsubmit.co/ajax/reservations@otoroclub.com" method="POST" novalidate>
-          <div class="field">
-            <label for="j-name">Name</label>
-            <input id="j-name" name="Name" type="text" required autocomplete="name" placeholder=" " />
-          </div>
-          <div class="field">
-            <label for="j-email">Email</label>
-            <input id="j-email" name="Email" type="email" required autocomplete="email" placeholder=" " />
-          </div>
-          <div class="field">
-            <label for="j-occasion">Occasion</label>
-            <select id="j-occasion" name="Occasion">
-              <option value="Private event">Private event</option>
-              <option value="Wedding">Wedding</option>
-              <option value="Corporate">Corporate</option>
-              <option value="Partnership">Partnership</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="j-guests">Estimated guest count</label>
-            <input id="j-guests" name="Guest Count" type="number" min="1" inputmode="numeric" placeholder=" " />
-          </div>
-          <div class="field">
-            <label for="j-date">Event date</label>
-            <input id="j-date" name="Event Date" type="date" />
-          </div>
-          <div class="field">
-            <label for="j-venue">Venue <span class="opt">(optional)</span></label>
-            <input id="j-venue" name="Venue" type="text" placeholder=" " />
-          </div>
-          <div class="field field--full">
-            <label for="j-note">A line about it <span class="opt">(optional)</span></label>
-            <textarea id="j-note" name="Message" rows="2" placeholder="A 50th birthday, a wedding welcome…"></textarea>
-          </div>
+        <p class="lede">Your journey travels with the email — we will confirm the format, the guest count, and the fish with your itamae.</p>
 
-          <!-- The composed journey rides here into the inquiry email. -->
-          <input type="hidden" id="j-journey" name="Journey" value="" />
-          <input type="hidden" name="_subject" value="Otoro Club — New Inquiry (Journey)" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
-          <div class="field--full inquire-submit">
-            <button class="btn" type="submit" id="inquireSubmit">Send inquiry</button>
-            <p class="lead-note">The Reserve is included in every journey. Pricing is shared when we confirm the date.</p>
-          </div>
-          <p class="form-status" id="formStatus" role="alert" hidden></p>
-        </form>
-
-        <p class="inquire-or">or write us: <a class="is-address" id="journeyMailto" href="mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Inquiry">reservations@otoroclub.com</a></p>
+        <p class="email-cta">
+          <a class="btn" id="journeyMailto" href="mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Inquiry">Email your inquiry</a>
+        </p>
+        <p class="email-plain">or copy our address: <span class="is-address">reservations@otoroclub.com</span></p>
+        <p class="lead-note">The Reserve is included in every journey. Pricing is shared when we confirm the date.</p>
       </div>
     </div>
   </section>
 
   <script>
   /* The Journey — in-memory composer. No storage; resets on refresh.
-     Adapted to this site's tokens and its real /inquire form. */
+     The composition serializes into a pre-filled email (no form). */
   (function () {
     "use strict";
     var COURSES = [
@@ -244,8 +200,8 @@ META-->
 
     var elCourses = document.getElementById("courses");
     var elSummary = document.getElementById("journeySummary");
-    var elJourneyField = document.getElementById("j-journey");
     var elMailto = document.getElementById("journeyMailto");
+    var intentOccasion = "";
 
     /* ----- render Build Your Own ----- */
     function buildCourses() {
@@ -344,7 +300,6 @@ META-->
 
       if (!hasChoice && !state.chosen) {
         elSummary.innerHTML = '<p class="summary-empty">Choose a Signature Journey or compose your own, and it builds here.</p>';
-        elJourneyField.value = "";
         setMailto("");
         return;
       }
@@ -360,13 +315,16 @@ META-->
       var serial = (title ? title + " — " : "") +
         ["The live cut"].concat(parts).concat(["The Reserve"]).join(" · ") +
         ". Confirmed with the itamae based on guest count and fish size.";
-      elJourneyField.value = serial;
       setMailto(serial);
     }
 
     function setMailto(serial) {
-      var body = serial ? "My journey: " + serial + "%0A%0AVenue: %0ADate: %0AGuests: " : "Venue: %0ADate: %0AGuests: ";
-      elMailto.setAttribute("href", "mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Inquiry&body=" + body.replace(/ /g, "%20"));
+      var lines = [];
+      if (serial) lines.push("My journey: " + serial, "");
+      if (intentOccasion) lines.push("Occasion: " + intentOccasion);
+      lines.push("Venue: ", "Date: ", "Guests: ");
+      var body = encodeURIComponent(lines.join("\n"));
+      elMailto.setAttribute("href", "mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Inquiry&body=" + body);
     }
 
     /* ----- signatures ----- */
@@ -398,17 +356,13 @@ META-->
 
     /* ----- occasion intent carried in via ?occasion= ----- */
     (function carryIntent() {
-      var params = new URLSearchParams(window.location.search);
-      var occ = params.get("occasion");
+      var occ = new URLSearchParams(window.location.search).get("occasion");
       if (!occ) return;
-      var sel = document.getElementById("j-occasion");
-      var line = document.getElementById("intentLine");
-      var val = document.getElementById("intentValue");
-      var opt = Array.prototype.slice.call(sel.options).filter(function (o) { return o.value.toLowerCase() === occ.toLowerCase(); })[0];
-      if (opt) { sel.value = opt.value; val.textContent = opt.value; line.hidden = false; }
-      document.getElementById("intentChange").addEventListener("click", function () {
-        line.hidden = true; sel.focus();
-      });
+      var known = ["Private event", "Wedding", "Corporate", "Partnership"];
+      var match = known.filter(function (k) { return k.toLowerCase() === occ.toLowerCase(); })[0];
+      intentOccasion = match || occ;
+      document.getElementById("intentValue").textContent = intentOccasion;
+      document.getElementById("intentLine").hidden = false;
     })();
 
     buildCourses();

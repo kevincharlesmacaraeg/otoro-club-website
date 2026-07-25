@@ -1632,6 +1632,15 @@ body.page .mnav {
 @media (max-width: 1200px) {
   .mnav-groups { display: none; }
   .mnav-burger { display: block; }
+  .mnav-logo { margin-right: 16px; }   /* the 48px desktop gap crowds a phone bar */
+  .mnav-actions { margin-left: auto; }
+}
+@media (max-width: 480px) {
+  /* base .btn goes width:100% at 480 — keep the header INQUIRE compact, not full-bleed */
+  .btn.mnav-cta { width: auto; min-height: 40px; padding: 10px 16px 10px calc(16px + var(--ls-label)); font-size: 0.56rem; }
+  .mnav-logo img { height: 40px; }
+  .utilbar-loc { font-size: 9px; letter-spacing: 0.16em; }
+  .page-hero { padding-top: calc(var(--header-h) + clamp(32px, 6vw, 48px)); }
 }
 @media (max-width: 1080px) {
   .fly-media { display: none; }               /* media rail drops first */
@@ -1702,6 +1711,25 @@ body.page .mnav {
   line-height: 1.6;
   color: rgba(245, 241, 230, 0.5);
 }
+
+/* ---------- Email CTA (replaces the removed forms) ---------- */
+.email-cta { margin: calc(var(--gap) * 1.6) 0 0; }
+.email-cta .btn { min-width: 240px; }
+.email-plain {
+  margin: 1.1em 0 0;
+  font-size: 0.88rem;
+  letter-spacing: var(--ls-item);
+  color: rgba(245, 241, 230, 0.6);
+}
+.email-plain .is-address { color: var(--gold); -webkit-user-select: all; user-select: all; }
+.s--cream .email-plain { color: var(--ink-soft); }
+.s--cream .email-plain .is-address { color: var(--ink); }
+.inline-address {
+  color: var(--gold);
+  border-bottom: 1px solid var(--rule-gold);
+  padding-bottom: 1px;
+}
+.s--cream .inline-address { color: var(--ink); border-bottom-color: var(--gold-deep); }
 
 /* ---------- The Journey composer ---------- */
 .anchor-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 40px); }

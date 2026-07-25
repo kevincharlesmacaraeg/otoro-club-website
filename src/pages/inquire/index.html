@@ -20,81 +20,23 @@ META-->
     </div>
   </section>
 
-  <section class="section s--deep" id="proposal" aria-labelledby="inqFormH">
+  <section class="section s--deep" id="proposal" aria-labelledby="inqEmailH">
     <div class="container reveal">
-      <div class="inquire-panel" style="max-width:780px;">
+      <div class="inquire-panel">
         <p class="label">Inquiry</p>
         <hr class="rule is-centered" />
-        <h2 id="inqFormH" class="display">Send us the details.</h2>
+        <h2 id="inqEmailH" class="display">Write us a line.</h2>
+        <p class="lede">
+          Send the venue, the date, and a rough guest count to
+          <a class="is-address inline-address" href="mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Inquiry">reservations@otoroclub.com</a>
+          and we will take it from there.
+        </p>
 
-        <form id="inquireForm" class="inquire-form" action="https://formsubmit.co/ajax/reservations@otoroclub.com" method="POST" novalidate>
-          <div class="field">
-            <label for="f-name">Name</label>
-            <input id="f-name" name="Name" type="text" required autocomplete="name" placeholder=" " />
-          </div>
-          <div class="field">
-            <label for="f-email">Email</label>
-            <input id="f-email" name="Email" type="email" required autocomplete="email" placeholder=" " />
-          </div>
-          <div class="field">
-            <label for="f-phone">Phone <span class="opt">(optional)</span></label>
-            <input id="f-phone" name="Phone" type="tel" autocomplete="tel" placeholder=" " />
-          </div>
-          <div class="field">
-            <label for="f-occasion">Occasion</label>
-            <select id="f-occasion" name="Occasion">
-              <option value="Private event">Private event</option>
-              <option value="Wedding">Wedding</option>
-              <option value="Corporate">Corporate</option>
-              <option value="Partnership">Partnership</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="f-venue">Venue</label>
-            <input id="f-venue" name="Venue" type="text" placeholder=" " />
-            <label class="check"><input type="checkbox" name="Venue TBD" value="Yes" /> <span>Venue to be determined</span></label>
-          </div>
-          <div class="field">
-            <label for="f-date">Event date</label>
-            <input id="f-date" name="Event Date" type="date" />
-            <label class="check"><input type="checkbox" name="Date Flexible" value="Yes" /> <span>Date is flexible</span></label>
-          </div>
-          <div class="field">
-            <label for="f-guests">Estimated guest count</label>
-            <input id="f-guests" name="Guest Count" type="number" min="1" inputmode="numeric" placeholder=" " />
-          </div>
-          <div class="field">
-            <label for="f-found">How you found us <span class="opt">(optional)</span></label>
-            <input id="f-found" name="How Found" type="text" placeholder=" " />
-          </div>
-          <div class="field field--full">
-            <label for="f-diet">Allergies or dietary notes</label>
-            <textarea id="f-diet" name="Dietary Notes" rows="2" placeholder=" "></textarea>
-            <p class="field-note">Please notify us in writing of any allergy at least seven days before the engagement. Fish, shellfish, soy, sesame, wheat, and egg are present in our service.</p>
-          </div>
-          <div class="field field--full">
-            <label for="f-note">The event, in a few lines <span class="opt">(optional)</span></label>
-            <textarea id="f-note" name="Message" rows="3" placeholder="A 50th birthday, a client dinner, a wedding welcome…"></textarea>
-          </div>
-
-          <!-- The Journey composer writes its composition into this field. -->
-          <input type="hidden" id="f-journey" name="Journey" value="" />
-
-          <!-- FormSubmit config -->
-          <input type="hidden" name="_subject" value="Otoro Club — New Inquiry" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
-          <div class="field--full inquire-submit">
-            <button class="btn" type="submit" id="inquireSubmit">Inquire</button>
-            <p class="lead-note">Because the bluefin is sourced against a locked headcount, a few weeks&rsquo; notice is best. Pricing is shared when we confirm the date.</p>
-          </div>
-          <p class="form-status" id="formStatus" role="alert" hidden></p>
-        </form>
-
-        <p class="inquire-or" id="what-we-need">or write us: <a class="is-address" href="mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Inquiry&amp;body=Venue%3A%20%0ADate%3A%20%0AGuest%20count%3A%20%0AOccasion%3A%20%0A%0AAbout%20the%20event%3A%20">reservations@otoroclub.com</a></p>
+        <p class="email-cta">
+          <a class="btn" href="mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Inquiry&amp;body=Venue%3A%20%0ADate%3A%20%0AGuest%20count%3A%20%0AOccasion%3A%20%0A%0AAbout%20the%20event%3A%20">Email us</a>
+        </p>
+        <p class="email-plain">or copy our address: <span class="is-address">reservations@otoroclub.com</span></p>
+        <p class="lead-note">Because the bluefin is sourced against a locked headcount, a few weeks&rsquo; notice is best. Pricing is shared when we confirm the date.</p>
       </div>
     </div>
   </section>
@@ -106,10 +48,12 @@ META-->
       <h2 id="wwnH" class="display">Three things to start.</h2>
       <div class="about-body">
         <p>
-          The venue, the date, and a rough guest count are enough to begin. From
-          there we confirm the format, walk through what is included from setup
-          through load-out, and hold the date. If your venue is undecided, tell
-          us the area and we will work from there.
+          The venue, the date, and a rough guest count are enough to begin. If
+          you have allergies or dietary needs, note them — fish, shellfish, soy,
+          sesame, wheat, and egg are present in our service, and we ask for any
+          allergy in writing at least seven days ahead. From there we confirm the
+          format, walk through what is included from setup through load-out, and
+          hold the date. If your venue is undecided, tell us the area.
         </p>
       </div>
       <p class="format-cta"><a class="btn" href="/journey">Design your journey first</a></p>

@@ -185,36 +185,5 @@
     });
   })();
 
-  /* ---------- Inquiry form (FormSubmit AJAX) ---------- */
-  (function inquiry() {
-    var form = document.getElementById("inquireForm");
-    if (!form) return;
-    var status = document.getElementById("formStatus");
-    var submit = document.getElementById("inquireSubmit");
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      if (!form.checkValidity()) { form.reportValidity(); return; }
-      if (submit) { submit.disabled = true; submit.textContent = "Sending…"; }
-      if (status) { status.hidden = true; }
-
-      fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" }
-      })
-        .then(function (r) { return r.json().catch(function () { return {}; }); })
-        .then(function () {
-          window.location.href = "/inquire/thank-you";
-        })
-        .catch(function () {
-          if (submit) { submit.disabled = false; submit.textContent = "Inquire"; }
-          if (status) {
-            status.hidden = false;
-            status.textContent =
-              "Something went wrong sending that. Please email reservations@otoroclub.com and we will pick it up.";
-          }
-        });
-    });
-  })();
+  /* The site has no forms — inquiries go by email (mailto). Nothing to wire. */
 })();
