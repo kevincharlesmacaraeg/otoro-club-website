@@ -1,0 +1,241 @@
+<!-- ===================== NAV ===================== -->
+<!-- Five mega-flyout triggers + a persistent INQUIRE. Opens on hover of a
+     trigger, closes on mouseleave of the whole wrapper (cursor can cross the
+     gap into the panel). Each trigger is a <button aria-expanded> for keyboard.
+     Every label + link is white-space:nowrap (CSS). Below ~1200px the row is
+     hidden and the burger drawer takes over. -->
+<header class="mnav" id="mnav" data-flyout>
+  <div class="mnav-bar">
+    <a href="/" class="mnav-logo" aria-label="Otoro Club — home">
+      <img src="/assets/logos/titlelogo.png" alt="Otoro Club" height="46" />
+    </a>
+
+    <nav class="mnav-groups" aria-label="Primary">
+      <!-- The Ceremony -->
+      <div class="mnav-item">
+        <button type="button" class="mnav-trigger" aria-expanded="false" aria-controls="fly-ceremony">The Ceremony</button>
+        <div class="mnav-panel" id="fly-ceremony" role="region" aria-label="The Ceremony" hidden>
+          <div class="fly-inner">
+            <div class="fly-rail">
+              <p class="fly-eyebrow">The Ceremony</p>
+              <p class="fly-head">Maguro kaitai, in the room.</p>
+            </div>
+            <div class="fly-links">
+              <div class="fly-col">
+                <p class="fly-label">Overview</p>
+                <a href="/ceremony#room">What happens in the room</a>
+                <a href="/ceremony#movements">The four movements</a>
+                <a href="/ceremony#cuts">The cuts, in sequence</a>
+                <a href="/ceremony#itamae">The itamae</a>
+              </div>
+              <div class="fly-col">
+                <p class="fly-label">Detail</p>
+                <a href="/ceremony/run-of-show">Run of show</a>
+                <a href="/ceremony/included">What is included</a>
+                <a href="/ceremony/food-safety#load-out">Setup &amp; load-out</a>
+                <a href="/ceremony/food-safety">Food safety &amp; permitting</a>
+              </div>
+            </div>
+            <div class="fly-media">
+              <img src="/assets/photos/experience_lift.jpg" alt="The team lifting a whole bluefin onto the board." loading="lazy" />
+              <p class="fly-caption">forty minutes. one bluefin. no back-of-house.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formats -->
+      <div class="mnav-item">
+        <button type="button" class="mnav-trigger" aria-expanded="false" aria-controls="fly-formats">Formats</button>
+        <div class="mnav-panel" id="fly-formats" role="region" aria-label="Formats" hidden>
+          <div class="fly-inner">
+            <div class="fly-rail">
+              <p class="fly-eyebrow">Formats</p>
+              <p class="fly-head">Intimate. Social. Grand.</p>
+            </div>
+            <div class="fly-tiers">
+              <a class="fly-tier" href="/formats/intimate">
+                <span class="fly-tier-name">Intimate</span>
+                <span class="fly-tier-scale">6&ndash;12 guests</span>
+                <span class="fly-tier-line">One table, the itamae at arm&rsquo;s length.</span>
+              </a>
+              <a class="fly-tier" href="/formats/social">
+                <span class="fly-tier-name">Social</span>
+                <span class="fly-tier-scale">Standing &middot; Seated</span>
+                <span class="fly-tier-line">A station format for a room that moves.</span>
+              </a>
+              <a class="fly-tier" href="/formats/grand">
+                <span class="fly-tier-name">Grand</span>
+                <span class="fly-tier-scale">Landmark</span>
+                <span class="fly-tier-line">A whole bluefin as the centerpiece.</span>
+              </a>
+            </div>
+            <div class="fly-col fly-col--also">
+              <p class="fly-label">Also</p>
+              <a href="/formats#additions">&Agrave; la carte additions</a>
+              <a href="/formats#compare">Compare tiers</a>
+              <a href="/formats#counts">Guest counts</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Occasions -->
+      <div class="mnav-item">
+        <button type="button" class="mnav-trigger" aria-expanded="false" aria-controls="fly-occasions">Occasions</button>
+        <div class="mnav-panel" id="fly-occasions" role="region" aria-label="Occasions" hidden>
+          <div class="fly-inner">
+            <div class="fly-rail">
+              <p class="fly-eyebrow">Occasions</p>
+              <p class="fly-head">Where the ceremony travels.</p>
+            </div>
+            <div class="fly-links fly-links--three">
+              <div class="fly-col">
+                <p class="fly-label">Private</p>
+                <a href="/occasions/private-events">Private events</a>
+                <a href="/occasions/private-events#milestone">Milestone dinners</a>
+                <a href="/occasions/weddings">Weddings</a>
+              </div>
+              <div class="fly-col">
+                <p class="fly-label">Business</p>
+                <a href="/occasions/corporate">Corporate evenings</a>
+                <a href="/occasions/corporate#brand">Brand activations</a>
+                <a href="/occasions/corporate#client">Client dinners</a>
+              </div>
+              <div class="fly-col">
+                <p class="fly-label">Partners</p>
+                <a href="/occasions/partnerships">Venues &amp; hotels</a>
+                <a href="/occasions/partnerships#chefs">Resident chefs</a>
+                <a href="/occasions/partnerships#preferred">Preferred vendor</a>
+              </div>
+            </div>
+            <div class="fly-media">
+              <img src="/assets/photos/guests1.jpg" alt="Guests in the room during an engagement." loading="lazy" />
+              <p class="fly-caption">the room, mid-service.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="mnav-item">
+        <button type="button" class="mnav-trigger" aria-expanded="false" aria-controls="fly-about">About</button>
+        <div class="mnav-panel" id="fly-about" role="region" aria-label="About" hidden>
+          <div class="fly-inner">
+            <div class="fly-rail">
+              <p class="fly-eyebrow">About</p>
+              <p class="fly-head">The fish is the programming.</p>
+            </div>
+            <div class="fly-links fly-links--three">
+              <div class="fly-col">
+                <p class="fly-label">Otoro Club</p>
+                <a href="/about">Who we are</a>
+                <a href="/about/team">The team</a>
+                <a href="/about#service-area">Service area</a>
+              </div>
+              <div class="fly-col">
+                <p class="fly-label">Media</p>
+                <a href="/gallery">Gallery</a>
+                <a href="https://www.instagram.com/otoroclubsd/" target="_blank" rel="noopener">Instagram</a>
+                <a href="/about/press">Press &amp; media kit</a>
+              </div>
+              <div class="fly-col">
+                <p class="fly-label">Practical</p>
+                <a href="/faq">FAQ</a>
+                <a href="/legal/food-safety-allergens">Food safety &amp; allergens</a>
+                <a href="/inquire">Contact</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan an Event -->
+      <div class="mnav-item">
+        <button type="button" class="mnav-trigger" aria-expanded="false" aria-controls="fly-plan">Plan an Event</button>
+        <div class="mnav-panel" id="fly-plan" role="region" aria-label="Plan an Event" hidden>
+          <div class="fly-inner">
+            <div class="fly-rail">
+              <p class="fly-eyebrow">Plan an Event</p>
+              <p class="fly-head">Inquire about a date.</p>
+            </div>
+            <div class="fly-links">
+              <div class="fly-col">
+                <p class="fly-label">Start</p>
+                <a href="/inquire">Inquiry form</a>
+                <a href="/inquire#date">Check a date</a>
+                <a href="/inquire#proposal">Request a proposal</a>
+              </div>
+              <div class="fly-col">
+                <p class="fly-label">Before you book</p>
+                <a href="/inquire#what-we-need">What we need from you</a>
+                <a href="/ceremony/food-safety#venue">Venue requirements</a>
+                <a href="/legal/cancellation#deposits">Deposits &amp; headcount</a>
+                <a href="/legal/cancellation">Cancellation policy</a>
+              </div>
+            </div>
+            <div class="fly-contact">
+              <p class="fly-label">Contact</p>
+              <a class="is-address" href="mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Inquiry">reservations@otoroclub.com</a>
+              <a class="is-address" href="https://www.instagram.com/otoroclubsd/" target="_blank" rel="noopener">@otoroclubsd</a>
+              <a class="btn btn--sm" href="/inquire">Inquire</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="mnav-actions">
+      <a class="btn btn--sm btn--ghost mnav-cta" href="/inquire">Inquire</a>
+      <button class="mnav-burger" id="mnavBurger" aria-expanded="false" aria-controls="mnavDrawer" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Burger drawer (≤1200px) — same groups as accordion sections. -->
+<div class="mnav-drawer" id="mnavDrawer" hidden>
+  <nav class="drawer-inner" aria-label="Mobile">
+    <details class="drawer-group">
+      <summary>The Ceremony</summary>
+      <a href="/ceremony">Overview</a>
+      <a href="/ceremony/run-of-show">Run of show</a>
+      <a href="/ceremony/included">What is included</a>
+      <a href="/ceremony/food-safety">Food safety &amp; permitting</a>
+    </details>
+    <details class="drawer-group">
+      <summary>Formats</summary>
+      <a href="/formats">Overview &amp; compare</a>
+      <a href="/formats/intimate">Intimate</a>
+      <a href="/formats/social">Social</a>
+      <a href="/formats/grand">Grand</a>
+    </details>
+    <details class="drawer-group">
+      <summary>Occasions</summary>
+      <a href="/occasions">Overview</a>
+      <a href="/occasions/private-events">Private events</a>
+      <a href="/occasions/weddings">Weddings</a>
+      <a href="/occasions/corporate">Corporate</a>
+      <a href="/occasions/partnerships">Partnerships</a>
+    </details>
+    <details class="drawer-group">
+      <summary>About</summary>
+      <a href="/about">Who we are</a>
+      <a href="/about/team">The team</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/faq">FAQ</a>
+      <a href="/about/press">Press &amp; media kit</a>
+    </details>
+    <details class="drawer-group">
+      <summary>Plan an Event</summary>
+      <a href="/inquire">Inquiry form</a>
+      <a href="/ceremony/food-safety#venue">Venue requirements</a>
+      <a href="/legal/cancellation">Deposits &amp; cancellation</a>
+    </details>
+    <a class="btn drawer-cta" href="/inquire">Inquire</a>
+    <p class="drawer-contact">
+      <a class="is-address" href="mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Inquiry">reservations@otoroclub.com</a>
+    </p>
+  </nav>
+</div>

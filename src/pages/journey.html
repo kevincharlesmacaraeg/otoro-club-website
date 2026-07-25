@@ -1,0 +1,418 @@
+<!--META
+{
+  "path": "journey",
+  "title": "Design Your Journey — Otoro Club",
+  "description": "Compose your party's experience from the whole fish — a starting point, shaped with your itamae. Every path begins an inquiry.",
+  "bodyClass": "page"
+}
+META-->
+<main>
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="crumb"><a href="/">Otoro Club</a><span>/</span>The Journey</p>
+      <p class="eyebrow">The Journey</p>
+      <h1 class="display">Design your journey.</h1>
+      <p class="lede">
+        One whole fish, served the way you choose. A starting point — your final
+        menu is shaped with your itamae, and set by your guest count and the
+        fish. No prices here; this begins a conversation, not an order.
+      </p>
+    </div>
+  </section>
+
+  <!-- Always-included anchors -->
+  <section class="section s--navy" style="padding-block:clamp(48px,6vw,72px);" aria-label="Included in every journey">
+    <div class="container reveal">
+      <div class="anchor-row">
+        <div class="anchor">
+          <p class="anchor-label">Always included</p>
+          <p class="anchor-name">The live cut</p>
+          <p class="anchor-desc">A whole bluefin broken down by hand in the room, served in sequence as it is cut.</p>
+        </div>
+        <div class="anchor">
+          <p class="anchor-label">Always included</p>
+          <p class="anchor-name">The Reserve</p>
+          <p class="anchor-desc">Premium cuts, portioned and packed cold, to open again at home. Yours to take with the room.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The fork -->
+  <section class="section s--deep" id="composer" aria-labelledby="forkH">
+    <div class="container reveal">
+      <p class="label" style="text-align:center;">Two ways in</p>
+      <hr class="rule is-centered" />
+      <h2 id="forkH" class="display centered">Be guided, or compose your own.</h2>
+
+      <div class="fork" role="tablist" aria-label="Choose a path">
+        <button type="button" class="fork-btn is-active" id="tab-guided" role="tab" aria-selected="true" aria-controls="panel-guided" data-mode="guided">
+          <span class="fork-title">Be guided</span>
+          <span class="fork-sub">Three Signature Journeys, composed for you.</span>
+        </button>
+        <button type="button" class="fork-btn" id="tab-build" role="tab" aria-selected="false" aria-controls="panel-build" data-mode="build">
+          <span class="fork-title">Compose your own</span>
+          <span class="fork-sub">Step through the courses and shape the evening.</span>
+        </button>
+      </div>
+
+      <!-- Route A — Signature Journeys -->
+      <div id="panel-guided" role="tabpanel" aria-labelledby="tab-guided" class="mode-panel">
+        <div class="signature-grid" id="signatureGrid">
+          <article class="sig-card" data-sig="cut">
+            <h3 class="sig-name">The Cut</h3>
+            <p class="sig-meta">Four courses</p>
+            <ol class="sig-list">
+              <li>Sashimi Platter</li>
+              <li>Nakaochi <span class="sig-tag">in the room</span></li>
+              <li>Otoro Signature Roll</li>
+              <li>Grilled Kama</li>
+            </ol>
+            <button type="button" class="btn btn--sm sig-choose" data-sig="cut">Choose The Cut</button>
+          </article>
+          <article class="sig-card" data-sig="ceremony">
+            <h3 class="sig-name">The Ceremony</h3>
+            <p class="sig-meta">Five courses</p>
+            <ol class="sig-list">
+              <li>Otoro Flight</li>
+              <li>Nakaochi <span class="sig-tag">in the room</span></li>
+              <li>Hand-Roll Bar</li>
+              <li>Aburi Ō-toro</li>
+              <li>Negitoro Donburi</li>
+            </ol>
+            <button type="button" class="btn btn--sm sig-choose" data-sig="ceremony">Choose The Ceremony</button>
+          </article>
+          <article class="sig-card" data-sig="omakase">
+            <h3 class="sig-name">The Omakase</h3>
+            <p class="sig-meta">Six courses, with an elevation</p>
+            <ol class="sig-list">
+              <li>Sashimi Platter</li>
+              <li>Zuke</li>
+              <li>Nakaochi <span class="sig-tag">in the room</span></li>
+              <li>Toro-Taku</li>
+              <li>Chū-toro Sukiyaki</li>
+              <li>Kabuto Miso</li>
+              <li>Caviar Service <span class="sig-tag">elevation</span></li>
+            </ol>
+            <button type="button" class="btn btn--sm sig-choose" data-sig="omakase">Choose The Omakase</button>
+          </article>
+        </div>
+      </div>
+
+      <!-- Route B — Build Your Own -->
+      <div id="panel-build" role="tabpanel" aria-labelledby="tab-build" class="mode-panel" hidden>
+        <p class="build-note">A starting point — your final menu is shaped with your itamae, and set by your guest count and the fish.</p>
+        <div id="courses"><!-- course steps injected by journey script --></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Running summary + fused inquiry -->
+  <section class="section s--cream" id="your-journey" aria-labelledby="sumH">
+    <div class="container reveal">
+      <p class="label">Your journey</p>
+      <hr class="rule" />
+      <h2 id="sumH" class="display">The evening, so far.</h2>
+
+      <div class="journey-summary" id="journeySummary" aria-live="polite">
+        <p class="summary-empty">Choose a Signature Journey or compose your own, and it builds here.</p>
+      </div>
+
+      <p class="summary-close">Every journey is confirmed with your itamae based on your guest count and the fish size.</p>
+
+      <!-- Fused inquiry — the terminal action. Pre-filled from the composition. -->
+      <div class="inquire-panel" style="max-width:780px;margin-top:calc(var(--gap) * 2);background:var(--navy);">
+        <p class="label">Begin your inquiry</p>
+        <hr class="rule is-centered" />
+        <h2 class="display">Send it as the start of a conversation.</h2>
+
+        <p class="intent-line" id="intentLine" hidden>You&rsquo;re planning: <span id="intentValue"></span> <button type="button" class="intent-change" id="intentChange">change</button></p>
+
+        <form id="inquireForm" class="inquire-form" action="https://formsubmit.co/ajax/reservations@otoroclub.com" method="POST" novalidate>
+          <div class="field">
+            <label for="j-name">Name</label>
+            <input id="j-name" name="Name" type="text" required autocomplete="name" placeholder=" " />
+          </div>
+          <div class="field">
+            <label for="j-email">Email</label>
+            <input id="j-email" name="Email" type="email" required autocomplete="email" placeholder=" " />
+          </div>
+          <div class="field">
+            <label for="j-occasion">Occasion</label>
+            <select id="j-occasion" name="Occasion">
+              <option value="Private event">Private event</option>
+              <option value="Wedding">Wedding</option>
+              <option value="Corporate">Corporate</option>
+              <option value="Partnership">Partnership</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="j-guests">Estimated guest count</label>
+            <input id="j-guests" name="Guest Count" type="number" min="1" inputmode="numeric" placeholder=" " />
+          </div>
+          <div class="field">
+            <label for="j-date">Event date</label>
+            <input id="j-date" name="Event Date" type="date" />
+          </div>
+          <div class="field">
+            <label for="j-venue">Venue <span class="opt">(optional)</span></label>
+            <input id="j-venue" name="Venue" type="text" placeholder=" " />
+          </div>
+          <div class="field field--full">
+            <label for="j-note">A line about it <span class="opt">(optional)</span></label>
+            <textarea id="j-note" name="Message" rows="2" placeholder="A 50th birthday, a wedding welcome…"></textarea>
+          </div>
+
+          <!-- The composed journey rides here into the inquiry email. -->
+          <input type="hidden" id="j-journey" name="Journey" value="" />
+          <input type="hidden" name="_subject" value="Otoro Club — New Inquiry (Journey)" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <div class="field--full inquire-submit">
+            <button class="btn" type="submit" id="inquireSubmit">Send inquiry</button>
+            <p class="lead-note">The Reserve is included in every journey. Pricing is shared when we confirm the date.</p>
+          </div>
+          <p class="form-status" id="formStatus" role="alert" hidden></p>
+        </form>
+
+        <p class="inquire-or">or write us: <a class="is-address" id="journeyMailto" href="mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Inquiry">reservations@otoroclub.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  /* The Journey — in-memory composer. No storage; resets on refresh.
+     Adapted to this site's tokens and its real /inquire form. */
+  (function () {
+    "use strict";
+    var COURSES = [
+      { key: "raw", label: "Raw / The Opening", rule: "choose 1–2", min: 1, max: 2, items: [
+        { id: "sashimi-platter", name: "Sashimi Platter", desc: "akami, chū-toro, ō-toro, cut to order." },
+        { id: "tuna-tartare", name: "Tuna Tartare on Toast", desc: "hand-chopped akami, crisp milk-bread toast." },
+        { id: "otoro-flight", name: "The Otoro Flight", desc: "three nigiri, lean to fat." },
+        { id: "zuke", name: "Zuke", desc: "akami cured in aged soy." },
+        { id: "kamatoro-crudo", name: "Kamatoro Crudo", desc: "fatty collar meat, raw, citrus.", limited: true }
+      ]},
+      { key: "nakaochi", label: "The Ceremony — Nakaochi", included: true },
+      { key: "handroll", label: "Hand & Roll", rule: "choose 1–2", min: 1, max: 2, items: [
+        { id: "handroll-bar", name: "The Hand-Roll Bar", desc: "a temaki station: negitoro, spicy tuna, ō-toro." },
+        { id: "otoro-roll", name: "The Otoro Signature Roll", desc: "the house roll, torched belly." },
+        { id: "toro-taku", name: "Toro-Taku", desc: "chū-toro and pickled daikon." },
+        { id: "negitoro-gunkan", name: "Negitoro Gunkan", desc: "" }
+      ]},
+      { key: "warm", label: "Warm / The Cooked Fish", rule: "choose 1", min: 1, max: 1, items: [
+        { id: "grilled-kama", name: "Grilled Kama", desc: "the collar, salt-grilled.", limited: true },
+        { id: "aburi-otoro", name: "Aburi Ō-toro Nigiri", desc: "belly seared tableside." },
+        { id: "tuna-katsu", name: "Tuna Katsu", desc: "panko akami, tonkatsu." },
+        { id: "chutoro-sukiyaki", name: "Chū-toro Sukiyaki", desc: "a small hot pot at the table." },
+        { id: "tuna-karaage", name: "Tuna Karaage", desc: "cheek and trim, fried." }
+      ]},
+      { key: "rice", label: "Rice & Soul / The Finish", rule: "choose 1", min: 1, max: 1, items: [
+        { id: "negitoro-donburi", name: "Negitoro Donburi", desc: "spine-scraped belly over rice." },
+        { id: "ochazuke", name: "Ochazuke", desc: "akami over rice, hot dashi." },
+        { id: "kabuto-miso", name: "Kabuto Miso", desc: "soup from the collar and head." },
+        { id: "temaki-finale", name: "The Temaki Finale", desc: "one last hand roll." }
+      ]},
+      { key: "dessert", label: "Dessert", rule: "optional, choose 0–1", min: 0, max: 1, items: [
+        { id: "yuzu-sorbet", name: "Yuzu Sorbet", desc: "" },
+        { id: "black-sesame", name: "Black Sesame", desc: "" },
+        { id: "matcha-cream", name: "Matcha & Cream", desc: "" }
+      ]},
+      { key: "elevations", label: "Elevations", rule: "optional, add any", min: 0, max: Infinity, items: [
+        { id: "caviar", name: "Caviar Service", desc: "over the nakaochi." },
+        { id: "uni", name: "Uni Pairing", desc: "" },
+        { id: "gold-leaf", name: "Gold-Leaf Ō-toro", desc: "" },
+        { id: "surf-turf", name: "The Surf & Turf Moment", desc: "A5 wagyu." },
+        { id: "pairing-flight", name: "Pairing Flight", desc: "sake or champagne." },
+        { id: "kabuto-roast", name: "Kabuto Roast", desc: "" }
+      ]}
+    ];
+    var SIGNATURES = {
+      cut: { name: "The Cut", sel: { raw: ["sashimi-platter"], handroll: ["otoro-roll"], warm: ["grilled-kama"] } },
+      ceremony: { name: "The Ceremony", sel: { raw: ["otoro-flight"], handroll: ["handroll-bar"], warm: ["aburi-otoro"], rice: ["negitoro-donburi"] } },
+      omakase: { name: "The Omakase", sel: { raw: ["sashimi-platter", "zuke"], handroll: ["toro-taku"], warm: ["chutoro-sukiyaki"], rice: ["kabuto-miso"], elevations: ["caviar"] } }
+    };
+
+    var state = { chosen: null, sel: {} };
+    COURSES.forEach(function (c) { if (!c.included) state.sel[c.key] = []; });
+
+    var nameOf = {};
+    COURSES.forEach(function (c) { (c.items || []).forEach(function (it) { nameOf[it.id] = it.name; }); });
+
+    var elCourses = document.getElementById("courses");
+    var elSummary = document.getElementById("journeySummary");
+    var elJourneyField = document.getElementById("j-journey");
+    var elMailto = document.getElementById("journeyMailto");
+
+    /* ----- render Build Your Own ----- */
+    function buildCourses() {
+      var html = "";
+      COURSES.forEach(function (c) {
+        if (c.included) {
+          html +=
+            '<div class="course course--room">' +
+            '<div class="course-head"><p class="course-label">The ceremony</p>' +
+            '<span class="course-rule">included</span></div>' +
+            '<h3 class="course-title">Nakaochi — in the room</h3>' +
+            '<p class="course-desc">The spine is handed to your guests and the meat scraped to order, served in warm gunkan. The one cut you can only have in the room, minutes after the cut. Always part of the journey.</p>' +
+            "</div>";
+          return;
+        }
+        html +=
+          '<fieldset class="course" data-course="' + c.key + '">' +
+          '<div class="course-head"><legend class="course-label">' + c.label + "</legend>" +
+          '<span class="course-rule">' + c.rule + "</span></div>" +
+          '<p class="course-count" data-count="' + c.key + '" aria-live="polite"></p>' +
+          '<div class="opt-grid">';
+        c.items.forEach(function (it) {
+          html +=
+            '<button type="button" class="opt-card" data-course="' + c.key + '" data-id="' + it.id + '" aria-pressed="false">' +
+            '<span class="opt-check" aria-hidden="true"></span>' +
+            '<span class="opt-name">' + it.name + (it.limited ? ' <span class="opt-limited">limited cut</span>' : "") + "</span>" +
+            (it.desc ? '<span class="opt-desc">' + it.desc + "</span>" : "") +
+            '<span class="opt-state">Select</span>' +
+            "</button>";
+        });
+        html += "</div></fieldset>";
+      });
+      elCourses.innerHTML = html;
+      elCourses.querySelectorAll(".opt-card").forEach(function (btn) {
+        btn.addEventListener("click", function () { toggle(btn.dataset.course, btn.dataset.id); });
+      });
+      refreshCards();
+    }
+
+    function courseDef(key) { return COURSES.filter(function (c) { return c.key === key; })[0]; }
+
+    function toggle(key, id) {
+      var arr = state.sel[key];
+      var def = courseDef(key);
+      var i = arr.indexOf(id);
+      if (i > -1) { arr.splice(i, 1); }
+      else if (def.max === 1) { state.sel[key] = [id]; }
+      else if (arr.length < def.max) { arr.push(id); }
+      else { flash(key); return; }
+      state.chosen = state.chosen || "custom";
+      refreshCards();
+      render();
+    }
+
+    function flash(key) {
+      var note = elCourses.querySelector('[data-count="' + key + '"]');
+      if (!note) return;
+      note.classList.add("is-flash");
+      setTimeout(function () { note.classList.remove("is-flash"); }, 900);
+    }
+
+    function refreshCards() {
+      COURSES.forEach(function (c) {
+        if (c.included) return;
+        var arr = state.sel[c.key];
+        elCourses.querySelectorAll('.opt-card[data-course="' + c.key + '"]').forEach(function (btn) {
+          var on = arr.indexOf(btn.dataset.id) > -1;
+          btn.setAttribute("aria-pressed", on ? "true" : "false");
+          btn.classList.toggle("is-selected", on);
+          var st = btn.querySelector(".opt-state");
+          if (st) st.textContent = on ? "Selected" : "Select";
+        });
+        var cnt = elCourses.querySelector('[data-count="' + c.key + '"]');
+        if (cnt) {
+          var max = c.max === Infinity ? "any" : c.max;
+          cnt.textContent = arr.length + " selected" + (c.max === Infinity ? "" : " · " + c.rule);
+        }
+      });
+    }
+
+    /* ----- compose the summary line ----- */
+    function composed() {
+      var parts = [];
+      COURSES.forEach(function (c) {
+        if (c.included) { parts.push("Nakaochi"); return; }
+        state.sel[c.key].forEach(function (id) { parts.push(nameOf[id]); });
+      });
+      return parts;
+    }
+
+    function render() {
+      var parts = composed();
+      // parts always includes Nakaochi; only meaningful if the visitor chose something
+      var hasChoice = parts.filter(function (p) { return p !== "Nakaochi"; }).length > 0;
+      var title = state.chosen && SIGNATURES[state.chosen] ? SIGNATURES[state.chosen].name : (hasChoice ? "Your journey" : null);
+
+      if (!hasChoice && !state.chosen) {
+        elSummary.innerHTML = '<p class="summary-empty">Choose a Signature Journey or compose your own, and it builds here.</p>';
+        elJourneyField.value = "";
+        setMailto("");
+        return;
+      }
+      var listHtml = '<ul class="summary-list">' +
+        '<li class="summary-anchor">The live cut <span class="summary-tag">included</span></li>' +
+        parts.map(function (p) {
+          return '<li>' + p + (p === "Nakaochi" ? ' <span class="summary-tag">in the room</span>' : "") + "</li>";
+        }).join("") +
+        '<li class="summary-anchor">The Reserve <span class="summary-tag">included</span></li>' +
+        "</ul>";
+      elSummary.innerHTML = (title ? '<p class="summary-title">' + title + "</p>" : "") + listHtml;
+
+      var serial = (title ? title + " — " : "") +
+        ["The live cut"].concat(parts).concat(["The Reserve"]).join(" · ") +
+        ". Confirmed with the itamae based on guest count and fish size.";
+      elJourneyField.value = serial;
+      setMailto(serial);
+    }
+
+    function setMailto(serial) {
+      var body = serial ? "My journey: " + serial + "%0A%0AVenue: %0ADate: %0AGuests: " : "Venue: %0ADate: %0AGuests: ";
+      elMailto.setAttribute("href", "mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Inquiry&body=" + body.replace(/ /g, "%20"));
+    }
+
+    /* ----- signatures ----- */
+    function chooseSignature(key) {
+      var sig = SIGNATURES[key];
+      if (!sig) return;
+      COURSES.forEach(function (c) { if (!c.included) state.sel[c.key] = (sig.sel[c.key] || []).slice(); });
+      state.chosen = key;
+      refreshCards();
+      render();
+      document.getElementById("your-journey").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    document.querySelectorAll(".sig-choose").forEach(function (b) {
+      b.addEventListener("click", function () { chooseSignature(b.dataset.sig); });
+    });
+
+    /* ----- fork tabs ----- */
+    var tabs = document.querySelectorAll(".fork-btn");
+    function setMode(mode) {
+      tabs.forEach(function (t) {
+        var on = t.dataset.mode === mode;
+        t.classList.toggle("is-active", on);
+        t.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      document.getElementById("panel-guided").hidden = mode !== "guided";
+      document.getElementById("panel-build").hidden = mode !== "build";
+    }
+    tabs.forEach(function (t) { t.addEventListener("click", function () { setMode(t.dataset.mode); }); });
+
+    /* ----- occasion intent carried in via ?occasion= ----- */
+    (function carryIntent() {
+      var params = new URLSearchParams(window.location.search);
+      var occ = params.get("occasion");
+      if (!occ) return;
+      var sel = document.getElementById("j-occasion");
+      var line = document.getElementById("intentLine");
+      var val = document.getElementById("intentValue");
+      var opt = Array.prototype.slice.call(sel.options).filter(function (o) { return o.value.toLowerCase() === occ.toLowerCase(); })[0];
+      if (opt) { sel.value = opt.value; val.textContent = opt.value; line.hidden = false; }
+      document.getElementById("intentChange").addEventListener("click", function () {
+        line.hidden = true; sel.focus();
+      });
+    })();
+
+    buildCourses();
+    render();
+  })();
+  </script>
+</main>
