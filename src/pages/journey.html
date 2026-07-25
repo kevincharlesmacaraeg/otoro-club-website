@@ -7,7 +7,8 @@
 }
 META-->
 <main>
-  <section class="page-hero">
+  <section class="page-hero page-hero--photo">
+    <div class="page-hero-bg" aria-hidden="true"><img src="/assets/photos/toro_rows.jpg" alt="" loading="eager" width="1024" height="1536" /></div>
     <div class="container narrow">
       <p class="crumb"><a href="/">Otoro Club</a><span>/</span>The Journey</p>
       <p class="eyebrow">The Journey</p>
@@ -60,6 +61,7 @@ META-->
       <div id="panel-guided" role="tabpanel" aria-labelledby="tab-guided" class="mode-panel">
         <div class="signature-grid" id="signatureGrid">
           <article class="sig-card" data-sig="cut">
+            <img class="sig-photo" src="/assets/photos/sig_cut.jpg" alt="A sashimi platter of bluefin, cut to order." loading="lazy" width="1024" height="683" />
             <h3 class="sig-name">The Cut</h3>
             <p class="sig-meta">Four courses</p>
             <ol class="sig-list">
@@ -71,6 +73,7 @@ META-->
             <button type="button" class="btn btn--sm sig-choose" data-sig="cut">Choose The Cut</button>
           </article>
           <article class="sig-card" data-sig="ceremony">
+            <img class="sig-photo" src="/assets/photos/aburi.jpg" alt="Belly seared tableside with a torch." loading="lazy" width="1024" height="683" />
             <h3 class="sig-name">The Ceremony</h3>
             <p class="sig-meta">Five courses</p>
             <ol class="sig-list">
@@ -83,6 +86,7 @@ META-->
             <button type="button" class="btn btn--sm sig-choose" data-sig="ceremony">Choose The Ceremony</button>
           </article>
           <article class="sig-card" data-sig="omakase">
+            <img class="sig-photo" src="/assets/photos/sashimi_boards.jpg" alt="Boards of bluefin sashimi laid out for a full omakase." loading="lazy" width="1024" height="683" />
             <h3 class="sig-name">The Omakase</h3>
             <p class="sig-meta">Six courses, with an elevation</p>
             <ol class="sig-list">
@@ -214,6 +218,7 @@ META-->
             '<span class="course-rule">included</span></div>' +
             '<h3 class="course-title">Nakaochi — in the room</h3>' +
             '<p class="course-desc">The spine is handed to your guests and the meat scraped to order, served in warm gunkan. The one cut you can only have in the room, minutes after the cut. Always part of the journey.</p>' +
+            '<img class="room-photo" src="/assets/photos/nigiri_cut.jpg" alt="Bluefin scraped and cut to order at the board." loading="lazy" width="1024" height="1536">' +
             "</div>";
           return;
         }

@@ -1541,6 +1541,57 @@ body.page .mnav {
   background: linear-gradient(180deg, rgba(30, 37, 48, 0.72) 0%, rgba(43, 52, 65, 0.6) 45%, rgba(30, 37, 48, 0.9) 100%);
 }
 .page-hero .container { position: relative; z-index: 1; }
+/* Stronger scrim so gold eyebrow + cream headline hold contrast over a photo. */
+.page-hero--photo .page-hero-bg::after {
+  background: linear-gradient(180deg, rgba(30, 37, 48, 0.82) 0%, rgba(43, 52, 65, 0.68) 42%, rgba(30, 37, 48, 0.96) 100%);
+}
+.page-hero--photo .page-hero-bg img { object-position: center 40%; }
+
+/* Team portrait grid */
+.team-grid {
+  margin-top: calc(var(--gap) * 2);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 2vw, 22px);
+}
+.team-card { margin: 0; }
+.team-card img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 30%;
+  border: 1px solid var(--rule-gold);
+  background: var(--navy-deep);
+}
+.s--cream .team-card img { border-color: rgba(165, 133, 77, 0.4); }
+.team-name {
+  margin: 0.8em 0 0;
+  font-size: 0.68rem;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.s--cream .team-name { color: var(--ink); }
+
+/* Signature-journey card photo */
+.sig-photo {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border: 1px solid var(--navy-soft);
+  margin-bottom: 18px;
+}
+/* Nakaochi room-step photo */
+.course--room .room-photo {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  border: 1px solid var(--rule-gold);
+  margin-top: 20px;
+}
+@media (max-width: 600px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+}
 .crumb {
   font-size: 0.6rem;
   letter-spacing: var(--ls-eyebrow);
