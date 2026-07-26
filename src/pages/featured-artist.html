@@ -1,0 +1,205 @@
+<!--META
+{
+  "path": "featured-artist",
+  "title": "Featured Artist — Jacelyn Rene — Otoro Club",
+  "description": "Jacelyn Rene, watercolor and gyotaku artist, working alongside the cutters as Otoro Club's featured artist.",
+  "bodyClass": "page is-locked",
+  "excludeFromSitemap": true,
+  "extraHead": "<meta name=\"robots\" content=\"noindex, nofollow\" />"
+}
+META-->
+
+<!-- ===================== SOFT GATE =====================
+     PRE-LAUNCH. Kevin's call (July 2026) to use the same client-side gate
+     as the sibling Otoro proposal sites rather than add a server layer to
+     this static repo. This is a confidentiality SIGNAL, not security — the
+     copy below still ships in the HTML and the phrase is visible in view-
+     source. Adequate for "not launched yet", NOT for anything damaging.
+     Remove this block, the `is-locked` bodyClass, the robots meta, the
+     robots.txt Disallow, and "excludeFromSitemap" to go live. -->
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+  <div class="gate-inner">
+    <p class="label">Otoro Club</p>
+    <hr class="rule is-centered" />
+    <h2 id="gateTitle" class="display">Not yet public.</h2>
+    <p class="gate-sub">This page is in preparation. Enter the access phrase to continue.</p>
+    <form class="gate-form" id="gateForm" autocomplete="off">
+      <label class="gl-sr-only" for="gateInput">Access phrase</label>
+      <input id="gateInput" type="password" placeholder="Access phrase" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" />
+      <button type="submit" class="btn">Enter</button>
+    </form>
+    <p class="gate-error" id="gateError" hidden>Incorrect phrase. Try again.</p>
+  </div>
+</div>
+
+<main>
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">Featured Artist</p>
+      <h1 class="display">Jacelyn Rene</h1>
+      <p class="artist-subhead label" style="color:var(--gold);">Gyotaku &amp; Watercolor</p>
+      <p class="lede">
+        Jacelyn Rene works in watercolor and gyotaku &mdash; the centuries-old
+        Japanese practice of taking an impression directly from a fish. She
+        makes her prints live, at the table, turning the quiet mechanics of a
+        single fish into something you can keep. We&rsquo;ve invited her to work
+        alongside our cutters as Otoro Club&rsquo;s featured artist.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== HERO IMAGE =====================
+       IMAGE PENDING (Kevin). Drop the file at the path below and replace the
+       whole <div class="artist-placeholder"> with exactly this line:
+
+       <img src="/assets/photos/artist_jacelyn_tail.jpg" alt="Jacelyn Rene holding a freshly inked bluefin tail above the printing table." loading="lazy" width="1500" height="2000" />
+  -->
+  <section class="section s--cream" aria-label="Jacelyn Rene at work">
+    <div class="container narrow reveal">
+      <figure class="artist-figure">
+        <div class="artist-placeholder"><span>Photograph pending &middot; artist_jacelyn_tail.jpg</span></div>
+        <figcaption class="artist-caption">The tail, inked and ready to press.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== THE FIRST CUT ===================== -->
+  <section class="section s--navy" aria-labelledby="firstCutH">
+    <div class="container narrow reveal">
+      <p class="label">The First Cut</p>
+      <hr class="rule" />
+      <h2 id="firstCutH" class="display">The one part that is never served.</h2>
+      <div class="about-body">
+        <p>
+          When a bluefin is broken down by hand, the first cut is the tail.
+          It&rsquo;s how the cutter reads the fish &mdash; the ring of fat, the
+          color, the grade &mdash; and it&rsquo;s the one part that never
+          reaches a plate. Jacelyn takes that tail and, while the rest of the
+          fish is served in sequence, makes a single signed gyotaku from it.
+        </p>
+        <p>
+          Nothing is wasted. The one part of the fish that is never served
+          becomes the only part that lasts &mdash; a print of the exact fish at
+          your table, made in the room, the night it was cut.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="section s--cream" aria-labelledby="howH">
+    <div class="container narrow reveal">
+      <p class="label">How it works</p>
+      <hr class="rule" />
+      <h2 id="howH" class="display">Pressed live, through the seating.</h2>
+      <div class="about-body">
+        <p>
+          The tail comes off at the start of the ceremony and is pressed live in
+          front of the room. Jacelyn finishes, mounts, and signs the piece
+          through the seating. The host leaves with the original; a small,
+          naturally limited number of additional prints can be pulled from the
+          same fish for guests who want one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT JACELYN ===================== -->
+  <section class="section s--navy" aria-labelledby="aboutH">
+    <div class="container narrow reveal">
+      <p class="label">About Jacelyn</p>
+      <hr class="rule" />
+      <h2 id="aboutH" class="display">Art, at the table.</h2>
+      <div class="about-body">
+        <p>
+          Jacelyn Rene is a watercolor and gyotaku artist who has brought her
+          live &ldquo;imprint&rdquo; work to omakase and fine-dining rooms. Her
+          practice sits at the intersection of art and the table &mdash; pieces
+          made not only to be seen, but to mark a moment.
+        </p>
+        <!-- TODO (Kevin): confirm any bio specifics with Jacelyn before adding —
+             training, location, notable shows. Do not invent. Nothing beyond the
+             verified facts above ships until she confirms. -->
+      </div>
+      <!-- Handles carry .is-address: the Hamilton faces draw "@" as an
+           envelope, so anything with an at-sign is set in the system stack. -->
+      <p class="artist-links">
+        <a href="https://www.jacelynrene.com" target="_blank" rel="noopener">jacelynrene.com</a>
+        <a class="is-address" href="https://www.instagram.com/jacelynnrene/" target="_blank" rel="noopener">Instagram @jacelynnrene</a>
+        <a class="is-address" href="https://www.tiktok.com/@jacelynnrene" target="_blank" rel="noopener">TikTok @jacelynnrene</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== GALLERY + CLOSE =====================
+       IMAGES PENDING (Kevin). Replace each <div class="artist-placeholder">
+       with its <img> line:
+
+       <img src="/assets/photos/artist_gyotaku_framed.jpg" alt="A signed gyotaku print of a bluefin tail, framed and hung above a kitchen counter." loading="lazy" width="1500" height="1500" />
+       <img src="/assets/photos/artist_gyotaku_process.jpg" alt="Jacelyn Rene pressing paper onto an inked bluefin tail." loading="lazy" width="1500" height="1500" />
+  -->
+  <section class="section s--cream" aria-labelledby="galleryH">
+    <div class="container narrow reveal">
+      <p class="label">The work</p>
+      <hr class="rule" />
+      <h2 id="galleryH" class="display">A print of the exact fish.</h2>
+
+      <div class="artist-gallery">
+        <figure class="artist-figure">
+          <div class="artist-placeholder"><span>Image pending &middot; artist_gyotaku_framed.jpg</span></div>
+          <figcaption class="artist-caption">A finished gyotaku, signed and framed.</figcaption>
+        </figure>
+        <figure class="artist-figure">
+          <div class="artist-placeholder"><span>Image pending &middot; artist_gyotaku_process.jpg</span></div>
+          <figcaption class="artist-caption">The press, made in the room.</figcaption>
+        </figure>
+      </div>
+
+      <div class="inquire-panel" style="margin-top:calc(var(--gap) * 2.4);">
+        <p class="label">Inquire</p>
+        <hr class="rule is-centered" />
+        <h2 class="display">Add Jacelyn to your ceremony.</h2>
+        <p class="lede">Tell us the room and the date, and we will bring the artist with the fish.</p>
+        <p class="email-cta">
+          <a class="btn" href="mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Featured%20artist%20inquiry&amp;body=Inquiring%20about%3A%20Adding%20Jacelyn%20Rene%2C%20featured%20artist%0A%0AVenue%3A%20%0ADate%3A%20%0AGuest%20count%3A%20%0A%0AAbout%20the%20event%3A%20">Inquire about featuring Jacelyn</a>
+        </p>
+        <p class="email-plain">or copy our address: <span class="is-address">reservations@otoroclub.com</span></p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  /* Soft gate — a confidentiality signal, not security. sessionStorage (not
+     localStorage) so re-opening the URL on another day re-prompts. */
+  (function () {
+    "use strict";
+    var PHRASE = "bluefintuna";                          // Otoro house phrase
+    var KEY = "otoro:featured-artist:unlocked";
+
+    var gate = document.getElementById("gate");
+    var form = document.getElementById("gateForm");
+    var input = document.getElementById("gateInput");
+    var error = document.getElementById("gateError");
+    if (!gate || !form) return;
+
+    function unlock() {
+      document.body.classList.remove("is-locked");
+      try { sessionStorage.setItem(KEY, "1"); } catch (e) {}
+    }
+
+    try { if (sessionStorage.getItem(KEY) === "1") unlock(); } catch (e) {}
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if ((input.value || "").trim().toLowerCase() === PHRASE) {
+        error.hidden = true;
+        unlock();
+      } else {
+        error.hidden = false;
+        input.value = "";
+        input.focus();
+      }
+    });
+  })();
+  </script>
+</main>

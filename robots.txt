@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# Pre-launch, password-gated. Not linked from nav and not in the sitemap.
+Disallow: /featured-artist
+
 Sitemap: https://otoroclub.com/sitemap.xml

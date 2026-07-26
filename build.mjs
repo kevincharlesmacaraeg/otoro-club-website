@@ -105,11 +105,21 @@ ${SCRIPTS}
   const outPath = join(ROOT, outRel);
   mkdirSync(dirname(outPath), { recursive: true });
   writeFileSync(outPath, doc, "utf8");
-  routes.push({ path, outRel, canonical, lastmod: meta.lastmod || "2026-07-24" });
+  routes.push({
+    path,
+    outRel,
+    canonical,
+    lastmod: meta.lastmod || "2026-07-24",
+    // Pre-launch / gated pages set "excludeFromSitemap": true in their META so
+    // they build and deploy but stay out of sitemap.xml. Pair it with a
+    // robots noindex in extraHead and a Disallow in robots.txt.
+    excludeFromSitemap: meta.excludeFromSitemap === true,
+  });
 }
 
 // Sitemap
 const urls = routes
+  .filter((r) => !r.excludeFromSitemap)
   .map(
     (r) =>
       `  <url><loc>${r.canonical}</loc><lastmod>${r.lastmod}</lastmod></url>`

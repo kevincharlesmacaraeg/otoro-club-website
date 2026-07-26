@@ -2351,3 +2351,135 @@ body.page .mnav {
 .s--cream .inquire-panel .btn:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
 .s--cream .inquire-panel .email-plain { color: rgba(245, 241, 230, 0.6); }
 .s--cream .inquire-panel .email-plain .is-address { color: var(--gold); }
+
+/* =====================================================================
+   SOFT GATE + FEATURED ARTIST
+   Scoped to body.is-locked / .artist-*, so only the pages that opt in are
+   affected. The gate is a confidentiality SIGNAL, not security — the page
+   content still ships in the HTML. Kevin's call, July 2026, to match the
+   sibling Otoro proposal sites rather than add a server layer here.
+   Deliberately no @media print reveal: this is an unlaunched page, not a
+   partner proposal meant to be handed up as a PDF.
+   ===================================================================== */
+.gate {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  padding: clamp(22px, 5vw, 56px);
+}
+.is-locked .gate { display: flex; }
+/* While locked, nothing else is reachable — including the global chrome. */
+.is-locked .utilbar,
+.is-locked .mnav,
+.is-locked .mnav-drawer,
+.is-locked main,
+.is-locked .notices,
+.is-locked .site-footer,
+.is-locked .cookiebar,
+.is-locked .gl-tab { display: none; }
+
+.gate-inner { width: 100%; max-width: 420px; text-align: center; }
+.gate-inner .rule { margin-inline: auto; }
+.gate-sub {
+  margin: 0 0 calc(var(--gap) * 1.4);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: rgba(245, 241, 230, 0.7);
+}
+.gate-form { display: flex; flex-direction: column; gap: 12px; }
+.gate-form input {
+  min-height: 46px;
+  padding: 13px 15px;
+  background: var(--navy-deep);
+  border: 1px solid var(--navy-soft);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  letter-spacing: var(--ls-body);
+  text-align: center;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.gate-form input::placeholder { color: rgba(245, 241, 230, 0.38); }
+.gate-form input:focus { outline: 1px solid var(--gold); outline-offset: 2px; border-color: var(--gold); }
+.gate-error {
+  margin: 14px 0 0;
+  font-size: 0.8rem;
+  letter-spacing: var(--ls-item);
+  color: var(--gold);
+}
+.gate-error[hidden] { display: none; }
+
+/* ---------- Featured artist ---------- */
+.artist-figure { margin: 0; }
+.artist-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--rule-gold);
+}
+.artist-caption {
+  margin: 0.8em 0 0;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: rgba(245, 241, 230, 0.55);
+}
+.s--cream .artist-caption { color: var(--ink-soft); }
+
+/* Standing placeholder — reads as intentional, never a broken image.
+   Swap the whole .artist-placeholder for the <img> line noted beside it. */
+.artist-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--rule-gold);
+  background: var(--navy-deep);
+  padding: var(--gap);
+}
+.s--cream .artist-placeholder { background: rgba(20, 24, 31, 0.04); }
+.artist-placeholder span {
+  font-family: var(--sans);
+  font-size: 0.56rem;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: rgba(245, 241, 230, 0.45);
+  text-align: center;
+}
+.s--cream .artist-placeholder span { color: var(--ink-soft); }
+
+.artist-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap);
+  margin-top: calc(var(--gap) * 1.6);
+}
+.artist-links { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: calc(var(--gap) * 1.2); }
+.artist-links a {
+  font-size: 0.9rem;
+  color: var(--gold);
+  border-bottom: 1px solid var(--rule-gold);
+  padding-bottom: 2px;
+}
+.artist-links a:hover { color: var(--cream); border-bottom-color: var(--cream); }
+.s--cream .artist-links a { color: var(--ink); border-bottom-color: var(--rule-ink); }
+.s--cream .artist-links a:hover { border-bottom-color: var(--ink); }
+
+/* Mobile: galleries become horizontal snap carousels, never tall stacks. */
+@media (max-width: 700px) {
+  .artist-gallery {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 78%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .artist-gallery > * { scroll-snap-align: center; }
+  .artist-gallery::-webkit-scrollbar { display: none; }
+}
