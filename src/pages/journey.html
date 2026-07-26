@@ -88,14 +88,13 @@ META-->
           <article class="sig-card" data-sig="omakase">
             <img class="sig-photo" src="/assets/photos/sashimi_boards.jpg" alt="Boards of bluefin sashimi laid out for a full omakase." loading="lazy" width="1024" height="683" />
             <h3 class="sig-name">The Omakase</h3>
-            <p class="sig-meta">Six courses, with an elevation</p>
+            <p class="sig-meta">Five courses, with an elevation</p>
             <ol class="sig-list">
               <li>Sashimi Platter</li>
-              <li>Zuke</li>
               <li>Nakaochi <span class="sig-tag">in the room</span></li>
               <li>Toro-Taku</li>
               <li>Chū-toro Sukiyaki</li>
-              <li>Kabuto Miso</li>
+              <li>Ochazuke</li>
               <li>Caviar Service <span class="sig-tag">elevation</span></li>
             </ol>
             <button type="button" class="btn btn--sm sig-choose" data-sig="omakase">Choose The Omakase</button>
@@ -153,7 +152,6 @@ META-->
         { id: "sashimi-platter", name: "Sashimi Platter", desc: "akami, chū-toro, ō-toro, cut to order." },
         { id: "tuna-tartare", name: "Tuna Tartare on Toast", desc: "hand-chopped akami, crisp milk-bread toast." },
         { id: "otoro-flight", name: "The Otoro Flight", desc: "three nigiri, lean to fat." },
-        { id: "zuke", name: "Zuke", desc: "akami cured in aged soy." },
         { id: "kamatoro-crudo", name: "Kamatoro Crudo", desc: "fatty collar meat, raw, citrus.", limited: true }
       ]},
       { key: "nakaochi", label: "The Ceremony — Nakaochi", included: true },
@@ -173,13 +171,7 @@ META-->
       { key: "rice", label: "Rice & Soul / The Finish", rule: "choose 1", min: 1, max: 1, items: [
         { id: "negitoro-donburi", name: "Negitoro Donburi", desc: "spine-scraped belly over rice." },
         { id: "ochazuke", name: "Ochazuke", desc: "akami over rice, hot dashi." },
-        { id: "kabuto-miso", name: "Kabuto Miso", desc: "soup from the collar and head." },
         { id: "temaki-finale", name: "The Temaki Finale", desc: "one last hand roll." }
-      ]},
-      { key: "dessert", label: "Dessert", rule: "optional, choose 0–1", min: 0, max: 1, items: [
-        { id: "yuzu-sorbet", name: "Yuzu Sorbet", desc: "" },
-        { id: "black-sesame", name: "Black Sesame", desc: "" },
-        { id: "matcha-cream", name: "Matcha & Cream", desc: "" }
       ]},
       { key: "elevations", label: "Elevations", rule: "optional, add any", min: 0, max: Infinity, items: [
         { id: "caviar", name: "Caviar Service", desc: "over the nakaochi." },
@@ -193,7 +185,7 @@ META-->
     var SIGNATURES = {
       cut: { name: "The Cut", sel: { raw: ["sashimi-platter"], handroll: ["otoro-roll"], warm: ["grilled-kama"] } },
       ceremony: { name: "The Ceremony", sel: { raw: ["otoro-flight"], handroll: ["handroll-bar"], warm: ["aburi-otoro"], rice: ["negitoro-donburi"] } },
-      omakase: { name: "The Omakase", sel: { raw: ["sashimi-platter", "zuke"], handroll: ["toro-taku"], warm: ["chutoro-sukiyaki"], rice: ["kabuto-miso"], elevations: ["caviar"] } }
+      omakase: { name: "The Omakase", sel: { raw: ["sashimi-platter"], handroll: ["toro-taku"], warm: ["chutoro-sukiyaki"], rice: ["ochazuke"], elevations: ["caviar"] } }
     };
 
     var state = { chosen: null, sel: {} };
