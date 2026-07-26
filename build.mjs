@@ -41,6 +41,7 @@ const NAV = partial("_nav.html");
 const NOTICES = partial("_notices.html");
 const FOOTER = partial("_footer.html");
 const COOKIE = partial("_cookie.html");
+const GLOSSARY = partial("_glossary.html");
 const SCRIPTS = partial("_scripts.html");
 
 const SITE = "https://otoroclub.com";
@@ -95,6 +96,7 @@ ${body}
 ${meta.hideNotices ? "" : NOTICES}
 ${FOOTER}
 ${COOKIE}
+${GLOSSARY}
 ${SCRIPTS}
 </body>
 </html>

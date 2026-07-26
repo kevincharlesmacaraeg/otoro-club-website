@@ -463,6 +463,217 @@
   </div>
 </div>
 
+<!-- ===================== SUSHI GLOSSARY (flyout) =====================
+     Mounted globally by build.mjs, so it exists on every route.
+
+     Trigger is a vertical rail tab on the right edge — the same
+     writing-mode/letterspacing language as .rail, and it deliberately
+     avoids the bottom edge where .cookiebar lives.
+
+     Content is hardcoded below as JSON (#glossaryData). script.js parses
+     it once and renders the panel body; nothing is fetched. Definitions
+     may carry <em> and are injected as HTML — the data is authored here,
+     never user input. Search matches term + kanji + tag-stripped
+     definition. -->
+
+<button type="button" class="gl-tab" id="glossaryTab" aria-expanded="false" aria-controls="glossaryPanel">
+  <span class="gl-tab-text">Glossary</span>
+</button>
+
+<div class="gl-backdrop" id="glossaryBackdrop" inert></div>
+
+<aside class="gl-panel" id="glossaryPanel" role="dialog" aria-modal="true" aria-labelledby="glossaryTitle" inert>
+  <div class="gl-head">
+    <div class="gl-head-row">
+      <div>
+        <p class="gl-label">Reference</p>
+        <h2 class="display gl-title" id="glossaryTitle">Sushi Glossary</h2>
+      </div>
+      <button type="button" class="gl-close" id="glossaryClose" aria-label="Close the glossary">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <p class="gl-intro">A counter-side reference to the words worth knowing &mdash; the formats, the fish, the technique, and the etiquette.</p>
+
+    <div class="gl-search-row">
+      <label class="gl-sr-only" for="glossarySearch">Search the glossary</label>
+      <input type="search" id="glossarySearch" class="gl-search" placeholder="Search a term, kanji, or meaning" autocomplete="off" spellcheck="false" />
+      <button type="button" class="gl-clear" id="glossaryClear" aria-label="Clear search" hidden>Clear</button>
+    </div>
+
+    <nav class="gl-jump" id="glossaryJump" aria-label="Glossary categories"></nav>
+  </div>
+
+  <div class="gl-body" id="glossaryBody" tabindex="-1"></div>
+</aside>
+
+<script type="application/json" id="glossaryData">
+{
+  "groups": [
+    {
+      "id": "core",
+      "name": "The core word",
+      "terms": [
+        { "t": "Sushi", "k": "寿司 / 鮨", "d": "Refers to vinegared rice (<em>shari</em>), not raw fish. Any dish built on seasoned sushi rice is sushi. The most common misconception is that “sushi” means “raw fish” — it doesn’t." },
+        { "t": "Sashimi", "k": "刺身", "d": "Sliced raw fish or seafood served <em>without</em> rice. Strictly, it isn’t sushi at all, since there’s no rice. Often served first." }
+      ]
+    },
+    {
+      "id": "formats",
+      "name": "Formats",
+      "terms": [
+        { "t": "Nigiri", "k": "握り", "d": "A hand-pressed oblong of rice with a slice of fish draped over it, usually a dab of wasabi between. Means “grip/squeeze.” The benchmark for judging a chef." },
+        { "t": "Maki / Makizushi", "k": "巻き寿司", "d": "“Rolled sushi.” Rice and fillings rolled in nori with a bamboo mat, then cut. An umbrella term for the sub-types below." },
+        { "t": "Hosomaki", "k": "細巻き", "d": "Thin roll, nori outside, usually one filling (tekka-maki = tuna, kappa-maki = cucumber)." },
+        { "t": "Futomaki", "k": "太巻き", "d": "Fat roll with multiple fillings." },
+        { "t": "Uramaki", "k": "裏巻き", "d": "“Inside-out” roll, rice outside and nori inside. The California roll is uramaki; more of a Western-adapted style." },
+        { "t": "Temaki", "k": "手巻き", "d": "“Hand roll.” A cone of nori filled with rice and ingredients, eaten by hand right away so the seaweed stays crisp. Not cut into pieces." },
+        { "t": "Gunkan-maki", "k": "軍艦巻き", "d": "“Battleship roll.” An oval of rice wrapped in a nori wall that holds loose toppings like roe (ikura) or uni." },
+        { "t": "Chirashi", "k": "ちらし", "d": "“Scattered sushi.” A bowl of sushi rice topped with assorted sashimi and garnishes." },
+        { "t": "Inari / Inarizushi", "k": "稲荷寿司", "d": "Sushi rice stuffed into a pouch of sweet fried tofu (aburaage). Vegetarian, lightly sweet." },
+        { "t": "Oshizushi", "k": "押し寿司", "d": "Pressed sushi shaped in a wooden box mold, then cut into blocks. An Osaka specialty (e.g., battera, pressed mackerel)." },
+        { "t": "Narezushi", "k": "熟れ寿司", "d": "The ancient ancestor of sushi: fish fermented with rice for months. Pungent, historic, rare today." }
+      ]
+    },
+    {
+      "id": "dining",
+      "name": "The dining experience",
+      "terms": [
+        { "t": "Omakase", "k": "お任せ", "d": "“I leave it up to you.” You give the chef the menu and they serve a curated progression based on what’s best that day. The highest-trust (and usually priciest) way to eat." },
+        { "t": "Okonomi", "k": "お好み", "d": "The opposite of omakase: you order piece by piece, exactly what you want." },
+        { "t": "Itamae", "k": "板前", "d": "The sushi chef. Literally “in front of the board” (the cutting board). A master craftsman is a <em>shokunin</em>." },
+        { "t": "Tsukeba", "k": "付け場", "d": "The counter workspace where the itamae works." },
+        { "t": "Edomae", "k": "江戸前", "d": "“In front of Edo (old Tokyo).” The classic Tokyo style, historically using Tokyo Bay fish, treating each with curing, marinating, or simmering. The gold-standard tradition." }
+      ]
+    },
+    {
+      "id": "essentials",
+      "name": "Rice, seasoning, and essentials",
+      "terms": [
+        { "t": "Shari / Sumeshi", "k": "シャリ / 酢飯", "d": "The seasoned sushi rice, mixed with vinegar, sugar, and salt. Its temperature and seasoning are what serious chefs obsess over." },
+        { "t": "Neta", "k": "ネタ", "d": "The topping — the fish or seafood over the rice." },
+        { "t": "Nori", "k": "海苔", "d": "Dried, pressed seaweed sheets used to wrap rolls and hand rolls." },
+        { "t": "Wasabi", "k": "山葵", "d": "Pungent green Japanese horseradish. Real wasabi is grated fresh from the rhizome; most restaurants use an imitation. Traditionally placed by the chef between fish and rice, not stirred into soy sauce." },
+        { "t": "Gari", "k": "がり", "d": "Pickled ginger. A palate cleanser eaten <em>between</em> pieces, not piled on top." },
+        { "t": "Shoyu", "k": "醤油", "d": "Soy sauce. Dip the <em>fish</em> side lightly, not the rice, which soaks up too much and falls apart." },
+        { "t": "Nikiri", "k": "煮切り", "d": "A brushed-on sweet soy glaze applied by the chef so you don’t need to dip. When it’s there, don’t add more soy." },
+        { "t": "Murasaki", "k": "むらさき", "d": "Counter slang for soy sauce (“purple”)." },
+        { "t": "Agari", "k": "あがり", "d": "Counter slang for the green tea served at the end." }
+      ]
+    },
+    {
+      "id": "fish",
+      "name": "The fish and seafood (neta)",
+      "subs": [
+        {
+          "name": "Tuna",
+          "terms": [
+            { "t": "Maguro", "k": "鮪", "d": "Tuna, generally the leaner red flesh." },
+            { "t": "Akami", "k": "赤身", "d": "Lean, deep-red tuna from the back. Clean, iron-rich." },
+            { "t": "Chutoro", "k": "中トロ", "d": "Medium-fatty tuna belly. Balanced richness." },
+            { "t": "Otoro", "k": "大トロ", "d": "The fattiest, most marbled belly cut. Buttery, melts on the tongue, most prized." },
+            { "t": "Toro", "k": "トロ", "d": "General term for fatty tuna belly." },
+            { "t": "Negitoro", "k": "ねぎとろ", "d": "Minced fatty tuna with scallion, often in rolls or gunkan." }
+          ]
+        },
+        {
+          "name": "Salmon and roe",
+          "terms": [
+            { "t": "Sake / Shake", "k": "鮭", "d": "Salmon (the fish is “sha-ke”; the rice wine is “sa-ke”). A modern, Norwegian-introduced addition to Japanese sushi." },
+            { "t": "Ikura", "k": "いくら", "d": "Salmon roe. Large glossy orange pearls that pop. Usually served as gunkan." },
+            { "t": "Sujiko", "k": "筋子", "d": "Salmon roe still in the membrane sac, saltier and denser than ikura." }
+          ]
+        },
+        {
+          "name": "Other roe",
+          "terms": [
+            { "t": "Uni", "k": "雲丹", "d": "Sea urchin. Creamy, briny, custard-like. Polarizing and prized; quality varies enormously." },
+            { "t": "Tobiko", "k": "とびこ", "d": "Flying fish roe. Tiny, crunchy, bright orange." },
+            { "t": "Masago", "k": "真砂子", "d": "Capelin roe, similar to tobiko but smaller and cheaper." },
+            { "t": "Kazunoko", "k": "数の子", "d": "Herring roe. Crunchy, often eaten at New Year." },
+            { "t": "Mentaiko / Tarako", "k": "明太子 / 鱈子", "d": "Pollock roe; tarako plain, mentaiko spiced." }
+          ]
+        },
+        {
+          "name": "White fish and silver-skinned",
+          "terms": [
+            { "t": "Hamachi / Buri", "k": "はまち / 鰤", "d": "Yellowtail. Hamachi is younger, buri the mature winter fish; rich and clean." },
+            { "t": "Kanpachi", "k": "間八", "d": "Amberjack. Leaner, firmer cousin of yellowtail." },
+            { "t": "Tai", "k": "鯛", "d": "Sea bream / red snapper. Delicate, slightly sweet, highly esteemed." },
+            { "t": "Hirame", "k": "平目", "d": "Flounder / fluke. Lean, subtle white fish." },
+            { "t": "Engawa", "k": "縁側", "d": "The chewy, fatty muscle along the fin of flounder. A connoisseur’s cut." },
+            { "t": "Suzuki", "k": "鱸", "d": "Japanese sea bass." },
+            { "t": "Saba", "k": "鯖", "d": "Mackerel. Rich, oily, often cured in salt and vinegar (shime-saba)." },
+            { "t": "Aji", "k": "鯵", "d": "Horse mackerel. Silvery, served with ginger and scallion." },
+            { "t": "Iwashi", "k": "鰯", "d": "Sardine. Soft, oily, seasonal." },
+            { "t": "Sanma", "k": "秋刀魚", "d": "Pacific saury. An autumn delicacy." },
+            { "t": "Kohada", "k": "小鰭", "d": "Gizzard shad, a cured silver-skinned fish and a classic test of Edomae skill." },
+            { "t": "Katsuo", "k": "鰹", "d": "Bonito / skipjack. Often lightly seared (tataki style)." }
+          ]
+        },
+        {
+          "name": "Shellfish and cephalopods",
+          "terms": [
+            { "t": "Ebi", "k": "海老", "d": "Shrimp, usually cooked and butterflied." },
+            { "t": "Amaebi", "k": "甘海老", "d": "“Sweet shrimp,” served raw; delicate and sweet." },
+            { "t": "Botan ebi", "k": "牡丹海老", "d": "Large sweet spot prawn." },
+            { "t": "Ika", "k": "烏賊", "d": "Squid. Firm, mild, sometimes scored." },
+            { "t": "Tako", "k": "蛸", "d": "Octopus, usually cooked; firm and chewy." },
+            { "t": "Hotate", "k": "帆立", "d": "Scallop. Sweet, tender, often served raw." },
+            { "t": "Akagai", "k": "赤貝", "d": "Red clam / ark shell. Crunchy, briny." },
+            { "t": "Mirugai", "k": "海松貝", "d": "Giant clam / geoduck. Crunchy, sweet." },
+            { "t": "Kani", "k": "蟹", "d": "Crab. <em>Kani-kama</em> is imitation crab stick." }
+          ]
+        },
+        {
+          "name": "Eel and cooked toppings",
+          "terms": [
+            { "t": "Unagi", "k": "鰻", "d": "Freshwater eel, grilled and glazed with sweet tare (kabayaki). Never served raw." },
+            { "t": "Anago", "k": "穴子", "d": "Saltwater / conger eel. Lighter and more delicate than unagi." },
+            { "t": "Tamago", "k": "玉子", "d": "Sweet layered Japanese omelet served as nigiri. Its subtlety is said to reveal a chef’s skill." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rolls",
+      "name": "Rolls you’ll see on menus",
+      "terms": [
+        { "t": "California roll", "k": "", "d": "Uramaki with crab (or imitation), avocado, cucumber. The gateway roll." },
+        { "t": "Spicy tuna roll", "k": "", "d": "Minced tuna with spicy mayo/chili." },
+        { "t": "Dragon roll", "k": "", "d": "Uramaki topped with eel and avocado." },
+        { "t": "Rainbow roll", "k": "", "d": "California roll topped with assorted sliced fish." },
+        { "t": "Philadelphia roll", "k": "", "d": "Salmon and cream cheese." },
+        { "t": "Tekka-maki", "k": "鉄火巻き", "d": "Simple tuna hosomaki; traditional, not Western." },
+        { "t": "Kappa-maki", "k": "河童巻き", "d": "Cucumber hosomaki." }
+      ]
+    },
+    {
+      "id": "etiquette",
+      "name": "Side terms and etiquette",
+      "terms": [
+        { "t": "Miso soup", "k": "味噌汁", "d": "Fermented soybean-paste broth, often served at the end in traditional settings, not the start." },
+        { "t": "Edamame", "k": "枝豆", "d": "Boiled, salted young soybeans." },
+        { "t": "Oshibori", "k": "おしぼり", "d": "The hot or cold hand towel given before the meal." },
+        { "t": "Geta", "k": "下駄", "d": "The wooden pedestal sushi is served on." },
+        { "t": "Itadakimasu", "k": "いただきます", "d": "Said before eating (“I gratefully receive”)." },
+        { "t": "Gochisousama", "k": "ごちそうさま", "d": "Said after (“thank you for the feast”)." },
+        { "t": "Dip fish-side down, lightly", "k": "", "d": "Drowning nigiri in soy is the clearest novice tell." },
+        { "t": "Eat nigiri in one bite", "k": "", "d": "Ideally by hand. Chopsticks are fine, but hands are traditional for nigiri." }
+      ]
+    }
+  ],
+  "notes": {
+    "title": "Worth knowing",
+    "paragraphs": [
+      "Fish names don’t map cleanly to English. “Red snapper” for <em>tai</em>, “yellowtail” for <em>hamachi</em>, “sea bass” for <em>suzuki</em> are approximations — the exact species shifts by region and season, and menus use these labels loosely.",
+      "The line between “authentic” and “adapted” is real but not a ranking. Salmon and most named rolls (California, dragon, rainbow) are modern, often non-Japanese in origin — newer, not lesser."
+    ]
+  }
+}
+</script>
+
 <script src="/script.js" defer></script>
 
 <!-- Vercel Web Analytics + Speed Insights load only after cookie consent

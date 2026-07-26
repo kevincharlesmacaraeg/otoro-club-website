@@ -185,5 +185,280 @@
     });
   })();
 
+  /* ---------- Sushi glossary flyout ----------
+     Markup + data come from src/partials/_glossary.html, mounted globally,
+     so this runs on every route. Renders once from the JSON block, then
+     filters by hiding — no re-render on keystroke beyond the highlight pass. */
+  (function glossary() {
+    var tab = document.getElementById("glossaryTab");
+    var panel = document.getElementById("glossaryPanel");
+    var backdrop = document.getElementById("glossaryBackdrop");
+    var closeBtn = document.getElementById("glossaryClose");
+    var body = document.getElementById("glossaryBody");
+    var jump = document.getElementById("glossaryJump");
+    var search = document.getElementById("glossarySearch");
+    var clearBtn = document.getElementById("glossaryClear");
+    var dataEl = document.getElementById("glossaryData");
+    if (!tab || !panel || !body || !dataEl) return;
+
+    var data;
+    try { data = JSON.parse(dataEl.textContent); } catch (e) { return; }
+
+    var FOCUSABLE = 'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])';
+    var entries = [];   // { el, search } for every rendered term
+    var groups = [];    // { el, subs: [el] }
+    var emptyEl, notesEl, lastFocus = null;
+
+    /* ----- Render ----- */
+    function stripTags(html) {
+      var d = document.createElement("div");
+      d.innerHTML = html;
+      return d.textContent || "";
+    }
+
+    function termNode(item) {
+      var wrap = document.createElement("div");
+      wrap.className = "gl-term";
+
+      var head = document.createElement("p");
+      head.className = "gl-term-head";
+      var name = document.createElement("span");
+      name.className = "gl-term-name";
+      name.textContent = item.t;
+      head.appendChild(name);
+      if (item.k) {
+        var kanji = document.createElement("span");
+        kanji.className = "gl-kanji";
+        kanji.textContent = item.k;
+        head.appendChild(kanji);
+      }
+
+      var def = document.createElement("p");
+      def.className = "gl-def";
+      def.innerHTML = item.d;   // authored in the partial, not user input
+
+      wrap.appendChild(head);
+      wrap.appendChild(def);
+
+      entries.push({
+        el: wrap,
+        name: name,
+        def: def,
+        rawDef: item.d,
+        search: (item.t + " " + (item.k || "") + " " + stripTags(item.d)).toLowerCase()
+      });
+      return wrap;
+    }
+
+    function render() {
+      data.groups.forEach(function (g) {
+        var section = document.createElement("section");
+        section.className = "gl-group";
+        section.id = "gl-group-" + g.id;
+
+        var h = document.createElement("h3");
+        h.className = "gl-group-name";
+        h.textContent = g.name;
+        section.appendChild(h);
+
+        var hr = document.createElement("hr");
+        hr.className = "gl-group-rule";
+        section.appendChild(hr);
+
+        var subEls = [];
+        if (g.subs) {
+          g.subs.forEach(function (s) {
+            var sub = document.createElement("div");
+            sub.className = "gl-sub";
+            var sh = document.createElement("h4");
+            sh.className = "gl-sub-name";
+            sh.textContent = s.name;
+            sub.appendChild(sh);
+            s.terms.forEach(function (it) { sub.appendChild(termNode(it)); });
+            section.appendChild(sub);
+            subEls.push(sub);
+          });
+        } else {
+          g.terms.forEach(function (it) { section.appendChild(termNode(it)); });
+        }
+
+        groups.push({ el: section, subs: subEls });
+        body.appendChild(section);
+
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "gl-jump-btn";
+        btn.textContent = g.name;
+        btn.addEventListener("click", function () {
+          if (search && search.value) { search.value = ""; filter(); }
+          h.scrollIntoView({ block: "start" });
+        });
+        if (jump) jump.appendChild(btn);
+      });
+
+      // Closing prose — reference, not searchable terms, so it hides on filter.
+      if (data.notes) {
+        notesEl = document.createElement("div");
+        notesEl.className = "gl-notes";
+        var nh = document.createElement("h3");
+        nh.className = "gl-group-name";
+        nh.textContent = data.notes.title;
+        notesEl.appendChild(nh);
+        var nr = document.createElement("hr");
+        nr.className = "gl-group-rule";
+        notesEl.appendChild(nr);
+        data.notes.paragraphs.forEach(function (p) {
+          var el = document.createElement("p");
+          el.innerHTML = p;
+          notesEl.appendChild(el);
+        });
+        body.appendChild(notesEl);
+      }
+
+      emptyEl = document.createElement("p");
+      emptyEl.className = "gl-empty";
+      emptyEl.hidden = true;
+      body.insertBefore(emptyEl, body.firstChild);
+    }
+
+    /* ----- Filter ----- */
+    // Wrap matches in <mark> by walking text nodes, so the <em> markup in a
+    // definition survives the highlight pass.
+    function highlight(el, q) {
+      var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+      var nodes = [], n;
+      while ((n = walker.nextNode())) nodes.push(n);
+      nodes.forEach(function (node) {
+        var text = node.nodeValue;
+        var lower = text.toLowerCase();
+        var idx = lower.indexOf(q);
+        if (idx === -1) return;
+        var frag = document.createDocumentFragment();
+        var pos = 0;
+        while (idx !== -1) {
+          if (idx > pos) frag.appendChild(document.createTextNode(text.slice(pos, idx)));
+          var mk = document.createElement("mark");
+          mk.textContent = text.slice(idx, idx + q.length);
+          frag.appendChild(mk);
+          pos = idx + q.length;
+          idx = lower.indexOf(q, pos);
+        }
+        if (pos < text.length) frag.appendChild(document.createTextNode(text.slice(pos)));
+        node.parentNode.replaceChild(frag, node);
+      });
+    }
+
+    function filter() {
+      var q = (search ? search.value : "").trim().toLowerCase();
+      if (clearBtn) clearBtn.hidden = !q;
+
+      var hits = 0;
+      entries.forEach(function (en) {
+        var match = !q || en.search.indexOf(q) !== -1;
+        en.el.hidden = !match;
+        if (match) hits++;
+
+        // Reset then re-highlight — cheap at this list size.
+        en.name.textContent = en.name.textContent;
+        en.def.innerHTML = en.rawDef;
+        if (q && match) {
+          highlight(en.name, q);
+          highlight(en.def, q);
+        }
+      });
+
+      groups.forEach(function (g) {
+        g.subs.forEach(function (sub) {
+          sub.hidden = !sub.querySelector(".gl-term:not([hidden])");
+        });
+        g.el.hidden = !g.el.querySelector(".gl-term:not([hidden])");
+      });
+
+      if (notesEl) notesEl.hidden = !!q;
+      if (emptyEl) {
+        emptyEl.hidden = hits > 0;
+        if (!hits) {
+          emptyEl.textContent = "";
+          emptyEl.appendChild(document.createTextNode("No term matches "));
+          var strong = document.createElement("span");
+          strong.className = "gl-empty-term";
+          strong.textContent = "“" + (search ? search.value.trim() : "") + "”";
+          emptyEl.appendChild(strong);
+          emptyEl.appendChild(document.createTextNode(". Try a shorter word, or the kanji."));
+        }
+      }
+      if (!q) body.scrollTop = 0;
+    }
+
+    /* ----- Open / close ----- */
+    function focusables() {
+      return Array.prototype.slice.call(panel.querySelectorAll(FOCUSABLE))
+        .filter(function (el) { return el.offsetParent !== null || el === search; });
+    }
+
+    function open() {
+      if (document.documentElement.classList.contains("gl-open")) return;
+      lastFocus = document.activeElement;
+      panel.removeAttribute("inert");
+      backdrop.removeAttribute("inert");
+      document.documentElement.classList.add("gl-open");
+      tab.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+      if (search) search.focus();
+    }
+
+    function close() {
+      if (!document.documentElement.classList.contains("gl-open")) return;
+      document.documentElement.classList.remove("gl-open");
+      tab.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+      panel.setAttribute("inert", "");
+      backdrop.setAttribute("inert", "");
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+      else tab.focus();
+    }
+
+    render();
+
+    // Keep the tab clear of the homepage hero's decorative right rail.
+    var rightRail = document.querySelector(".rail--right");
+    if (rightRail && "IntersectionObserver" in window) {
+      new IntersectionObserver(function (ents) {
+        document.documentElement.classList.toggle("gl-rail", ents[0].isIntersecting);
+      }, { threshold: 0 }).observe(rightRail);
+    }
+
+    tab.addEventListener("click", open);
+    if (closeBtn) closeBtn.addEventListener("click", close);
+    if (backdrop) backdrop.addEventListener("click", close);
+    if (search) search.addEventListener("input", filter);
+    if (clearBtn) clearBtn.addEventListener("click", function () {
+      search.value = "";
+      filter();
+      search.focus();
+    });
+
+    panel.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab") return;
+      var f = focusables();
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
+    });
+
+    // Esc closes. Registered on document so it works even if focus escaped.
+    // Stops propagation so the nav's own Esc handler doesn't also fire.
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && document.documentElement.classList.contains("gl-open")) {
+        e.stopPropagation();
+        close();
+      }
+    }, true);
+  })();
+
   /* The site has no forms — inquiries go by email (mailto). Nothing to wire. */
 })();

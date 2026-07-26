@@ -2006,3 +2006,330 @@ body.page .mnav {
 @media (max-width: 600px) {
   .opt-grid { grid-template-columns: 1fr; }
 }
+
+/* =====================================================================
+   SUSHI GLOSSARY — global flyout
+   Mounted on every route by build.mjs (src/partials/_glossary.html).
+
+   Trigger is a vertical rail tab on the RIGHT EDGE, mid-height. That
+   placement is deliberate: it borrows the .rail writing-mode language,
+   and it keeps clear of .cookiebar, which owns the bottom edge.
+
+   Panel is navy-deep (a recessed panel, per the palette), cream text,
+   gold hairlines. Header is pinned; only .gl-body scrolls.
+   ===================================================================== */
+
+/* ---------- Trigger ---------- */
+.gl-tab {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 66;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px 9px;
+  background: var(--navy-deep);
+  border: 1px solid var(--rule-gold);
+  border-right: 0;
+  color: var(--gold);
+  cursor: pointer;
+  transition: background 240ms var(--ease), color 240ms var(--ease), right 240ms var(--ease);
+}
+.gl-tab:hover { background: var(--gold); color: var(--navy); }
+/* The homepage hero carries decorative .rail copy down both edges. While the
+   right rail is on screen, step the tab inboard of it (rail is 46px) so the
+   tab never sits on top of "…CATERING ENGAGEMENTS IN SAN DIEGO, CALIF." */
+.gl-rail .gl-tab { right: 46px; }
+.gl-tab-text {
+  writing-mode: vertical-rl;
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  letter-spacing: var(--ls-rail);
+  text-transform: uppercase;
+  line-height: 1;
+}
+/* While the panel is open the tab hides behind it rather than floating. */
+.gl-open .gl-tab { opacity: 0; pointer-events: none; }
+
+/* ---------- Backdrop ---------- */
+.gl-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 78;
+  background: rgba(20, 24, 31, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 300ms var(--ease), visibility 0s linear 300ms;
+}
+.gl-open .gl-backdrop {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 300ms var(--ease), visibility 0s linear 0s;
+}
+
+/* ---------- Panel ---------- */
+.gl-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 80;
+  width: min(520px, 100%);
+  display: flex;
+  flex-direction: column;
+  background: var(--navy-deep);
+  border-left: 1px solid var(--rule-gold);
+  color: var(--cream);
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 340ms var(--ease), visibility 0s linear 340ms;
+}
+.gl-open .gl-panel {
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform 340ms var(--ease), visibility 0s linear 0s;
+}
+
+/* ---------- Pinned header ---------- */
+.gl-head {
+  flex: 0 0 auto;
+  padding: clamp(22px, 4vw, 34px) clamp(20px, 4vw, 34px) 18px;
+  border-bottom: 1px solid var(--navy-soft);
+  background: var(--navy-deep);
+}
+.gl-head-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+.gl-label {
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 12px;
+}
+.gl-title { font-size: clamp(1.5rem, 4vw, 2rem); margin: 0; }
+
+.gl-close {
+  position: relative;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid var(--navy-soft);
+  cursor: pointer;
+  transition: border-color 200ms var(--ease);
+}
+.gl-close:hover { border-color: var(--gold); }
+.gl-close span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 15px;
+  height: 1px;
+  background: var(--cream);
+  transition: background 200ms var(--ease);
+}
+.gl-close span:nth-child(1) { transform: translate(-50%, -50%) rotate(45deg); }
+.gl-close span:nth-child(2) { transform: translate(-50%, -50%) rotate(-45deg); }
+.gl-close:hover span { background: var(--gold); }
+
+.gl-intro {
+  margin: 14px 0 0;
+  font-size: 0.86rem;
+  line-height: 1.65;
+  color: rgba(245, 241, 230, 0.62);
+  max-width: 46ch;
+}
+
+/* ---------- Search ---------- */
+.gl-sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+.gl-search-row { display: flex; gap: 8px; margin-top: 18px; }
+.gl-search {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 44px;
+  padding: 12px 14px;
+  background: var(--navy);
+  border: 1px solid var(--navy-soft);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  letter-spacing: var(--ls-body);
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.gl-search::placeholder { color: rgba(245, 241, 230, 0.38); }
+.gl-search:focus { outline: 1px solid var(--gold); outline-offset: 2px; border-color: var(--gold); }
+.gl-search::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+.gl-clear {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 0 14px;
+  background: transparent;
+  border: 1px solid var(--navy-soft);
+  color: rgba(245, 241, 230, 0.7);
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 200ms var(--ease), border-color 200ms var(--ease);
+}
+.gl-clear:hover { color: var(--gold); border-color: var(--gold); }
+.gl-clear[hidden] { display: none; }
+
+/* ---------- Category jump list ---------- */
+.gl-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+.gl-jump-btn {
+  background: transparent;
+  border: 1px solid var(--navy-soft);
+  color: rgba(245, 241, 230, 0.68);
+  font-family: var(--sans);
+  font-size: 0.56rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 7px 10px;
+  min-height: 30px;
+  cursor: pointer;
+  transition: color 200ms var(--ease), border-color 200ms var(--ease);
+}
+.gl-jump-btn:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ---------- Scrolling body ---------- */
+.gl-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: clamp(20px, 4vw, 30px) clamp(20px, 4vw, 34px) 64px;
+  scroll-behavior: smooth;
+}
+.gl-body:focus { outline: none; }
+
+.gl-group { margin-bottom: 40px; }
+.gl-group[hidden] { display: none; }
+.gl-group-name {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 0.6rem;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 6px;
+  scroll-margin-top: 8px;
+}
+.gl-group-rule {
+  height: 1px;
+  width: 100%;
+  background: var(--navy-soft);
+  border: 0;
+  margin: 0 0 22px;
+}
+
+.gl-sub { margin-bottom: 26px; }
+.gl-sub[hidden] { display: none; }
+.gl-sub-name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.05rem;
+  letter-spacing: var(--ls-item);
+  color: rgba(245, 241, 230, 0.88);
+  margin: 0 0 14px;
+}
+
+.gl-term { margin-bottom: 18px; }
+.gl-term[hidden] { display: none; }
+.gl-term-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 4px;
+}
+.gl-term-name {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  letter-spacing: var(--ls-item);
+  color: var(--cream);
+}
+.gl-kanji {
+  font-family: var(--system);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+}
+.gl-def {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  letter-spacing: var(--ls-body);
+  color: rgba(245, 241, 230, 0.7);
+}
+.gl-def em { font-style: italic; color: rgba(245, 241, 230, 0.88); }
+/* Search hit highlight — a gold hairline underline, never a fill. */
+.gl-term mark {
+  background: transparent;
+  color: var(--gold);
+  border-bottom: 1px solid var(--rule-gold);
+}
+
+/* ---------- Empty state + closing notes ---------- */
+.gl-empty {
+  margin: 8px 0 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(245, 241, 230, 0.6);
+}
+.gl-empty[hidden] { display: none; }
+.gl-empty-term { color: var(--gold); }
+
+.gl-notes {
+  border-top: 1px solid var(--navy-soft);
+  padding-top: 26px;
+}
+.gl-notes[hidden] { display: none; }
+.gl-notes p {
+  margin: 0 0 14px;
+  font-size: 0.86rem;
+  line-height: 1.7;
+  color: rgba(245, 241, 230, 0.6);
+}
+.gl-notes p:last-child { margin-bottom: 0; }
+.gl-notes em { font-style: italic; color: rgba(245, 241, 230, 0.82); }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 620px) {
+  .gl-panel { width: 100%; border-left: 0; }
+  .gl-tab { padding: 18px 8px; }
+  .gl-tab-text { font-size: 0.55rem; letter-spacing: 0.22em; }
+  .gl-intro { display: none; }   /* header must stay short so the body owns the screen */
+}
+
+/* Nothing slides when motion is reduced — it simply appears. */
+@media (prefers-reduced-motion: reduce) {
+  .gl-panel,
+  .gl-backdrop,
+  .gl-tab { transition: none; }
+  .gl-panel { transform: none; }
+  .gl-body { scroll-behavior: auto; }
+}
