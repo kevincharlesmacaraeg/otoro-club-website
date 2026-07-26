@@ -2317,12 +2317,37 @@ body.page .mnav {
 .gl-notes p:last-child { margin-bottom: 0; }
 .gl-notes em { font-style: italic; color: rgba(245, 241, 230, 0.82); }
 
-/* ---------- Mobile ---------- */
+/* The tab is z-66 and the mobile drawer is z-55, so without this the tab
+   floats on top of the open menu. Applies at every width. */
+.drawer-open .gl-tab { opacity: 0; pointer-events: none; }
+
+/* ---------- Mobile ----------
+   Measured at 375x720 before this block: the pinned header took 419px (58%
+   of the screen) and left the term list 301px, because the seven category
+   chips wrapped to SIX rows (210px). The chips now scroll horizontally in a
+   single row, and the header is tightened, which hands the body back ~180px. */
 @media (max-width: 620px) {
   .gl-panel { width: 100%; border-left: 0; }
-  .gl-tab { padding: 18px 8px; }
+
+  /* 26px wide failed the 44px minimum tap target (WCAG 2.5.5). */
+  .gl-tab { padding: 20px 18px; }
   .gl-tab-text { font-size: 0.55rem; letter-spacing: 0.22em; }
-  .gl-intro { display: none; }   /* header must stay short so the body owns the screen */
+
+  .gl-head { padding: 16px 18px 12px; }
+  .gl-label { margin-bottom: 8px; }
+  .gl-title { font-size: 1.35rem; }
+  .gl-intro { display: none; }
+  .gl-search-row { margin-top: 12px; }
+
+  .gl-jump {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    margin-top: 12px;
+  }
+  .gl-jump::-webkit-scrollbar { display: none; }
+  .gl-jump-btn { flex: 0 0 auto; }
 }
 
 /* Nothing slides when motion is reduced — it simply appears. */
@@ -2501,3 +2526,43 @@ body.page .mnav {
    site-wide 40% crop lands on Blake's chest. Pull it up to his face; the
    hands-on-the-fish frames are the two figures further down the page. */
 .page-hero--cutter .page-hero-bg img { object-position: center 22%; }
+
+/* =====================================================================
+   EDITORIAL SPLIT + TIGHT BAND
+   Flow fixes from the July 2026 audit of /ceremony/cutter. That page ran
+   6,801px for very little copy: every section was text-then-a-tall-image
+   stacked in one column, and the one-line spotlight band spent 360px of
+   padding on 57px of content.
+   ===================================================================== */
+
+/* Body copy beside a portrait, instead of the portrait pushed below it.
+   Headline block stays on the narrow measure via .split-head. */
+.split-head { max-width: var(--narrow); }
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: calc(var(--gap) * 2);
+  align-items: start;
+  margin-top: calc(var(--gap) * 1.6);
+}
+.split > .about-body,
+.split > .included-grid { max-width: var(--narrow); }
+/* .included-grid is a 2-up grid by default; inside a split column that
+   squeezes the list into a ~260px half-column with dead space beside it. */
+.split > .included-grid { grid-template-columns: 1fr; margin-top: 0; }
+/* Inside a split the figure owns its column, so the portrait cap is off. */
+.split .photo-figure--portrait,
+.container > .split .photo-figure--portrait { max-width: none; }
+/* A full-height portrait beside three bullets leaves a large void under the
+   copy. Cap it so the two columns land closer together; 35% keeps the cutter's
+   face and hands in frame on both of the page's portraits. */
+.split .photo-figure img { max-height: 520px; object-fit: cover; object-position: center 35%; }
+
+@media (max-width: 900px) {
+  .split { grid-template-columns: 1fr; gap: calc(var(--gap) * 1.5); }
+  .split .photo-figure--portrait,
+  .container > .split .photo-figure--portrait { max-width: 420px; margin-inline: auto; }
+}
+
+/* A band carrying a single line does not need a full section's padding. */
+.section--tight { padding-block: clamp(64px, 7vw, 104px); }
