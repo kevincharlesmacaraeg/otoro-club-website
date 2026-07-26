@@ -2416,24 +2416,33 @@ body.page .mnav {
 .gate-error[hidden] { display: none; }
 
 /* ---------- Featured artist ---------- */
-.artist-figure { margin: 0; }
-.artist-figure img {
+.artist-figure,
+.photo-figure { margin: 0; }
+.artist-figure img,
+.photo-figure img {
   width: 100%;
   height: auto;
   display: block;
   border: 1px solid var(--rule-gold);
 }
-.artist-figure--portrait { max-width: 460px; margin-inline: auto; }
+/* Caps a tall portrait so it doesn't swallow the narrow column. The
+   container-scoped selectors are required: `.container.narrow > *` sets
+   max-width to --narrow (720px) at specificity (0,2,0) and would otherwise
+   win against a lone class. */
+.artist-figure--portrait,
+.photo-figure--portrait,
+.container.narrow > .artist-figure--portrait,
+.container.narrow > .photo-figure--portrait { max-width: 460px; margin-inline: auto; }
 
-.artist-caption {
+.artist-caption,
+.photo-caption {
   margin: 0.8em 0 0;
   font-size: 0.78rem;
   line-height: 1.6;
   color: rgba(245, 241, 230, 0.55);
 }
-.s--cream .artist-figure--portrait { max-width: 460px; margin-inline: auto; }
-
-.artist-caption { color: var(--ink-soft); }
+.s--cream .artist-caption,
+.s--cream .photo-caption { color: var(--ink-soft); }
 
 /* Standing placeholder — reads as intentional, never a broken image.
    Swap the whole .artist-placeholder for the <img> line noted beside it. */
@@ -2487,3 +2496,8 @@ body.page .mnav {
   .artist-gallery > * { scroll-snap-align: center; }
   .artist-gallery::-webkit-scrollbar { display: none; }
 }
+
+/* The Cutter hero is a tall portrait dropped into a short wide band, so the
+   site-wide 40% crop lands on Blake's chest. Pull it up to his face; the
+   hands-on-the-fish frames are the two figures further down the page. */
+.page-hero--cutter .page-hero-bg img { object-position: center 22%; }

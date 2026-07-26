@@ -8,14 +8,12 @@
 META-->
 <main>
   <!-- ===================== HERO =====================
-       PHOTOGRAPHY TODO (Kevin, handoff §6.3): this is the site-standard
-       decorative hero background, NOT a portrait of Blake. Swap for the
-       strong image of Blake mid-cut when supplied. It stays aria-hidden with
-       an empty alt until then, so the page never implies the person shown
-       is Blake. Deliberately a hands/knife frame with no identifiable face —
-       a portrait of another itamae on this page would read as Blake. -->
-  <section class="page-hero page-hero--photo">
-    <div class="page-hero-bg" aria-hidden="true"><img src="/assets/photos/loin_cut.jpg" alt="" loading="eager" width="1024" height="1536" /></div>
+       Blake mid-cut, supplied by Kevin July 2026. Site convention: the hero
+       background is decorative chrome behind the H1, so it stays aria-hidden
+       with an empty alt — the named, described photographs of Blake are the
+       figures further down the page. -->
+  <section class="page-hero page-hero--photo page-hero--cutter">
+    <div class="page-hero-bg" aria-hidden="true"><img src="/assets/photos/cutter_blake_head.jpg" alt="" loading="eager" width="1024" height="1536" /></div>
     <div class="container narrow">
       <p class="crumb"><a href="/">Otoro Club</a><span>/</span><a href="/ceremony">The Ceremony</a><span>/</span>The Cutter</p>
       <p class="eyebrow">The Cutter</p>
@@ -51,6 +49,10 @@ META-->
           describes, with a name and a knife attached.
         </p>
       </div>
+      <figure class="photo-figure photo-figure--portrait" style="margin-top:calc(var(--gap) * 1.8);">
+        <img src="/assets/photos/cutter_blake_frame.jpg" alt="Blake Ito lifting a bluefin frame above the board, the loin already open in front of him." loading="lazy" width="764" height="1356" />
+        <figcaption class="photo-caption">The frame, lifted for the room.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -72,6 +74,10 @@ META-->
           </ul>
         </div>
       </div>
+      <figure class="photo-figure photo-figure--portrait" style="margin-top:calc(var(--gap) * 1.8);">
+        <img src="/assets/photos/cutter_blake_slicing.jpg" alt="Blake Ito slicing a block of akami at the board, guests watching behind him." loading="lazy" width="1024" height="1536" />
+        <figcaption class="photo-caption">Portioning to order, at the board.</figcaption>
+      </figure>
       <!-- TODO: confirm featured-cutter add-on price (handoff §5 / §6.5).
            No figure ships until the day-rate + LA→SD travel math is settled;
            pricing lives on /formats, and this page routes to inquiry. -->
