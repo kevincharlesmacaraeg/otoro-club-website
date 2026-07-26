@@ -1,0 +1,220 @@
+<!--META
+{
+  "path": "ceremony/cutter",
+  "title": "The Cutter — Blake Ito — Otoro Club",
+  "description": "Blake Ito at the board. The Ito family has sourced bluefin direct since 1989. Featured at select Otoro Club engagements in La Jolla and greater San Diego.",
+  "bodyClass": "page"
+}
+META-->
+<main>
+  <!-- ===================== HERO =====================
+       PHOTOGRAPHY TODO (Kevin, handoff §6.3): this is the site-standard
+       decorative hero background, NOT a portrait of Blake. Swap for the
+       strong image of Blake mid-cut when supplied. It stays aria-hidden with
+       an empty alt until then, so the page never implies the person shown
+       is Blake. Deliberately a hands/knife frame with no identifiable face —
+       a portrait of another itamae on this page would read as Blake. -->
+  <section class="page-hero page-hero--photo">
+    <div class="page-hero-bg" aria-hidden="true"><img src="/assets/photos/loin_cut.jpg" alt="" loading="eager" width="1024" height="1536" /></div>
+    <div class="container narrow">
+      <p class="crumb"><a href="/">Otoro Club</a><span>/</span><a href="/ceremony">The Ceremony</a><span>/</span>The Cutter</p>
+      <p class="eyebrow">The Cutter</p>
+      <h1 class="display">The hands behind the fish.</h1>
+      <p class="lede">
+        The Ito family has sourced bluefin direct since 1989. Blake Ito brings
+        the fish, and the family that has chosen it, into the room.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== 01 — THE LINEAGE =====================
+       Leads with the second-generation lineage, not a celebrity frame
+       (handoff §0.2). Every fact here is from the confirmed set.
+       TODO (Kevin, handoff §6.4): confirm this wording. Add nothing
+       unverified — no awards, no press, no client names. -->
+  <section class="section s--navy" aria-labelledby="lineageH">
+    <div class="container narrow reveal">
+      <p class="label">Second generation</p>
+      <hr class="rule" />
+      <h2 id="lineageH" class="display">The family that chooses the fish, at the board.</h2>
+      <div class="about-body">
+        <p class="lede">Blake Ito is second-generation bluefin.</p>
+        <p>
+          His father founded the sourcing operation in 1989. Blake has worked in
+          seafood since he was a kid, and he has spent his life around whole
+          fish &mdash; selecting them, breaking them down, and learning what
+          separates one loin from the next.
+        </p>
+        <p>
+          So he does not only cut. He comes from the family that has chosen the
+          fish, whole, for decades. It is the same access the rest of this site
+          describes, with a name and a knife attached.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 02 — WHAT IT ADDS ===================== -->
+  <section class="section s--cream" aria-labelledby="addsH">
+    <div class="container narrow reveal">
+      <p class="label">What it adds</p>
+      <hr class="rule" />
+      <h2 id="addsH" class="display">What a named cutter changes.</h2>
+      <div class="about-body">
+        <p class="lede">Featured at select engagements. Inquire for availability.</p>
+      </div>
+      <div class="included-grid">
+        <div>
+          <ul>
+            <li>A named master cutter at the board for the length of the engagement</li>
+            <li>The rare cuts &mdash; kama collar, cheek, nakaochi &mdash; worked by the family that supplies them</li>
+            <li>The Reserve, portioned by the person who knows the fish best</li>
+          </ul>
+        </div>
+      </div>
+      <!-- TODO: confirm featured-cutter add-on price (handoff §5 / §6.5).
+           No figure ships until the day-rate + LA→SD travel math is settled;
+           pricing lives on /formats, and this page routes to inquiry. -->
+    </div>
+  </section>
+
+  <!-- ===================== THE SPOTLIGHT =====================
+       The one dark moment on the page (handoff §4, Block 3). Ceremonial
+       mode: lowercase fragments, periods. -->
+  <section class="section s--deep" aria-label="The cut">
+    <div class="container reveal">
+      <p class="ceremonial centered">the cut, narrated, minutes before it is tasted.</p>
+    </div>
+  </section>
+
+  <!-- ===================== 03 — RECENT WORK (GATED) =====================
+       HARD GATE (handoff §0.1). This section renders ONLY from verified and
+       permissioned entries in `cutterCredentials` below. The array ships
+       EMPTY, so the section stays hidden. Do not hardcode any brand,
+       celebrity, or press name into this markup — not even as placeholder
+       copy. Restrained body type only when populated: never a logo wall,
+       never "as seen with". -->
+  <section class="section s--cream" id="credentials" aria-labelledby="credH" hidden>
+    <div class="container narrow reveal">
+      <p class="label">Recent work</p>
+      <hr class="rule" />
+      <h2 id="credH" class="display">Where the knife has been.</h2>
+      <div class="about-body" id="credentialsList"></div>
+    </div>
+  </section>
+
+  <!-- ===================== THE CLOSE =====================
+       Terminal action is the site's existing inquiry route: a pre-filled
+       mailto, never blank, with the address shown as selectable text.
+       The featured-cutter intent is serialized into the body so the email
+       arrives already flagged. -->
+  <section class="section s--cream" id="inquire" aria-labelledby="closeH">
+    <div class="container reveal">
+      <!-- No inline overrides: .inquire-panel already carries its own navy
+           ground, gold rule, and width. -->
+      <div class="inquire-panel">
+        <p class="label">Inquire</p>
+        <hr class="rule is-centered" />
+        <h2 id="closeH" class="display">Ask about featuring Blake.</h2>
+
+        <p class="intent-line">You&rsquo;re inquiring about: <span id="cutterIntent">Featuring Blake Ito, master cutter</span></p>
+
+        <p class="lede">
+          Tell us the room and the date. Availability is confirmed by
+          arrangement &mdash; Blake is featured at select engagements.
+        </p>
+
+        <!-- Optional occasion. In-memory only; it just seasons the email body. -->
+        <fieldset class="course">
+          <legend class="course-label">Occasion &mdash; optional</legend>
+          <div class="opt-grid" id="occasionGrid"></div>
+        </fieldset>
+
+        <p class="email-cta">
+          <a class="btn" id="cutterMailto" href="mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Featured%20cutter%20inquiry">Inquire about featuring Blake</a>
+        </p>
+        <p class="email-plain">or copy our address: <span class="is-address">reservations@otoroclub.com</span></p>
+        <p class="lead-note">Pricing is shared when we confirm the date.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  /* The Cutter — in-memory intent only. No storage; resets on refresh.
+     The intent serializes into a pre-filled mailto (never blank). */
+  (function () {
+    "use strict";
+
+    /* ---------- GATED CREDENTIALS ----------
+       EMPTY until Kevin supplies verified + permissioned entries (§6.2):
+       the name, the date/event, and written usage rights.
+       Do NOT add any brand or celebrity name here without that.
+       Shape once cleared: { label: "…", note: "…" } */
+    var cutterCredentials = [];
+
+    (function renderCredentials() {
+      var section = document.getElementById("credentials");
+      var list = document.getElementById("credentialsList");
+      if (!section || !list || !cutterCredentials.length) return;   // empty → stays hidden
+      list.innerHTML = cutterCredentials.map(function (c) {
+        return "<p>" + c.label + (c.note ? " &mdash; " + c.note : "") + "</p>";
+      }).join("");
+      section.hidden = false;
+    })();
+
+    /* ---------- Intent + occasion ---------- */
+    var INTENT = "Featuring Blake Ito, master cutter";
+    var OCCASIONS = [
+      { id: "private", name: "Private dinner" },
+      { id: "wedding", name: "Wedding" },
+      { id: "corporate", name: "Corporate evening" },
+      { id: "brand", name: "Brand activation" }
+    ];
+
+    var state = { occasion: null };
+    var grid = document.getElementById("occasionGrid");
+    var mailto = document.getElementById("cutterMailto");
+
+    function buildMailto() {
+      var lines = ["Inquiring about: " + INTENT];
+      if (state.occasion) lines.push("Occasion: " + state.occasion.name);
+      lines.push("", "Venue: ", "Date: ", "Guest count: ", "", "About the event: ");
+      return "mailto:reservations@otoroclub.com" +
+        "?subject=" + encodeURIComponent("Otoro Club — Featured cutter inquiry") +
+        "&body=" + encodeURIComponent(lines.join("\n"));
+    }
+
+    function sync() {
+      if (mailto) mailto.href = buildMailto();
+      if (!grid) return;
+      Array.prototype.forEach.call(grid.querySelectorAll(".opt-card"), function (btn) {
+        var on = !!state.occasion && btn.dataset.id === state.occasion.id;
+        btn.classList.toggle("is-selected", on);
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+        var st = btn.querySelector(".opt-state");
+        if (st) st.textContent = on ? "Selected" : "Select";
+      });
+    }
+
+    if (grid) {
+      grid.innerHTML = OCCASIONS.map(function (o) {
+        return '<button type="button" class="opt-card" data-id="' + o.id + '" aria-pressed="false">' +
+          '<span class="opt-check" aria-hidden="true"></span>' +
+          '<span class="opt-name">' + o.name + "</span>" +
+          '<span class="opt-state">Select</span>' +
+          "</button>";
+      }).join("");
+      grid.addEventListener("click", function (e) {
+        var btn = e.target.closest(".opt-card");
+        if (!btn) return;
+        var picked = OCCASIONS.filter(function (o) { return o.id === btn.dataset.id; })[0];
+        // Clicking the selected one clears it — the field is optional.
+        state.occasion = (state.occasion && state.occasion.id === picked.id) ? null : picked;
+        sync();
+      });
+    }
+
+    sync();
+  })();
+  </script>
+</main>

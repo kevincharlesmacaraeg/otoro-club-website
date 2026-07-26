@@ -2333,3 +2333,21 @@ body.page .mnav {
   .gl-panel { transform: none; }
   .gl-body { scroll-behavior: auto; }
 }
+
+/* ---------- .inquire-panel on a cream ground ----------
+   The panel always lifts to a navy background of its own, so everything
+   inside it must read as if on navy. On a .s--cream section the panel's
+   contents were inheriting --ink and rendering near-black on navy — a real
+   contrast failure. Scoped to the panel so cream sections are untouched.
+   Applies to /journey and /ceremony/cutter, which both place the panel on
+   a cream ground. */
+.s--cream .inquire-panel { color: var(--cream); }
+.s--cream .inquire-panel .display,
+.s--cream .inquire-panel h3 { color: var(--cream); }
+.s--cream .inquire-panel .lede { color: rgba(245, 241, 230, 0.82); }
+.s--cream .inquire-panel .label { color: var(--gold); }
+.s--cream .inquire-panel .rule { background: var(--gold); opacity: 1; }
+.s--cream .inquire-panel .btn { border-color: var(--gold); color: var(--gold); }
+.s--cream .inquire-panel .btn:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+.s--cream .inquire-panel .email-plain { color: rgba(245, 241, 230, 0.6); }
+.s--cream .inquire-panel .email-plain .is-address { color: var(--gold); }
