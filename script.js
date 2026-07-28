@@ -396,6 +396,39 @@
         .filter(function (el) { return el.offsetParent !== null || el === search; });
     }
 
+    function isPhone() {
+      return window.matchMedia("(max-width: 620px)").matches;
+    }
+
+    /* iOS Safari ignores `body { overflow: hidden }` — the page kept scrolling
+       under the open panel, and closing it dumped you somewhere else on the
+       page. Pin the body at its current offset instead and restore after. */
+    var lockedY = 0;
+    function lockScroll() {
+      lockedY = window.scrollY || window.pageYOffset || 0;
+      document.body.style.position = "fixed";
+      document.body.style.top = -lockedY + "px";
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
+      document.body.style.overflow = "hidden";
+    }
+    function unlockScroll() {
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      document.body.style.overflow = "";
+      /* `html { scroll-behavior: smooth }` turns this restore into an animation
+         that races the reflow and lands at the top of the page instead. Force
+         it to jump, then hand smooth scrolling back. */
+      var prev = document.documentElement.style.scrollBehavior;
+      document.documentElement.style.scrollBehavior = "auto";
+      window.scrollTo(0, lockedY);
+      document.documentElement.style.scrollBehavior = prev;
+    }
+
     function open() {
       if (document.documentElement.classList.contains("gl-open")) return;
       lastFocus = document.activeElement;
@@ -403,18 +436,23 @@
       backdrop.removeAttribute("inert");
       document.documentElement.classList.add("gl-open");
       tab.setAttribute("aria-expanded", "true");
-      document.body.style.overflow = "hidden";
-      if (search) search.focus();
+      lockScroll();
+      /* Autofocusing the search field on a phone raised the keyboard over a
+         panel that had barely opened, and Safari zoomed the viewport into the
+         input on focus (and never zoomed back out). Focus the list instead —
+         the field is one tap away. */
+      if (search && !isPhone()) search.focus();
+      else body.focus();
     }
 
     function close() {
       if (!document.documentElement.classList.contains("gl-open")) return;
       document.documentElement.classList.remove("gl-open");
       tab.setAttribute("aria-expanded", "false");
-      document.body.style.overflow = "";
+      unlockScroll();
       panel.setAttribute("inert", "");
       backdrop.setAttribute("inert", "");
-      if (lastFocus && lastFocus.focus) lastFocus.focus();
+      if (lastFocus && lastFocus.focus && document.contains(lastFocus)) lastFocus.focus();
       else tab.focus();
     }
 
@@ -429,6 +467,25 @@
     }
 
     tab.addEventListener("click", open);
+    /* The rail tab is hidden on phones, so the glossary is also reachable from
+       the burger drawer and the footer. Opening from the drawer has to shut the
+       drawer first, or it sits behind the panel and is still there on close. */
+    Array.prototype.forEach.call(document.querySelectorAll("[data-glossary-open]"), function (el) {
+      el.addEventListener("click", function (e) {
+        e.preventDefault();
+        var burger = document.getElementById("mnavBurger");
+        var drawerPanel = document.getElementById("mnavDrawer");
+        if (drawerPanel && !drawerPanel.hidden) {
+          drawerPanel.hidden = true;
+          document.documentElement.classList.remove("drawer-open");
+          if (burger) {
+            burger.setAttribute("aria-expanded", "false");
+            burger.setAttribute("aria-label", "Open menu");
+          }
+        }
+        open();
+      });
+    });
     if (closeBtn) closeBtn.addEventListener("click", close);
     if (backdrop) backdrop.addEventListener("click", close);
     if (search) search.addEventListener("input", filter);

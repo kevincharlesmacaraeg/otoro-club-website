@@ -281,6 +281,10 @@
       <a href="/legal/cancellation">Deposits &amp; cancellation</a>
     </details>
     <a class="btn drawer-cta" href="/inquire">Inquire</a>
+    <!-- The glossary's floating rail tab is hidden on phones (it sat on top of
+         body copy and swallowed swipes on the photo carousels). This is its
+         mobile entry point instead. script.js binds every [data-glossary-open]. -->
+    <button type="button" class="drawer-glossary" data-glossary-open>Sushi Glossary</button>
     <p class="drawer-contact">
       <a class="is-address" href="mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Inquiry">reservations@otoroclub.com</a>
     </p>
@@ -405,6 +409,8 @@
       <a href="/gallery">Gallery</a>
       <a href="/faq">FAQ</a>
       <a href="/about/press">Press &amp; media kit</a>
+      <!-- Second entry point to the flyout, at every width. -->
+      <button type="button" class="foot-glossary" data-glossary-open>Sushi Glossary</button>
     </nav>
     <nav class="foot-col" aria-label="Plan an event">
       <p class="foot-head">Plan an Event</p>

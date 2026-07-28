@@ -1378,6 +1378,25 @@ body.page .mnav {
 .drawer-group a:hover { color: var(--gold); }
 .drawer-group:last-of-type { margin-bottom: 24px; }
 .drawer-cta { margin-top: 24px; width: 100%; }
+/* Mobile entry point to the glossary flyout — the rail tab is display:none
+   below 620px. Quiet next to the Inquire CTA: a hairline, not a second button. */
+.drawer-glossary {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 14px 0;
+  min-height: 48px;
+  background: transparent;
+  border: 1px solid var(--navy-soft);
+  color: rgba(245, 241, 230, 0.72);
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 200ms var(--ease), border-color 200ms var(--ease);
+}
+.drawer-glossary:hover { color: var(--gold); border-color: var(--rule-gold); }
 .drawer-contact { margin-top: 20px; text-align: center; }
 .drawer-contact .is-address { color: var(--gold); }
 
@@ -1442,6 +1461,21 @@ body.page .mnav {
   transition: color 200ms var(--ease);
 }
 .foot-col a:hover { color: var(--gold); }
+/* Reads as one more link in the About column, but it opens the flyout. */
+.foot-glossary {
+  align-self: flex-start;
+  background: none;
+  border: 0;
+  padding: 5px 0;
+  font-family: inherit;
+  font-size: 0.8rem;
+  letter-spacing: var(--ls-item);
+  color: rgba(245, 241, 230, 0.62);
+  text-align: left;
+  cursor: pointer;
+  transition: color 200ms var(--ease);
+}
+.foot-glossary:hover { color: var(--gold); }
 .foot-col .is-address { font-size: 0.8rem; }
 .site-footer .footer-inner { grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr; }
 .footer-legal {
@@ -2075,6 +2109,10 @@ body.page .mnav {
   top: 0;
   right: 0;
   bottom: 0;
+  /* Mobile browsers report 100% of the LARGE viewport for a fixed element, so
+     the last ~90px of the panel sat under the Safari toolbar. dvh tracks the
+     toolbar; the bottom:0 above stays as the fallback. */
+  height: 100dvh;
   z-index: 80;
   width: min(520px, 100%);
   display: flex;
@@ -2118,8 +2156,8 @@ body.page .mnav {
 .gl-close {
   position: relative;
   flex: 0 0 auto;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   background: transparent;
   border: 1px solid var(--navy-soft);
   cursor: pointer;
@@ -2329,13 +2367,19 @@ body.page .mnav {
 @media (max-width: 620px) {
   .gl-panel { width: 100%; border-left: 0; }
 
-  /* 26px wide failed the 44px minimum tap target (WCAG 2.5.5). */
-  .gl-tab { padding: 20px 18px; }
-  .gl-tab-text { font-size: 0.55rem; letter-spacing: 0.22em; }
+  /* The rail tab is a desktop affordance. It lives in the wide outer margin
+     there, but a phone has no outer margin — at 390px it was a 46x106 slab
+     pinned mid-screen at z-66, sitting on top of the hero headline on every
+     page and eating horizontal swipes on the photo carousels underneath it.
+     Hidden here; the drawer and footer carry [data-glossary-open] instead. */
+  .gl-tab { display: none; }
 
   .gl-head { padding: 16px 18px 12px; }
+  .gl-head-row { gap: 12px; }
   .gl-label { margin-bottom: 8px; }
-  .gl-title { font-size: 1.35rem; }
+  /* Must clear the 44px close button on one line at 390px — wrapping to two
+     lines costs the term list 31px of an already tight panel. */
+  .gl-title { font-size: 1.2rem; }
   .gl-intro { display: none; }
   .gl-search-row { margin-top: 12px; }
 
@@ -2348,6 +2392,12 @@ body.page .mnav {
   }
   .gl-jump::-webkit-scrollbar { display: none; }
   .gl-jump-btn { flex: 0 0 auto; }
+
+  /* Anything under 16px makes iOS Safari zoom the viewport in on focus — and
+     it does not zoom back out on blur, so the whole site was left magnified
+     and pannable after one tap in this field. 16px is the threshold. */
+  .gl-search { font-size: 16px; }
+  .gl-search::placeholder { font-size: 0.9rem; }
 }
 
 /* Nothing slides when motion is reduced — it simply appears. */
