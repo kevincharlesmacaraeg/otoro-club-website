@@ -5,7 +5,39 @@
   "headers": [
     {
       "source": "/assets/fonts/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/formats",
+      "destination": "/menu",
+      "permanent": true
+    },
+    {
+      "source": "/formats/intimate",
+      "destination": "/menu#smaller",
+      "permanent": true
+    },
+    {
+      "source": "/formats/social",
+      "destination": "/menu#stations",
+      "permanent": true
+    },
+    {
+      "source": "/formats/grand",
+      "destination": "/menu#ceremonies",
+      "permanent": true
+    },
+    {
+      "source": "/formats/:path*",
+      "destination": "/menu",
+      "permanent": true
     }
   ]
 }

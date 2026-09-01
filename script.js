@@ -15,7 +15,7 @@
     "#reserve": "/ceremony",
     "#gallery": "/gallery",
     "#services": "/occasions",
-    "#formats": "/formats",
+    "#formats": "/menu",
     "#instagram": "/about",
     "#faq": "/faq",
     "#inquire": "/inquire"

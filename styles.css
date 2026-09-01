@@ -980,6 +980,8 @@ h3 {
   .about-terms { grid-template-columns: 1fr; gap: calc(var(--gap) * 0.9); }
   .service-grid { grid-template-columns: 1fr; }
   .format-grid { grid-template-columns: 1fr; gap: calc(var(--gap) * 1.2); }
+  .offer-grid,
+  .offer-grid--two { grid-template-columns: 1fr; gap: calc(var(--gap) * 1.6); }
   .footer-inner { grid-template-columns: 1fr; }
   .foot-meta { text-align: left; }
 }
@@ -1713,6 +1715,171 @@ body.page .mnav {
 /* Gallery — full page grid (2 rows on interior gallery) reuses .gallery-grid */
 .gallery-grid--full { grid-template-columns: repeat(3, 1fr); }
 
+
+/* =====================================================================
+   MENU — the consolidated offerings (Sept 2026).
+   Replaces the retired Intimate / Social / Grand tier components.
+   Ceremonial mode: item copy runs lowercase, fragments split by periods.
+   Offering names and section labels carry the letterspacing instead.
+   No prices anywhere — INQUIRE carries the ask.
+   ===================================================================== */
+
+/* Menu copy runs ceremonial — lowercase, set as written, never capitalized
+   back by CSS. */
+.menu-lede { text-transform: none; }
+
+.menu-jump {
+  margin-top: calc(var(--gap) * 1.2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9em 1.6em;
+}
+.menu-jump a {
+  font-size: 0.62rem;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 3px;
+  transition: border-color 200ms var(--ease);
+}
+.menu-jump a:hover,
+.menu-jump a:focus-visible { border-bottom-color: var(--rule-gold); }
+
+.offer-grid {
+  margin-top: calc(var(--gap) * 2);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3vw, 44px);
+  /* Stretch, not start: the crew rules across the ceremonies line up only if
+     every card fills the row height and pushes its crew line to the bottom. */
+  align-items: stretch;
+}
+.offer-grid--two { grid-template-columns: repeat(2, 1fr); }
+
+.offer {
+  border-top: 1px solid var(--rule-gold);
+  padding-top: calc(var(--gap) * 0.9);
+  display: flex;
+  flex-direction: column;
+}
+.offer > .offer-list { flex: 1 0 auto; align-content: start; }
+.offer-name {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--cream);
+  margin: 0 0 0.5em;
+  line-height: 1.5;
+}
+.s--cream .offer-name { color: var(--ink); }
+.offer-name .honored { text-transform: none; letter-spacing: var(--ls-item); }
+
+.offer-scale {
+  margin: 0 0 1.2em;
+  font-size: 0.62rem;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.s--cream .offer-scale { color: var(--ink-soft); }
+
+.offer-list {
+  display: grid;
+  gap: 0.55em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.offer-list li {
+  position: relative;
+  padding-left: 1.2em;
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: rgba(245, 241, 230, 0.74);
+}
+.s--cream .offer-list li { color: var(--ink); }
+.offer-list li::before { content: "—"; position: absolute; left: 0; color: var(--gold); }
+.s--cream .offer-list li::before { color: var(--gold-deep); }
+
+/* The crew line closes a ceremony — set apart from the courses above it. */
+.offer-crew {
+  margin: calc(var(--gap) * 0.9) 0 0;
+  flex: 0 0 auto;
+  padding-top: calc(var(--gap) * 0.6);
+  border-top: 1px solid var(--rule-cream);
+  font-size: 0.82rem;
+  line-height: 1.7;
+  color: rgba(245, 241, 230, 0.6);
+}
+.s--cream .offer-crew { border-top-color: var(--rule-ink); color: var(--ink-soft); }
+
+/* Smaller parties stack rather than sit in a grid — two short blocks. */
+.offer-stack {
+  margin-top: calc(var(--gap) * 1.6);
+  display: grid;
+  gap: calc(var(--gap) * 1.4);
+}
+.offer--flat { border-top-color: var(--rule-ink); }
+
+.menu-photo { margin: calc(var(--gap) * 2) 0 0; }
+/* Cropped to a band rather than run at full intrinsic height — a 2:3 portrait
+   at container width swallows the section it is meant to punctuate. */
+.menu-photo img {
+  width: 100%;
+  display: block;
+  height: clamp(260px, 34vw, 460px);
+  object-fit: cover;
+}
+.menu-photo figcaption {
+  margin-top: 0.9em;
+  font-size: 0.72rem;
+  letter-spacing: var(--ls-item);
+  color: rgba(245, 241, 230, 0.55);
+}
+.menu-photo--inset { margin-top: calc(var(--gap) * 1.2); }
+.menu-photo--inset img { height: clamp(200px, 20vw, 280px); }
+
+/* ---------- The appetizer card ---------- */
+.card-grid {
+  margin-top: calc(var(--gap) * 2);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(var(--gap) * 1.6) calc(var(--gap) * 2.4);
+}
+.card-head {
+  font-size: 0.62rem;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--gold);
+  padding-bottom: calc(var(--gap) * 0.7);
+  border-bottom: 1px solid var(--rule-gold);
+  margin: 0;
+}
+.card-list { display: grid; gap: calc(var(--gap) * 0.9); margin: calc(var(--gap) * 1.1) 0 0; }
+.card-list dt {
+  font-size: 0.72rem;
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--cream);
+  line-height: 1.5;
+}
+.card-list dd {
+  margin: 0.45em 0 0;
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: rgba(245, 241, 230, 0.74);
+}
+.card-origin {
+  display: inline-block;
+  margin-left: 0.6em;
+  font-size: 0.9em;
+  letter-spacing: var(--ls-item);
+  text-transform: lowercase;
+  color: var(--gold);
+}
+
 /* ---------- Responsive: nav collapse + flyout stacking ---------- */
 @media (max-width: 1200px) {
   .mnav-groups { display: none; }
@@ -1734,6 +1901,7 @@ body.page .mnav {
   .utilbar-contact { display: none; }          /* keep location, drop contacts */
   .notices-grid { grid-template-columns: 1fr; }
   .included-grid { grid-template-columns: 1fr; }
+  .card-grid { grid-template-columns: 1fr; gap: calc(var(--gap) * 1.8); }
   .site-footer .footer-inner { grid-template-columns: 1fr 1fr; }
   .foot-brand { grid-column: 1 / -1; max-width: none; }
   .footer-legal { flex-direction: column; align-items: flex-start; }
