@@ -21,19 +21,17 @@ META-->
     </div>
   </section>
 
-  <!-- Always-included anchors -->
+  <!-- Always-included anchor -->
+  <!-- The Reserve anchor retired, Sept 2026 repositioning — see handoff §7.
+       Single anchor now; grid-template-columns overridden inline so it
+       doesn't leave an orphaned empty column on desktop. -->
   <section class="section s--navy" style="padding-block:clamp(48px,6vw,72px);" aria-label="Included in every journey">
     <div class="container reveal">
-      <div class="anchor-row">
+      <div class="anchor-row" style="grid-template-columns:1fr;max-width:560px;">
         <div class="anchor">
           <p class="anchor-label">Always included</p>
           <p class="anchor-name">The live cut</p>
           <p class="anchor-desc">A whole bluefin broken down by hand in the room, served in sequence as it is cut.</p>
-        </div>
-        <div class="anchor">
-          <p class="anchor-label">Always included</p>
-          <p class="anchor-name">The Reserve</p>
-          <p class="anchor-desc">The balance of the fish, portioned by hand and packed cold at the close. It goes to the host.</p>
         </div>
       </div>
     </div>
@@ -137,7 +135,6 @@ META-->
           <a class="btn" id="journeyMailto" href="mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Inquiry">Email your inquiry</a>
         </p>
         <p class="email-plain">or copy our address: <span class="is-address">reservations@otoroclub.com</span></p>
-        <p class="lead-note">The Reserve is included on every bluefin ceremony, and goes to the host.</p>
       </div>
     </div>
   </section>
@@ -304,12 +301,11 @@ META-->
         parts.map(function (p) {
           return '<li>' + p + (p === "Nakaochi" ? ' <span class="summary-tag">in the room</span>' : "") + "</li>";
         }).join("") +
-        '<li class="summary-anchor">The Reserve <span class="summary-tag">included</span></li>' +
         "</ul>";
       elSummary.innerHTML = (title ? '<p class="summary-title">' + title + "</p>" : "") + listHtml;
 
       var serial = (title ? title + " — " : "") +
-        ["The live cut"].concat(parts).concat(["The Reserve"]).join(" · ") +
+        ["The live cut"].concat(parts).join(" · ") +
         ". Confirmed with the itamae based on guest count and fish size.";
       setMailto(serial);
     }
