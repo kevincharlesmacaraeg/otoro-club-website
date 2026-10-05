@@ -1520,15 +1520,6 @@ body.page .mnav {
   letter-spacing: 0.02em;
   color: rgba(245, 241, 230, 0.3);
 }
-.foot-credit {
-  max-width: var(--container);
-  margin: 1em auto 0;
-  padding-inline: clamp(22px, 5vw, 56px);
-  font-size: 0.68rem;
-  letter-spacing: var(--ls-item);
-  color: rgba(245, 241, 230, 0.4);
-}
-.foot-credit .is-address { color: rgba(245, 241, 230, 0.55); }
 
 /* ---------- Cookie strip (§7) ---------- */
 .cookiebar {
