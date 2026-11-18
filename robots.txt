@@ -3,5 +3,6 @@ Allow: /
 
 # Pre-launch, password-gated. Not linked from nav and not in the sitemap.
 Disallow: /featured-artist
+Disallow: /photo-library
 
 Sitemap: https://otoroclub.com/sitemap.xml

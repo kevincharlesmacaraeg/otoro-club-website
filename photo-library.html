@@ -1,0 +1,862 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Photo Library — Otoro Club</title>
+<meta name="description" content="Otoro Club photo library." />
+<link rel="canonical" href="https://otoroclub.com/photo-library" />
+
+<!-- Display serif carries headlines above the fold — preload so H1 paints
+     without a swap. Body/UI is Arial (system), so no body-font fetch. The
+     Hamilton @ glyph renders as an ENVELOPE — every email / handle / URL on
+     this site is set in Arial via .is-address, never a Hamilton face. -->
+<link rel="preload" href="/assets/fonts/TCHamiltonArc-Rg.otf" as="font" type="font/otf" crossorigin />
+
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" />
+<link rel="icon" href="/assets/icon-512.png" sizes="512x512" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Photo Library — Otoro Club" />
+<meta property="og:description" content="Otoro Club photo library." />
+<meta property="og:image" content="https://otoroclub.com/assets/og-image.jpg" />
+<meta property="og:url" content="https://otoroclub.com/photo-library" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="stylesheet" href="/styles.css" />
+<meta name="robots" content="noindex, nofollow, noimageindex" />
+
+</head>
+<body class="page page--library" id="top">
+<!-- Utility bar. Both contact strings are Arial (.is-address) — never a Hamilton
+     face, or the @ draws as an envelope. -->
+<div class="utilbar">
+  <div class="utilbar-inner">
+    <span class="utilbar-loc">La Jolla, Calif.</span>
+    <span class="utilbar-contact">
+      <a class="is-address" href="mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Inquiry">reservations@otoroclub.com</a>
+      <span class="utilbar-dot" aria-hidden="true">&middot;</span>
+      <a class="is-address" href="https://www.instagram.com/otoroclubsd/" target="_blank" rel="noopener">@otoroclubsd</a>
+    </span>
+  </div>
+</div>
+
+<!-- ===================== NAV ===================== -->
+<!-- Five mega-flyout triggers + a persistent INQUIRE. Opens on hover of a
+     trigger, closes on mouseleave of the whole wrapper (cursor can cross the
+     gap into the panel). Each trigger is a <button aria-expanded> for keyboard.
+     Every label + link is white-space:nowrap (CSS). Below ~1200px the row is
+     hidden and the burger drawer takes over. -->
+<header class="mnav" id="mnav" data-flyout>
+  <div class="mnav-bar">
+    <a href="/" class="mnav-logo" aria-label="Otoro Club — home">
+      <img src="/assets/logos/titlelogo.png" alt="Otoro Club" height="46" />
+    </a>
+
+    <nav class="mnav-groups" aria-label="Primary">
+      <!-- The Ceremony -->
+      <div class="mnav-item">
+        <button type="button" class="mnav-trigger" aria-expanded="false" aria-controls="fly-ceremony">The Ceremony</button>
+        <div class="mnav-panel" id="fly-ceremony" role="region" aria-label="The Ceremony" hidden>
+          <div class="fly-inner">
+            <div class="fly-rail">
+              <p class="fly-eyebrow">The Ceremony</p>
+              <p class="fly-head">Maguro kaitai, in the room.</p>
+            </div>
+            <div class="fly-links">
+              <div class="fly-col">
+                <p class="fly-label">Overview</p>
+                <a href="/ceremony#room">What happens in the room</a>
+                <a href="/ceremony#movements">The four movements</a>
+                <a href="/ceremony#cuts">The cuts, in sequence</a>
+                <a href="/ceremony#itamae">The itamae</a>
+                <a href="/ceremony/cutter">The Cutter</a>
+              </div>
+              <div class="fly-col">
+                <p class="fly-label">Detail</p>
+                <a href="/ceremony/run-of-show">Run of show</a>
+                <a href="/ceremony/included">What is included</a>
+                <a href="/ceremony/food-safety#load-out">Setup &amp; load-out</a>
+                <a href="/ceremony/food-safety">Food safety &amp; permitting</a>
+              </div>
+            </div>
+            <div class="fly-media">
+              <img src="/assets/photos/experience_lift.jpg" alt="The team lifting a whole bluefin onto the board." loading="lazy" />
+              <p class="fly-caption">forty minutes. one bluefin. no back-of-house.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu -->
+      <div class="mnav-item">
+        <button type="button" class="mnav-trigger" aria-expanded="false" aria-controls="fly-menu">Menu</button>
+        <div class="mnav-panel" id="fly-menu" role="region" aria-label="Menu" hidden>
+          <div class="fly-inner">
+            <div class="fly-rail">
+              <p class="fly-eyebrow">Menu</p>
+              <p class="fly-head">Ceremonies, stations, and the card.</p>
+            </div>
+            <div class="fly-tiers">
+              <a class="fly-tier" href="/menu#ceremonies">
+                <span class="fly-tier-name">Deluxe Bluefin Ceremony</span>
+                <span class="fly-tier-scale">130&ndash;200 guests</span>
+                <span class="fly-tier-line">A whole bluefin, and the full crew behind it.</span>
+              </a>
+              <a class="fly-tier" href="/menu#ceremonies">
+                <span class="fly-tier-name">Bluefin&aacute; Bluefin Ceremony</span>
+                <span class="fly-tier-scale">50&ndash;100 guests</span>
+                <span class="fly-tier-line">The balance of the fish, portioned for the host.</span>
+              </a>
+              <a class="fly-tier" href="/menu#ceremonies">
+                <span class="fly-tier-name">Bigeye Tuna Ceremony</span>
+                <span class="fly-tier-scale">50&ndash;70 guests</span>
+                <span class="fly-tier-line">The same sequence, on a smaller frame.</span>
+              </a>
+            </div>
+            <div class="fly-col fly-col--also">
+              <p class="fly-label">Also</p>
+              <a href="/menu#stations">Stations &amp; lighter formats</a>
+              <a href="/menu#smaller">Smaller parties</a>
+              <a href="/menu#appetizers">The appetizer card</a>
+              <a href="/menu#additions">Additions</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Occasions -->
+      <div class="mnav-item">
+        <button type="button" class="mnav-trigger" aria-expanded="false" aria-controls="fly-occasions">Occasions</button>
+        <div class="mnav-panel" id="fly-occasions" role="region" aria-label="Occasions" hidden>
+          <div class="fly-inner">
+            <div class="fly-rail">
+              <p class="fly-eyebrow">Occasions</p>
+              <p class="fly-head">Where the ceremony travels.</p>
+            </div>
+            <div class="fly-links fly-links--three">
+              <div class="fly-col">
+                <p class="fly-label">Private</p>
+                <a href="/occasions/private-events">Private events</a>
+                <a href="/occasions/private-events#milestone">Milestone dinners</a>
+                <a href="/occasions/weddings">Weddings</a>
+              </div>
+              <div class="fly-col">
+                <p class="fly-label">Business</p>
+                <a href="/occasions/corporate">Corporate evenings</a>
+                <a href="/occasions/corporate#brand">Brand activations</a>
+                <a href="/occasions/corporate#client">Client dinners</a>
+              </div>
+              <div class="fly-col">
+                <p class="fly-label">Partners</p>
+                <a href="/occasions/partnerships">Venues &amp; hotels</a>
+                <a href="/occasions/partnerships#chefs">Resident chefs</a>
+                <a href="/occasions/partnerships#preferred">Preferred vendor</a>
+              </div>
+            </div>
+            <div class="fly-media">
+              <img src="/assets/photos/guests1.jpg" alt="Guests in the room during an engagement." loading="lazy" />
+              <p class="fly-caption">the room, mid-service.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="mnav-item">
+        <button type="button" class="mnav-trigger" aria-expanded="false" aria-controls="fly-about">About</button>
+        <div class="mnav-panel" id="fly-about" role="region" aria-label="About" hidden>
+          <div class="fly-inner">
+            <div class="fly-rail">
+              <p class="fly-eyebrow">About</p>
+              <p class="fly-head">The fish is the invitation.</p>
+            </div>
+            <div class="fly-links fly-links--three">
+              <div class="fly-col">
+                <p class="fly-label">Otoro Club</p>
+                <a href="/about">Who we are</a>
+                <a href="/about/team">The team</a>
+                <a href="/#community">The Community</a>
+                <a href="/about#service-area">Service area</a>
+              </div>
+              <div class="fly-col">
+                <p class="fly-label">Media</p>
+                <a href="/gallery">Gallery</a>
+                <a href="https://www.instagram.com/otoroclubsd/" target="_blank" rel="noopener">Instagram</a>
+                <a href="/about/press">Press &amp; media kit</a>
+              </div>
+              <div class="fly-col">
+                <p class="fly-label">Practical</p>
+                <a href="/faq">FAQ</a>
+                <a href="/legal/food-safety-allergens">Food safety &amp; allergens</a>
+                <a href="/inquire">Contact</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan an Event -->
+      <div class="mnav-item">
+        <button type="button" class="mnav-trigger" aria-expanded="false" aria-controls="fly-plan">Plan an Event</button>
+        <div class="mnav-panel" id="fly-plan" role="region" aria-label="Plan an Event" hidden>
+          <div class="fly-inner">
+            <div class="fly-rail">
+              <p class="fly-eyebrow">Plan an Event</p>
+              <p class="fly-head">Inquire about a date.</p>
+            </div>
+            <div class="fly-links">
+              <div class="fly-col">
+                <p class="fly-label">Start</p>
+                <a href="/inquire">Inquire by email</a>
+                <a href="/inquire#date">What we need</a>
+                <a href="/journey">Design your journey</a>
+              </div>
+              <div class="fly-col">
+                <p class="fly-label">Before you book</p>
+                <a href="/inquire#what-we-need">What we need from you</a>
+                <a href="/ceremony/food-safety#venue">Venue requirements</a>
+                <a href="/legal/cancellation#deposits">Deposits &amp; headcount</a>
+                <a href="/legal/cancellation">Cancellation policy</a>
+              </div>
+            </div>
+            <div class="fly-contact">
+              <p class="fly-label">Contact</p>
+              <a class="is-address" href="mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Inquiry">reservations@otoroclub.com</a>
+              <a class="is-address" href="https://www.instagram.com/otoroclubsd/" target="_blank" rel="noopener">@otoroclubsd</a>
+              <a class="btn btn--sm" href="/inquire">Inquire</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="mnav-actions">
+      <a class="btn btn--sm btn--ghost mnav-cta" href="/inquire">Inquire</a>
+      <button class="mnav-burger" id="mnavBurger" aria-expanded="false" aria-controls="mnavDrawer" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Burger drawer (≤1200px) — same groups as accordion sections. -->
+<div class="mnav-drawer" id="mnavDrawer" hidden>
+  <nav class="drawer-inner" aria-label="Mobile">
+    <details class="drawer-group">
+      <summary>The Ceremony</summary>
+      <a href="/ceremony">Overview</a>
+      <a href="/ceremony/cutter">The Cutter</a>
+      <a href="/ceremony/run-of-show">Run of show</a>
+      <a href="/ceremony/included">What is included</a>
+      <a href="/ceremony/food-safety">Food safety &amp; permitting</a>
+    </details>
+    <details class="drawer-group">
+      <summary>Menu</summary>
+      <a href="/menu">The full menu</a>
+      <a href="/menu#ceremonies">Ceremonies</a>
+      <a href="/menu#stations">Stations &amp; lighter formats</a>
+      <a href="/menu#smaller">Smaller parties</a>
+      <a href="/menu#appetizers">Appetizers</a>
+      <a href="/menu#additions">Additions</a>
+    </details>
+    <details class="drawer-group">
+      <summary>Occasions</summary>
+      <a href="/occasions">Overview</a>
+      <a href="/occasions/private-events">Private events</a>
+      <a href="/occasions/weddings">Weddings</a>
+      <a href="/occasions/corporate">Corporate</a>
+      <a href="/occasions/partnerships">Partnerships</a>
+    </details>
+    <details class="drawer-group">
+      <summary>About</summary>
+      <a href="/about">Who we are</a>
+      <a href="/about/team">The team</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/faq">FAQ</a>
+      <a href="/about/press">Press &amp; media kit</a>
+    </details>
+    <details class="drawer-group">
+      <summary>Plan an Event</summary>
+      <a href="/inquire">Inquire by email</a>
+      <a href="/journey">Design your journey</a>
+      <a href="/ceremony/food-safety#venue">Venue requirements</a>
+      <a href="/legal/cancellation">Deposits &amp; cancellation</a>
+    </details>
+    <a class="btn drawer-cta" href="/inquire">Inquire</a>
+    <!-- The glossary's floating rail tab is hidden on phones (it sat on top of
+         body copy and swallowed swipes on the photo carousels). This is its
+         mobile entry point instead. script.js binds every [data-glossary-open]. -->
+    <button type="button" class="drawer-glossary" data-glossary-open>Sushi Glossary</button>
+    <p class="drawer-contact">
+      <a class="is-address" href="mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Inquiry">reservations@otoroclub.com</a>
+    </p>
+  </nav>
+</div>
+
+<!-- GENERATED by tools/build-photo-library.mjs — edit that script, not this file.
+     UNLISTED: not in nav, not in sitemap, robots noindex + Disallow. Anyone with the link can view. -->
+<style>
+  .page--library main { background: var(--navy); color: var(--cream); }
+  .lib-hero { padding: calc(var(--header-h) + var(--gap) * 2.5) 0 calc(var(--gap) * 1.5); }
+  .lib-hero .eyebrow { color: var(--gold); }
+  .lib-hero h1 { color: var(--cream); margin: 0.2em 0 0.3em; }
+  .lib-hero .lede { color: rgba(245,241,230,.72); max-width: 52ch; }
+  .lib-jump { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: calc(var(--gap) * 1.2); padding-top: var(--gap); border-top: 1px solid var(--rule-gold); }
+  .lib-jump a { font-size: .74rem; letter-spacing: var(--ls-rail); text-transform: uppercase; color: var(--gold); text-decoration: none; }
+  .lib-jump a:hover { color: var(--cream); }
+  .lib-group { padding: calc(var(--gap) * 1.6) 0; scroll-margin-top: var(--header-h); }
+  .lib-group-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--rule-cream); padding-bottom: 12px; margin-bottom: var(--gap); }
+  .lib-group-head h2 { color: var(--cream); font-size: clamp(1.5rem, 3vw, 2.2rem); margin: 0; }
+  .lib-count { font-size: .74rem; letter-spacing: var(--ls-rail); color: var(--gold); }
+  .lib-grid { columns: 4 220px; column-gap: 12px; }
+  .lib-item { display: block; break-inside: avoid; margin: 0 0 12px; overflow: hidden; background: var(--navy-deep); }
+  .lib-item img { display: block; width: 100%; height: auto; transition: transform .6s var(--ease), opacity .3s; }
+  .lib-item:hover img { transform: scale(1.025); }
+  .lib-item:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .lib-foot { padding: calc(var(--gap) * 2) 0 calc(var(--gap) * 3); color: rgba(245,241,230,.5); font-size: .8rem; }
+
+  .lib-box { position: fixed; inset: 0; z-index: 300; background: rgba(20,24,31,.97); display: none; flex-direction: column; }
+  .lib-box.is-open { display: flex; }
+  .lib-box-stage { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 64px 64px 16px; }
+  .lib-box-stage img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .lib-box-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 22px 22px; color: var(--cream); font-size: .78rem; letter-spacing: var(--ls-eyebrow); }
+  .lib-box-bar a { color: var(--gold); text-decoration: none; text-transform: uppercase; letter-spacing: var(--ls-rail); border: 1px solid var(--rule-gold); padding: 10px 16px; }
+  .lib-box-bar a:hover { background: var(--gold); color: var(--navy); }
+  .lib-btn { position: absolute; background: none; border: 0; color: var(--cream); cursor: pointer; opacity: .7; font-family: var(--system); line-height: 1; width: 52px; height: 52px; font-size: 2rem; }
+  .lib-btn:hover { opacity: 1; }
+  .lib-close { top: 10px; right: 12px; }
+  .lib-prev { left: 8px; top: 50%; transform: translateY(-50%); }
+  .lib-next { right: 8px; top: 50%; transform: translateY(-50%); }
+  @media (max-width: 640px) {
+    .lib-grid { columns: 2; column-gap: 8px; }
+    .lib-item { margin-bottom: 8px; }
+    .lib-box-stage { padding: 56px 8px 8px; }
+    .lib-prev, .lib-next { top: auto; bottom: 70px; transform: none; }
+  }
+</style>
+<main>
+  <section class="lib-hero">
+    <div class="container">
+      <p class="eyebrow">Otoro Club</p>
+      <h1 class="display">Photo Library</h1>
+      <p class="lede">93 photographs from the ceremonies so far. Tap any frame to view it full size and download.</p>
+      <nav class="lib-jump" aria-label="Jump to event"><a href="#lib-known-party">Known</a><a href="#lib-world-auto-haus">World Auto Haus</a><a href="#lib-tuna-test-kitchen">Tuna Test Kitchen</a><a href="#lib-popup-bagels">Popup Bagels</a><a href="#lib-addison-bday-party">Addison's Birthday</a><a href="#lib-dsc">Selects</a><a href="#lib-portraits">Portraits</a></nav>
+    </div>
+  </section>
+
+  <section class="lib-group" id="lib-known-party" aria-labelledby="lib-known-party-h">
+    <div class="container">
+      <header class="lib-group-head">
+        <h2 id="lib-known-party-h" class="display">Known</h2>
+        <span class="lib-count">20</span>
+      </header>
+      <div class="lib-grid">
+        <a class="lib-item" href="/assets/library/full/known-party1.jpg" data-i="0" data-name="known-party1"><img src="/assets/library/thumb/known-party1.jpg" alt="Otoro Club, Known" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party2.jpg" data-i="1" data-name="known-party2"><img src="/assets/library/thumb/known-party2.jpg" alt="Otoro Club, Known" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party3.jpg" data-i="2" data-name="known-party3"><img src="/assets/library/thumb/known-party3.jpg" alt="Otoro Club, Known" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party4.jpg" data-i="3" data-name="known-party4"><img src="/assets/library/thumb/known-party4.jpg" alt="Otoro Club, Known" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party5.jpg" data-i="4" data-name="known-party5"><img src="/assets/library/thumb/known-party5.jpg" alt="Otoro Club, Known" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party6.jpg" data-i="5" data-name="known-party6"><img src="/assets/library/thumb/known-party6.jpg" alt="Otoro Club, Known" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party7.jpg" data-i="6" data-name="known-party7"><img src="/assets/library/thumb/known-party7.jpg" alt="Otoro Club, Known" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party8.jpg" data-i="7" data-name="known-party8"><img src="/assets/library/thumb/known-party8.jpg" alt="Otoro Club, Known" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party9.jpg" data-i="8" data-name="known-party9"><img src="/assets/library/thumb/known-party9.jpg" alt="Otoro Club, Known" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party10.jpg" data-i="9" data-name="known-party10"><img src="/assets/library/thumb/known-party10.jpg" alt="Otoro Club, Known" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party11.jpg" data-i="10" data-name="known-party11"><img src="/assets/library/thumb/known-party11.jpg" alt="Otoro Club, Known" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party12.jpg" data-i="11" data-name="known-party12"><img src="/assets/library/thumb/known-party12.jpg" alt="Otoro Club, Known" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party13.jpg" data-i="12" data-name="known-party13"><img src="/assets/library/thumb/known-party13.jpg" alt="Otoro Club, Known" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party14.jpg" data-i="13" data-name="known-party14"><img src="/assets/library/thumb/known-party14.jpg" alt="Otoro Club, Known" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party15.jpg" data-i="14" data-name="known-party15"><img src="/assets/library/thumb/known-party15.jpg" alt="Otoro Club, Known" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party16.jpg" data-i="15" data-name="known-party16"><img src="/assets/library/thumb/known-party16.jpg" alt="Otoro Club, Known" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party17.jpg" data-i="16" data-name="known-party17"><img src="/assets/library/thumb/known-party17.jpg" alt="Otoro Club, Known" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party18.jpg" data-i="17" data-name="known-party18"><img src="/assets/library/thumb/known-party18.jpg" alt="Otoro Club, Known" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party19.jpg" data-i="18" data-name="known-party19"><img src="/assets/library/thumb/known-party19.jpg" alt="Otoro Club, Known" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/known-party20.jpg" data-i="19" data-name="known-party20"><img src="/assets/library/thumb/known-party20.jpg" alt="Otoro Club, Known" width="600" height="900" loading="lazy" decoding="async" /></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="lib-group" id="lib-world-auto-haus" aria-labelledby="lib-world-auto-haus-h">
+    <div class="container">
+      <header class="lib-group-head">
+        <h2 id="lib-world-auto-haus-h" class="display">World Auto Haus</h2>
+        <span class="lib-count">14</span>
+      </header>
+      <div class="lib-grid">
+        <a class="lib-item" href="/assets/library/full/world-auto-haus1.jpg" data-i="20" data-name="world-auto-haus1"><img src="/assets/library/thumb/world-auto-haus1.jpg" alt="Otoro Club, World Auto Haus" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/world-auto-haus2.jpg" data-i="21" data-name="world-auto-haus2"><img src="/assets/library/thumb/world-auto-haus2.jpg" alt="Otoro Club, World Auto Haus" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/world-auto-haus3.jpg" data-i="22" data-name="world-auto-haus3"><img src="/assets/library/thumb/world-auto-haus3.jpg" alt="Otoro Club, World Auto Haus" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/world-auto-haus4.jpg" data-i="23" data-name="world-auto-haus4"><img src="/assets/library/thumb/world-auto-haus4.jpg" alt="Otoro Club, World Auto Haus" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/world-auto-haus5.jpg" data-i="24" data-name="world-auto-haus5"><img src="/assets/library/thumb/world-auto-haus5.jpg" alt="Otoro Club, World Auto Haus" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/world-auto-haus6.jpg" data-i="25" data-name="world-auto-haus6"><img src="/assets/library/thumb/world-auto-haus6.jpg" alt="Otoro Club, World Auto Haus" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/world-auto-haus7.jpg" data-i="26" data-name="world-auto-haus7"><img src="/assets/library/thumb/world-auto-haus7.jpg" alt="Otoro Club, World Auto Haus" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/world-auto-haus8.jpg" data-i="27" data-name="world-auto-haus8"><img src="/assets/library/thumb/world-auto-haus8.jpg" alt="Otoro Club, World Auto Haus" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/world-auto-haus9.jpg" data-i="28" data-name="world-auto-haus9"><img src="/assets/library/thumb/world-auto-haus9.jpg" alt="Otoro Club, World Auto Haus" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/world-auto-haus10.jpg" data-i="29" data-name="world-auto-haus10"><img src="/assets/library/thumb/world-auto-haus10.jpg" alt="Otoro Club, World Auto Haus" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/world-auto-haus11.jpg" data-i="30" data-name="world-auto-haus11"><img src="/assets/library/thumb/world-auto-haus11.jpg" alt="Otoro Club, World Auto Haus" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/world-auto-haus12.jpg" data-i="31" data-name="world-auto-haus12"><img src="/assets/library/thumb/world-auto-haus12.jpg" alt="Otoro Club, World Auto Haus" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/world-auto-haus13.jpg" data-i="32" data-name="world-auto-haus13"><img src="/assets/library/thumb/world-auto-haus13.jpg" alt="Otoro Club, World Auto Haus" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/world-auto-haus15.jpg" data-i="33" data-name="world-auto-haus15"><img src="/assets/library/thumb/world-auto-haus15.jpg" alt="Otoro Club, World Auto Haus" width="600" height="900" loading="lazy" decoding="async" /></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="lib-group" id="lib-tuna-test-kitchen" aria-labelledby="lib-tuna-test-kitchen-h">
+    <div class="container">
+      <header class="lib-group-head">
+        <h2 id="lib-tuna-test-kitchen-h" class="display">Tuna Test Kitchen</h2>
+        <span class="lib-count">9</span>
+      </header>
+      <div class="lib-grid">
+        <a class="lib-item" href="/assets/library/full/tuna-test-kitchen1.jpg" data-i="34" data-name="tuna-test-kitchen1"><img src="/assets/library/thumb/tuna-test-kitchen1.jpg" alt="Otoro Club, Tuna Test Kitchen" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/tuna-test-kitchen2.jpg" data-i="35" data-name="tuna-test-kitchen2"><img src="/assets/library/thumb/tuna-test-kitchen2.jpg" alt="Otoro Club, Tuna Test Kitchen" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/tuna-test-kitchen3.jpg" data-i="36" data-name="tuna-test-kitchen3"><img src="/assets/library/thumb/tuna-test-kitchen3.jpg" alt="Otoro Club, Tuna Test Kitchen" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/tuna-test-kitchen4.jpg" data-i="37" data-name="tuna-test-kitchen4"><img src="/assets/library/thumb/tuna-test-kitchen4.jpg" alt="Otoro Club, Tuna Test Kitchen" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/tuna-test-kitchen5.jpg" data-i="38" data-name="tuna-test-kitchen5"><img src="/assets/library/thumb/tuna-test-kitchen5.jpg" alt="Otoro Club, Tuna Test Kitchen" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/tuna-test-kitchen6.jpg" data-i="39" data-name="tuna-test-kitchen6"><img src="/assets/library/thumb/tuna-test-kitchen6.jpg" alt="Otoro Club, Tuna Test Kitchen" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/tuna-test-kitchen7.jpg" data-i="40" data-name="tuna-test-kitchen7"><img src="/assets/library/thumb/tuna-test-kitchen7.jpg" alt="Otoro Club, Tuna Test Kitchen" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/tuna-test-kitchen8.jpg" data-i="41" data-name="tuna-test-kitchen8"><img src="/assets/library/thumb/tuna-test-kitchen8.jpg" alt="Otoro Club, Tuna Test Kitchen" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/tuna-test-kitchen9.jpg" data-i="42" data-name="tuna-test-kitchen9"><img src="/assets/library/thumb/tuna-test-kitchen9.jpg" alt="Otoro Club, Tuna Test Kitchen" width="900" height="600" loading="lazy" decoding="async" /></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="lib-group" id="lib-popup-bagels" aria-labelledby="lib-popup-bagels-h">
+    <div class="container">
+      <header class="lib-group-head">
+        <h2 id="lib-popup-bagels-h" class="display">Popup Bagels</h2>
+        <span class="lib-count">13</span>
+      </header>
+      <div class="lib-grid">
+        <a class="lib-item" href="/assets/library/full/popup-bagels1.jpg" data-i="43" data-name="popup-bagels1"><img src="/assets/library/thumb/popup-bagels1.jpg" alt="Otoro Club, Popup Bagels" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/popup-bagels2.jpg" data-i="44" data-name="popup-bagels2"><img src="/assets/library/thumb/popup-bagels2.jpg" alt="Otoro Club, Popup Bagels" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/popup-bagels3.jpg" data-i="45" data-name="popup-bagels3"><img src="/assets/library/thumb/popup-bagels3.jpg" alt="Otoro Club, Popup Bagels" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/popup-bagels4.jpg" data-i="46" data-name="popup-bagels4"><img src="/assets/library/thumb/popup-bagels4.jpg" alt="Otoro Club, Popup Bagels" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/popup-bagels5.jpg" data-i="47" data-name="popup-bagels5"><img src="/assets/library/thumb/popup-bagels5.jpg" alt="Otoro Club, Popup Bagels" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/popup-bagels6.jpg" data-i="48" data-name="popup-bagels6"><img src="/assets/library/thumb/popup-bagels6.jpg" alt="Otoro Club, Popup Bagels" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/popup-bagels7.jpg" data-i="49" data-name="popup-bagels7"><img src="/assets/library/thumb/popup-bagels7.jpg" alt="Otoro Club, Popup Bagels" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/popup-bagels8.jpg" data-i="50" data-name="popup-bagels8"><img src="/assets/library/thumb/popup-bagels8.jpg" alt="Otoro Club, Popup Bagels" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/popup-bagels9.jpg" data-i="51" data-name="popup-bagels9"><img src="/assets/library/thumb/popup-bagels9.jpg" alt="Otoro Club, Popup Bagels" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/popup-bagels10.jpg" data-i="52" data-name="popup-bagels10"><img src="/assets/library/thumb/popup-bagels10.jpg" alt="Otoro Club, Popup Bagels" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/popup-bagels11.jpg" data-i="53" data-name="popup-bagels11"><img src="/assets/library/thumb/popup-bagels11.jpg" alt="Otoro Club, Popup Bagels" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/popup-bagels12.jpg" data-i="54" data-name="popup-bagels12"><img src="/assets/library/thumb/popup-bagels12.jpg" alt="Otoro Club, Popup Bagels" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/popup-bagels13.jpg" data-i="55" data-name="popup-bagels13"><img src="/assets/library/thumb/popup-bagels13.jpg" alt="Otoro Club, Popup Bagels" width="600" height="900" loading="lazy" decoding="async" /></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="lib-group" id="lib-addison-bday-party" aria-labelledby="lib-addison-bday-party-h">
+    <div class="container">
+      <header class="lib-group-head">
+        <h2 id="lib-addison-bday-party-h" class="display">Addison's Birthday</h2>
+        <span class="lib-count">8</span>
+      </header>
+      <div class="lib-grid">
+        <a class="lib-item" href="/assets/library/full/addison-bday-party1.jpg" data-i="56" data-name="addison-bday-party1"><img src="/assets/library/thumb/addison-bday-party1.jpg" alt="Otoro Club, Addison's Birthday" width="596" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/addison-bday-party2.jpg" data-i="57" data-name="addison-bday-party2"><img src="/assets/library/thumb/addison-bday-party2.jpg" alt="Otoro Club, Addison's Birthday" width="900" height="596" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/addison-bday-party3.jpg" data-i="58" data-name="addison-bday-party3"><img src="/assets/library/thumb/addison-bday-party3.jpg" alt="Otoro Club, Addison's Birthday" width="596" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/addison-bday-party4.jpg" data-i="59" data-name="addison-bday-party4"><img src="/assets/library/thumb/addison-bday-party4.jpg" alt="Otoro Club, Addison's Birthday" width="900" height="596" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/addison-bday-party5.jpg" data-i="60" data-name="addison-bday-party5"><img src="/assets/library/thumb/addison-bday-party5.jpg" alt="Otoro Club, Addison's Birthday" width="900" height="596" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/addison-bday-party6.jpg" data-i="61" data-name="addison-bday-party6"><img src="/assets/library/thumb/addison-bday-party6.jpg" alt="Otoro Club, Addison's Birthday" width="900" height="596" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/addison-bday-party7.jpg" data-i="62" data-name="addison-bday-party7"><img src="/assets/library/thumb/addison-bday-party7.jpg" alt="Otoro Club, Addison's Birthday" width="900" height="596" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/addison-bday-party8.jpg" data-i="63" data-name="addison-bday-party8"><img src="/assets/library/thumb/addison-bday-party8.jpg" alt="Otoro Club, Addison's Birthday" width="596" height="900" loading="lazy" decoding="async" /></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="lib-group" id="lib-dsc" aria-labelledby="lib-dsc-h">
+    <div class="container">
+      <header class="lib-group-head">
+        <h2 id="lib-dsc-h" class="display">Selects</h2>
+        <span class="lib-count">25</span>
+      </header>
+      <div class="lib-grid">
+        <a class="lib-item" href="/assets/library/full/dsc00025.jpg" data-i="64" data-name="dsc00025"><img src="/assets/library/thumb/dsc00025.jpg" alt="Otoro Club, Selects" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc00065.jpg" data-i="65" data-name="dsc00065"><img src="/assets/library/thumb/dsc00065.jpg" alt="Otoro Club, Selects" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc00079.jpg" data-i="66" data-name="dsc00079"><img src="/assets/library/thumb/dsc00079.jpg" alt="Otoro Club, Selects" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc00101.jpg" data-i="67" data-name="dsc00101"><img src="/assets/library/thumb/dsc00101.jpg" alt="Otoro Club, Selects" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc00107.jpg" data-i="68" data-name="dsc00107"><img src="/assets/library/thumb/dsc00107.jpg" alt="Otoro Club, Selects" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc00115.jpg" data-i="69" data-name="dsc00115"><img src="/assets/library/thumb/dsc00115.jpg" alt="Otoro Club, Selects" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc00120.jpg" data-i="70" data-name="dsc00120"><img src="/assets/library/thumb/dsc00120.jpg" alt="Otoro Club, Selects" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc06102.jpg" data-i="71" data-name="dsc06102"><img src="/assets/library/thumb/dsc06102.jpg" alt="Otoro Club, Selects" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc06201.jpg" data-i="72" data-name="dsc06201"><img src="/assets/library/thumb/dsc06201.jpg" alt="Otoro Club, Selects" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc06217.jpg" data-i="73" data-name="dsc06217"><img src="/assets/library/thumb/dsc06217.jpg" alt="Otoro Club, Selects" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc09278.jpg" data-i="74" data-name="dsc09278"><img src="/assets/library/thumb/dsc09278.jpg" alt="Otoro Club, Selects" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc09281.jpg" data-i="75" data-name="dsc09281"><img src="/assets/library/thumb/dsc09281.jpg" alt="Otoro Club, Selects" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc09282.jpg" data-i="76" data-name="dsc09282"><img src="/assets/library/thumb/dsc09282.jpg" alt="Otoro Club, Selects" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc09314.jpg" data-i="77" data-name="dsc09314"><img src="/assets/library/thumb/dsc09314.jpg" alt="Otoro Club, Selects" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc09346.jpg" data-i="78" data-name="dsc09346"><img src="/assets/library/thumb/dsc09346.jpg" alt="Otoro Club, Selects" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc09356.jpg" data-i="79" data-name="dsc09356"><img src="/assets/library/thumb/dsc09356.jpg" alt="Otoro Club, Selects" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc09404.jpg" data-i="80" data-name="dsc09404"><img src="/assets/library/thumb/dsc09404.jpg" alt="Otoro Club, Selects" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc09523.jpg" data-i="81" data-name="dsc09523"><img src="/assets/library/thumb/dsc09523.jpg" alt="Otoro Club, Selects" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc09555.jpg" data-i="82" data-name="dsc09555"><img src="/assets/library/thumb/dsc09555.jpg" alt="Otoro Club, Selects" width="900" height="600" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc09567.jpg" data-i="83" data-name="dsc09567"><img src="/assets/library/thumb/dsc09567.jpg" alt="Otoro Club, Selects" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc09598.jpg" data-i="84" data-name="dsc09598"><img src="/assets/library/thumb/dsc09598.jpg" alt="Otoro Club, Selects" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc09672.jpg" data-i="85" data-name="dsc09672"><img src="/assets/library/thumb/dsc09672.jpg" alt="Otoro Club, Selects" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc09711.jpg" data-i="86" data-name="dsc09711"><img src="/assets/library/thumb/dsc09711.jpg" alt="Otoro Club, Selects" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc09753.jpg" data-i="87" data-name="dsc09753"><img src="/assets/library/thumb/dsc09753.jpg" alt="Otoro Club, Selects" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/dsc09805.jpg" data-i="88" data-name="dsc09805"><img src="/assets/library/thumb/dsc09805.jpg" alt="Otoro Club, Selects" width="600" height="900" loading="lazy" decoding="async" /></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="lib-group" id="lib-portraits" aria-labelledby="lib-portraits-h">
+    <div class="container">
+      <header class="lib-group-head">
+        <h2 id="lib-portraits-h" class="display">Portraits</h2>
+        <span class="lib-count">4</span>
+      </header>
+      <div class="lib-grid">
+        <a class="lib-item" href="/assets/library/full/brandon-greenwell.jpg" data-i="89" data-name="brandon-greenwell"><img src="/assets/library/thumb/brandon-greenwell.jpg" alt="Otoro Club, Portraits" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/brendon-jasso.jpg" data-i="90" data-name="brendon-jasso"><img src="/assets/library/thumb/brendon-jasso.jpg" alt="Otoro Club, Portraits" width="600" height="900" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/lauren-evelyn.jpg" data-i="91" data-name="lauren-evelyn"><img src="/assets/library/thumb/lauren-evelyn.jpg" alt="Otoro Club, Portraits" width="900" height="478" loading="lazy" decoding="async" /></a>
+        <a class="lib-item" href="/assets/library/full/marcus.jpg" data-i="92" data-name="marcus"><img src="/assets/library/thumb/marcus.jpg" alt="Otoro Club, Portraits" width="600" height="900" loading="lazy" decoding="async" /></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container lib-foot"><p>Otoro Club. For use with permission.</p></div>
+</main>
+
+<div class="lib-box" id="libBox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <button class="lib-btn lib-close" type="button" aria-label="Close">&times;</button>
+  <button class="lib-btn lib-prev" type="button" aria-label="Previous photo">&#8249;</button>
+  <button class="lib-btn lib-next" type="button" aria-label="Next photo">&#8250;</button>
+  <div class="lib-box-stage"><img id="libImg" alt="" /></div>
+  <div class="lib-box-bar"><span id="libPos"></span><a id="libDl" href="#" download>Download</a></div>
+</div>
+<script>
+(() => {
+  const items = [...document.querySelectorAll(".lib-item")];
+  const box = document.getElementById("libBox");
+  const img = document.getElementById("libImg");
+  const pos = document.getElementById("libPos");
+  const dl = document.getElementById("libDl");
+  let cur = 0, last = null;
+  const show = (i) => {
+    cur = (i + items.length) % items.length;
+    const a = items[cur];
+    img.src = a.href;
+    img.alt = a.querySelector("img").alt;
+    dl.href = a.href;
+    dl.setAttribute("download", "otoro-club-" + a.dataset.name + ".jpg");
+    pos.textContent = (cur + 1) + " / " + items.length;
+    const nxt = items[(cur + 1) % items.length];
+    new Image().src = nxt.href;
+  };
+  const open = (i) => { last = document.activeElement; box.hidden = false; box.classList.add("is-open"); document.body.style.overflow = "hidden"; show(i); box.querySelector(".lib-close").focus(); };
+  const close = () => { box.classList.remove("is-open"); box.hidden = true; document.body.style.overflow = ""; img.removeAttribute("src"); last && last.focus(); };
+  items.forEach((a, i) => a.addEventListener("click", (e) => { e.preventDefault(); open(i); }));
+  box.querySelector(".lib-close").onclick = close;
+  box.querySelector(".lib-prev").onclick = () => show(cur - 1);
+  box.querySelector(".lib-next").onclick = () => show(cur + 1);
+  box.addEventListener("click", (e) => { if (e.target === box || e.target.classList.contains("lib-box-stage")) close(); });
+  document.addEventListener("keydown", (e) => {
+    if (!box.classList.contains("is-open")) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowLeft") show(cur - 1);
+    else if (e.key === "ArrowRight") show(cur + 1);
+  });
+  let x0 = null;
+  box.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener("touchend", (e) => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1)); x0 = null; });
+})();
+</script>
+
+<!-- ===================== FOOTER (§6) ===================== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="foot-brand">
+      <img class="foot-lock" src="/assets/logos/titlelogo.png" alt="Otoro Club" height="42" />
+      <p class="foot-boiler">A seafood social club in La Jolla &mdash; tuna-cutting ceremonies, sushi display installs, and a running series of popups.</p>
+      <img class="foot-crest" src="/assets/logos/mark-gold.png" alt="" width="74" height="74" />
+    </div>
+
+    <nav class="foot-col" aria-label="The Ceremony">
+      <p class="foot-head">The Ceremony</p>
+      <a href="/ceremony">Overview</a>
+      <a href="/ceremony/run-of-show">Run of show</a>
+      <a href="/ceremony/included">What is included</a>
+      <a href="/ceremony/food-safety">Food safety</a>
+    </nav>
+    <nav class="foot-col" aria-label="Menu &amp; Occasions">
+      <p class="foot-head">Menu &amp; Occasions</p>
+      <a href="/menu">Menu</a>
+      <a href="/occasions">Occasions</a>
+      <a href="/occasions/weddings">Weddings</a>
+      <a href="/occasions/corporate">Corporate</a>
+      <a href="/occasions/partnerships">Partnerships</a>
+    </nav>
+    <nav class="foot-col" aria-label="About">
+      <p class="foot-head">About</p>
+      <a href="/about">Who we are</a>
+      <a href="/about/team">The team</a>
+      <a href="/#community">The Community</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/faq">FAQ</a>
+      <a href="/about/press">Press &amp; media kit</a>
+      <!-- Second entry point to the flyout, at every width. -->
+      <button type="button" class="foot-glossary" data-glossary-open>Sushi Glossary</button>
+    </nav>
+    <nav class="foot-col" aria-label="Plan an event">
+      <p class="foot-head">Plan an Event</p>
+      <a href="/inquire">Inquire</a>
+      <a href="/ceremony/food-safety#venue">Venue requirements</a>
+      <a href="/legal/cancellation">Deposits &amp; cancellation</a>
+      <a class="is-address" href="mailto:reservations@otoroclub.com?subject=Otoro%20Club%20%E2%80%94%20Inquiry">reservations@otoroclub.com</a>
+    </nav>
+  </div>
+
+  <div class="footer-legal">
+    <nav class="legal-links" aria-label="Legal">
+      <a href="/legal/privacy">Privacy Policy</a>
+      <a href="/legal/terms">Terms of Service</a>
+      <a href="/legal/accessibility">Accessibility</a>
+      <a href="/legal/food-safety-allergens">Food Safety &amp; Allergens</a>
+      <a href="/legal/cancellation">Cancellation Policy</a>
+      <a href="#" data-cookie-manage>Cookie Preferences</a>
+    </nav>
+    <p class="legal-meta">
+      <a class="is-address" href="https://www.instagram.com/otoroclubsd/" target="_blank" rel="noopener">@otoroclubsd</a>
+      <span aria-hidden="true">&middot;</span>
+      La Jolla, Calif. &middot; 2026
+    </p>
+  </div>
+
+  <p class="foot-fine">
+    &copy; 2026 Otoro Club LLC. All rights reserved. Otoro Club is a private event catering service; we do not operate a restaurant and do not sell fish at retail. Every engagement is quoted to the venue, date, and headcount. Photography depicts prior engagements.
+  </p>
+</footer>
+
+<!-- ===================== COOKIE CONSENT (§7) =====================
+     Cream strip, bottom, above the mobile CTA. Choice persists in
+     localStorage (otoro.cookieConsent); analytics load only after Accept.
+     Hidden by default; script.js reveals it when no choice is stored. -->
+<div class="cookiebar" id="cookiebar" role="dialog" aria-label="Cookie preferences" aria-live="polite" hidden>
+  <p class="cookiebar-text">We use a small set of cookies to understand how the site is used. You can decline non-essential cookies, manage them, or accept.</p>
+  <div class="cookiebar-actions">
+    <button type="button" class="btn btn--sm btn--quiet" data-cookie="decline">Decline</button>
+    <a class="btn btn--sm btn--quiet" href="/legal/cookies" data-cookie="manage">Manage</a>
+    <button type="button" class="btn btn--sm" data-cookie="accept">Accept</button>
+  </div>
+</div>
+
+<!-- ===================== SUSHI GLOSSARY (flyout) =====================
+     Mounted globally by build.mjs, so it exists on every route.
+
+     Trigger is a vertical rail tab on the right edge — the same
+     writing-mode/letterspacing language as .rail, and it deliberately
+     avoids the bottom edge where .cookiebar lives.
+
+     Content is hardcoded below as JSON (#glossaryData). script.js parses
+     it once and renders the panel body; nothing is fetched. Definitions
+     may carry <em> and are injected as HTML — the data is authored here,
+     never user input. Search matches term + kanji + tag-stripped
+     definition. -->
+
+<button type="button" class="gl-tab" id="glossaryTab" aria-expanded="false" aria-controls="glossaryPanel">
+  <span class="gl-tab-text">Glossary</span>
+</button>
+
+<div class="gl-backdrop" id="glossaryBackdrop" inert></div>
+
+<aside class="gl-panel" id="glossaryPanel" role="dialog" aria-modal="true" aria-labelledby="glossaryTitle" inert>
+  <div class="gl-head">
+    <div class="gl-head-row">
+      <div>
+        <p class="gl-label">Reference</p>
+        <h2 class="display gl-title" id="glossaryTitle">Sushi Glossary</h2>
+      </div>
+      <button type="button" class="gl-close" id="glossaryClose" aria-label="Close the glossary">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <p class="gl-intro">A counter-side reference to the words worth knowing &mdash; the formats, the fish, the technique, and the etiquette.</p>
+
+    <div class="gl-search-row">
+      <label class="gl-sr-only" for="glossarySearch">Search the glossary</label>
+      <input type="search" id="glossarySearch" class="gl-search" placeholder="Search a term, kanji, or meaning" autocomplete="off" spellcheck="false" />
+      <button type="button" class="gl-clear" id="glossaryClear" aria-label="Clear search" hidden>Clear</button>
+    </div>
+
+    <nav class="gl-jump" id="glossaryJump" aria-label="Glossary categories"></nav>
+  </div>
+
+  <div class="gl-body" id="glossaryBody" tabindex="-1"></div>
+</aside>
+
+<script type="application/json" id="glossaryData">
+{
+  "groups": [
+    {
+      "id": "core",
+      "name": "The core word",
+      "terms": [
+        { "t": "Sushi", "k": "寿司 / 鮨", "d": "Refers to vinegared rice (<em>shari</em>), not raw fish. Any dish built on seasoned sushi rice is sushi. The most common misconception is that “sushi” means “raw fish” — it doesn’t." },
+        { "t": "Sashimi", "k": "刺身", "d": "Sliced raw fish or seafood served <em>without</em> rice. Strictly, it isn’t sushi at all, since there’s no rice. Often served first." }
+      ]
+    },
+    {
+      "id": "formats",
+      "name": "Formats",
+      "terms": [
+        { "t": "Nigiri", "k": "握り", "d": "A hand-pressed oblong of rice with a slice of fish draped over it, usually a dab of wasabi between. Means “grip/squeeze.” The benchmark for judging a chef." },
+        { "t": "Maki / Makizushi", "k": "巻き寿司", "d": "“Rolled sushi.” Rice and fillings rolled in nori with a bamboo mat, then cut. An umbrella term for the sub-types below." },
+        { "t": "Hosomaki", "k": "細巻き", "d": "Thin roll, nori outside, usually one filling (tekka-maki = tuna, kappa-maki = cucumber)." },
+        { "t": "Futomaki", "k": "太巻き", "d": "Fat roll with multiple fillings." },
+        { "t": "Uramaki", "k": "裏巻き", "d": "“Inside-out” roll, rice outside and nori inside. The California roll is uramaki; more of a Western-adapted style." },
+        { "t": "Temaki", "k": "手巻き", "d": "“Hand roll.” A cone of nori filled with rice and ingredients, eaten by hand right away so the seaweed stays crisp. Not cut into pieces." },
+        { "t": "Gunkan-maki", "k": "軍艦巻き", "d": "“Battleship roll.” An oval of rice wrapped in a nori wall that holds loose toppings like roe (ikura) or uni." },
+        { "t": "Chirashi", "k": "ちらし", "d": "“Scattered sushi.” A bowl of sushi rice topped with assorted sashimi and garnishes." },
+        { "t": "Inari / Inarizushi", "k": "稲荷寿司", "d": "Sushi rice stuffed into a pouch of sweet fried tofu (aburaage). Vegetarian, lightly sweet." },
+        { "t": "Oshizushi", "k": "押し寿司", "d": "Pressed sushi shaped in a wooden box mold, then cut into blocks. An Osaka specialty (e.g., battera, pressed mackerel)." },
+        { "t": "Narezushi", "k": "熟れ寿司", "d": "The ancient ancestor of sushi: fish fermented with rice for months. Pungent, historic, rare today." }
+      ]
+    },
+    {
+      "id": "dining",
+      "name": "The dining experience",
+      "terms": [
+        { "t": "Omakase", "k": "お任せ", "d": "“I leave it up to you.” You give the chef the menu and they serve a progression chosen at the board, based on what is best that day. The highest-trust way to eat." },
+        { "t": "Okonomi", "k": "お好み", "d": "The opposite of omakase: you order piece by piece, exactly what you want." },
+        { "t": "Itamae", "k": "板前", "d": "The sushi chef. Literally “in front of the board” (the cutting board). A master craftsman is a <em>shokunin</em>." },
+        { "t": "Tsukeba", "k": "付け場", "d": "The counter workspace where the itamae works." },
+        { "t": "Edomae", "k": "江戸前", "d": "“In front of Edo (old Tokyo).” The classic Tokyo style, historically using Tokyo Bay fish, treating each with curing, marinating, or simmering. The gold-standard tradition." }
+      ]
+    },
+    {
+      "id": "essentials",
+      "name": "Rice, seasoning, and essentials",
+      "terms": [
+        { "t": "Shari / Sumeshi", "k": "シャリ / 酢飯", "d": "The seasoned sushi rice, mixed with vinegar, sugar, and salt. Its temperature and seasoning are what serious chefs obsess over." },
+        { "t": "Neta", "k": "ネタ", "d": "The topping — the fish or seafood over the rice." },
+        { "t": "Nori", "k": "海苔", "d": "Dried, pressed seaweed sheets used to wrap rolls and hand rolls." },
+        { "t": "Wasabi", "k": "山葵", "d": "Pungent green Japanese horseradish. Real wasabi is grated fresh from the rhizome; most restaurants use an imitation. Traditionally placed by the chef between fish and rice, not stirred into soy sauce." },
+        { "t": "Gari", "k": "がり", "d": "Pickled ginger. A palate cleanser eaten <em>between</em> pieces, not piled on top." },
+        { "t": "Shoyu", "k": "醤油", "d": "Soy sauce. Dip the <em>fish</em> side lightly, not the rice, which soaks up too much and falls apart." },
+        { "t": "Nikiri", "k": "煮切り", "d": "A brushed-on sweet soy glaze applied by the chef so you don’t need to dip. When it’s there, don’t add more soy." },
+        { "t": "Murasaki", "k": "むらさき", "d": "Counter slang for soy sauce (“purple”)." },
+        { "t": "Agari", "k": "あがり", "d": "Counter slang for the green tea served at the end." }
+      ]
+    },
+    {
+      "id": "fish",
+      "name": "The fish and seafood (neta)",
+      "subs": [
+        {
+          "name": "Tuna",
+          "terms": [
+            { "t": "Maguro", "k": "鮪", "d": "Tuna, generally the leaner red flesh." },
+            { "t": "Akami", "k": "赤身", "d": "Lean, deep-red tuna from the back. Clean, iron-rich." },
+            { "t": "Chutoro", "k": "中トロ", "d": "Medium-fatty tuna belly. Balanced richness." },
+            { "t": "Otoro", "k": "大トロ", "d": "The fattiest, most marbled belly cut. Buttery, melts on the tongue, most prized." },
+            { "t": "Toro", "k": "トロ", "d": "General term for fatty tuna belly." },
+            { "t": "Negitoro", "k": "ねぎとろ", "d": "Minced fatty tuna with scallion, often in rolls or gunkan." }
+          ]
+        },
+        {
+          "name": "Salmon and roe",
+          "terms": [
+            { "t": "Sake / Shake", "k": "鮭", "d": "Salmon (the fish is “sha-ke”; the rice wine is “sa-ke”). A modern, Norwegian-introduced addition to Japanese sushi." },
+            { "t": "Ikura", "k": "いくら", "d": "Salmon roe. Large glossy orange pearls that pop. Usually served as gunkan." },
+            { "t": "Sujiko", "k": "筋子", "d": "Salmon roe still in the membrane sac, saltier and denser than ikura." }
+          ]
+        },
+        {
+          "name": "Other roe",
+          "terms": [
+            { "t": "Uni", "k": "雲丹", "d": "Sea urchin. Creamy, briny, custard-like. Polarizing and prized; quality varies enormously." },
+            { "t": "Tobiko", "k": "とびこ", "d": "Flying fish roe. Tiny, crunchy, bright orange." },
+            { "t": "Masago", "k": "真砂子", "d": "Capelin roe, similar to tobiko but smaller and cheaper." },
+            { "t": "Kazunoko", "k": "数の子", "d": "Herring roe. Crunchy, often eaten at New Year." },
+            { "t": "Mentaiko / Tarako", "k": "明太子 / 鱈子", "d": "Pollock roe; tarako plain, mentaiko spiced." }
+          ]
+        },
+        {
+          "name": "White fish and silver-skinned",
+          "terms": [
+            { "t": "Hamachi / Buri", "k": "はまち / 鰤", "d": "Yellowtail. Hamachi is younger, buri the mature winter fish; rich and clean." },
+            { "t": "Kanpachi", "k": "間八", "d": "Amberjack. Leaner, firmer cousin of yellowtail." },
+            { "t": "Tai", "k": "鯛", "d": "Sea bream / red snapper. Delicate, slightly sweet, highly esteemed." },
+            { "t": "Hirame", "k": "平目", "d": "Flounder / fluke. Lean, subtle white fish." },
+            { "t": "Engawa", "k": "縁側", "d": "The chewy, fatty muscle along the fin of flounder. A connoisseur’s cut." },
+            { "t": "Suzuki", "k": "鱸", "d": "Japanese sea bass." },
+            { "t": "Saba", "k": "鯖", "d": "Mackerel. Rich, oily, often cured in salt and vinegar (shime-saba)." },
+            { "t": "Aji", "k": "鯵", "d": "Horse mackerel. Silvery, served with ginger and scallion." },
+            { "t": "Iwashi", "k": "鰯", "d": "Sardine. Soft, oily, seasonal." },
+            { "t": "Sanma", "k": "秋刀魚", "d": "Pacific saury. An autumn delicacy." },
+            { "t": "Kohada", "k": "小鰭", "d": "Gizzard shad, a cured silver-skinned fish and a classic test of Edomae skill." },
+            { "t": "Katsuo", "k": "鰹", "d": "Bonito / skipjack. Often lightly seared (tataki style)." }
+          ]
+        },
+        {
+          "name": "Shellfish and cephalopods",
+          "terms": [
+            { "t": "Ebi", "k": "海老", "d": "Shrimp, usually cooked and butterflied." },
+            { "t": "Amaebi", "k": "甘海老", "d": "“Sweet shrimp,” served raw; delicate and sweet." },
+            { "t": "Botan ebi", "k": "牡丹海老", "d": "Large sweet spot prawn." },
+            { "t": "Ika", "k": "烏賊", "d": "Squid. Firm, mild, sometimes scored." },
+            { "t": "Tako", "k": "蛸", "d": "Octopus, usually cooked; firm and chewy." },
+            { "t": "Hotate", "k": "帆立", "d": "Scallop. Sweet, tender, often served raw." },
+            { "t": "Akagai", "k": "赤貝", "d": "Red clam / ark shell. Crunchy, briny." },
+            { "t": "Mirugai", "k": "海松貝", "d": "Giant clam / geoduck. Crunchy, sweet." },
+            { "t": "Kani", "k": "蟹", "d": "Crab. <em>Kani-kama</em> is imitation crab stick." }
+          ]
+        },
+        {
+          "name": "Eel and cooked toppings",
+          "terms": [
+            { "t": "Unagi", "k": "鰻", "d": "Freshwater eel, grilled and glazed with sweet tare (kabayaki). Never served raw." },
+            { "t": "Anago", "k": "穴子", "d": "Saltwater / conger eel. Lighter and more delicate than unagi." },
+            { "t": "Tamago", "k": "玉子", "d": "Sweet layered Japanese omelet served as nigiri. Its subtlety is said to reveal a chef’s skill." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rolls",
+      "name": "Rolls you’ll see on menus",
+      "terms": [
+        { "t": "California roll", "k": "", "d": "Uramaki with crab (or imitation), avocado, cucumber. The gateway roll." },
+        { "t": "Spicy tuna roll", "k": "", "d": "Minced tuna with spicy mayo/chili." },
+        { "t": "Dragon roll", "k": "", "d": "Uramaki topped with eel and avocado." },
+        { "t": "Rainbow roll", "k": "", "d": "California roll topped with assorted sliced fish." },
+        { "t": "Philadelphia roll", "k": "", "d": "Salmon and cream cheese." },
+        { "t": "Tekka-maki", "k": "鉄火巻き", "d": "Simple tuna hosomaki; traditional, not Western." },
+        { "t": "Kappa-maki", "k": "河童巻き", "d": "Cucumber hosomaki." }
+      ]
+    },
+    {
+      "id": "etiquette",
+      "name": "Side terms and etiquette",
+      "terms": [
+        { "t": "Miso soup", "k": "味噌汁", "d": "Fermented soybean-paste broth, often served at the end in traditional settings, not the start." },
+        { "t": "Edamame", "k": "枝豆", "d": "Boiled, salted young soybeans." },
+        { "t": "Oshibori", "k": "おしぼり", "d": "The hot or cold hand towel given before the meal." },
+        { "t": "Geta", "k": "下駄", "d": "The wooden pedestal sushi is served on." },
+        { "t": "Itadakimasu", "k": "いただきます", "d": "Said before eating (“I gratefully receive”)." },
+        { "t": "Gochisousama", "k": "ごちそうさま", "d": "Said after (“thank you for the feast”)." },
+        { "t": "Dip fish-side down, lightly", "k": "", "d": "Drowning nigiri in soy is the clearest novice tell." },
+        { "t": "Eat nigiri in one bite", "k": "", "d": "Ideally by hand. Chopsticks are fine, but hands are traditional for nigiri." }
+      ]
+    }
+  ],
+  "notes": {
+    "title": "Worth knowing",
+    "paragraphs": [
+      "Fish names don’t map cleanly to English. “Red snapper” for <em>tai</em>, “yellowtail” for <em>hamachi</em>, “sea bass” for <em>suzuki</em> are approximations — the exact species shifts by region and season, and menus use these labels loosely.",
+      "The line between “authentic” and “adapted” is real but not a ranking. Salmon and most named rolls (California, dragon, rainbow) are modern, often non-Japanese in origin — newer, not lesser."
+    ]
+  }
+}
+</script>
+
+<script src="/script.js" defer></script>
+
+<!-- Vercel Web Analytics + Speed Insights load only after cookie consent
+     (see script.js). Cookieless first-party, but gated to be safe. -->
+
+</body>
+</html>
